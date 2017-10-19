@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>山西出行海报生成</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+</head>
+<body>
+    <div style="font-size:1.2rem;font-weight:600;color:#0094ff;padding:0.1rem;width:100%;text-align:center;margin-top:0.5rem;">
+        二维码生成
+    </div>
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <label class="weui-label">员工姓名</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input id="input_name" class="weui-input" type="text" placeholder="真实填写只做统计使用">
+            </div>
+        </div>
+        <div class="weui-cell weui-cell_vcode" style="display:none;">
+            <div class="weui-cell__hd">
+                <label class="weui-label">上传照片</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input id="input_show" readonly="readonly" class="weui-input" type="tel" placeholder="未选择">
+            </div>
+            <div class="weui-cell__ft">
+                <button id="btn_ShowPic" class="weui-vcode-btn">选择</button>
+            </div>
+        </div>
+        <div class="weui-cells weui-cells_form" style="display:none;">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <textarea id="Content" class="weui-textarea" placeholder="输入您的代言词（可选），最多16字" rows="3"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="margin:1rem 1rem;display:none;">
+        <a id="upLoadImg" href="javascript:;" class="weui-btn weui-btn_plain-primary">生成个性海报</a>
+    </div>
+    <div style="margin:1rem 1rem;display:none;">
+        <a id="btn_pt" href="javascript:;" class="weui-btn weui-btn_default">生成专属海报</a>
+    </div>
+    <div style="margin:1rem 1rem;">
+        <a id="btn_code" href="javascript:;" class="weui-btn weui-btn_plain-primary">生成个人二维码</a>
+    </div>
+    <div style="font-size:0.6rem;color:#ff6a00;margin-top:0.5rem;text-align:center;display:none;">
+        注：员工姓名必填，如生成普通海报或二维码无需照片
+    </div>    
+    <div style="position:fixed;bottom:2rem;left:0;text-align:center;margin-top:1rem;font-size:0.8rem;color:#666;width:100%;padding-bottom:0.5rem;">
+        您目前已获得<em id="fireNum" style="font-style:normal;font-size:1.2rem;color:#0094ff;"></em>位好友支持
+    </div>
+    <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/common.js?v=20170420"></script>
+    <script src="js/c_hb.js?v=20170505"></script>
+</body>
+</html>

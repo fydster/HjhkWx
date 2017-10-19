@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+    <link href="style/c_voucher.css" rel="stylesheet" />
+    <script src="js/count.js"></script>
+</head>
+<body>
+    <!--优惠券信息-->
+    <div class="VoucherPanel">
+        <ul></ul>
+        <div style="width:100%;height:25px;">
+            &nbsp;
+        </div>
+    </div>
+
+    <ul style="display:none;" id="template_voucher">
+        <li>
+            <div class="leftTitle">
+                <span>{voucherType}</span><br />
+                {voucherPrice}<em>元</em>
+            </div>
+            <div class="midInfo">
+                {voucherTitle}
+                <em>有效期至：{voucherDate}</em>
+            </div>
+            <div data-type="{type}" class="rightPrice">
+                <i class="am-icon-angle-down"></i>
+            </div>
+            <div style="clear:both;"></div>
+            <div class="ruleDesp am-animation-fade">
+
+            </div>
+            <div data-id ="{id}" data-price="{price}" data-title="{title}" data-type="{type}" class="bottomBtn">
+                立即使用
+            </div>
+        </li>
+    </ul>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/amazeui.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/c_voucher.js?v=20170914"></script>
+    <script src="js/Main.js?v=20170925"></script>
+    <script>
+        _C.Init(_Voucher);
+    </script>
+</body>
+</html>

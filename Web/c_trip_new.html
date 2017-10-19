@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+    <link href="style/c_trip_new.css?v=20170428" rel="stylesheet" />
+    <script src="js/count.js"></script>
+    <style>
+        body{
+            background: url('images/bg.jpg') no-repeat;
+            width:100%;
+        }
+
+        #citySpan span{
+            font-size:2rem;
+            color:#fff;
+        }
+        #tripSpan span{
+            float:left;
+            display:block;
+            color:#fff;
+            font-size:1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="topMenuDiv" style="width:100%;">
+        <div id="citySpan" style="text-align:center;padding-top:0.6rem;width:100%;">
+            <span style="padding-right:1rem;"></span>
+            <span>
+                <img src="images/arrow.png" style="width:3rem;"/>
+            </span>
+            <span style="padding-left:1rem;"></span>
+        </div>
+        <div id="tripSpan" style="height:2.6rem;width:100%;margin:0.5rem 0;">
+            <span style="width:25%;text-align:right;padding-right:0.5rem;" data-type="-1">
+                <img src="images/arrowLeft.png" style="width:0.6rem;" />
+                前一天
+            </span>
+            <span style="width:50%;background-color:#fff;border-radius:0.2rem;color:#333;font-size:1.8rem;padding-left:0.7rem;font-weight:500;font-family:Microsoft YaHei,Tahoma,Arial,Roboto,Droid Sans,Helvetica,Helvetica Neue,Droid Sans Fallback,Heiti SC,Hiragino Sans GB,Simsun,sans-self;padding-top:0.2rem;" data-type="99">
+                <em style="font-style:normal;"></em><em style="font-style:normal;color:#e40082;margin-left:0.5rem;"></em>
+            </span>
+            <span style="width:25%;text-align:left;padding-left:0.5rem;" data-type="1">
+                后一天
+                <img src="images/arrowRight.png" style="width:0.6rem;" />
+            </span>
+        </div>
+    </div>
+    <div class="topPic" style="margin-top:12px;margin-bottom:5px;">
+        <img src="images/zhishu.png" style="width:2rem;"/>&nbsp;&nbsp;折扣还不够低？点击设置低价提醒！
+    </div>
+    <div style="width:100%;margin-top:2px;margin-bottom:50px;">
+        <ul class="TripList">
+            
+        </ul>
+    </div>
+
+    <div id="btn_sort" style="position:fixed;bottom:0;left:0;width:100%;height:4rem;padding:0;">
+        <div data-n="0" style="width:50%;float:left; text-align:center;background-color:#dcdddd;color:#333;font-size:1.6rem;margin:0;height:4rem;padding-top:0.8rem;">价格低到高</div>
+        <div data-n="1" style="width:50%;float:left;text-align:center;background-color:#eeeeef;color:#a72185;font-size:1.6rem;margin:0;height:4rem;padding-top:0.8rem;">时间早到晚</div>
+    </div>
+    <!--隐藏区域-->
+    <div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="my-modal-loading">
+        <div class="am-modal-dialog" style="border-radius:0.3rem;">
+            <div class="am-modal-hd" style="color:#a01678;">正在查询中...</div>
+            <div class="am-modal-bd">
+                <span style="color:#a01678;" class="am-icon-spinner am-icon-spin"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-1">
+        <div class="am-modal-dialog" style="border-radius:0.3rem;">
+            <div class="am-modal-hd">
+                退改签规定
+                <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+            </div>
+            <div class="am-modal-bd" style="text-align:left;">
+                <span style="font-weight:bold;font-size:1.3rem;">变更：</span><span style="font-size:1.3rem;color:#666;" id="bgrule"></span><br />
+                <span style="font-weight:bold;font-size:1.3rem;">退票：</span><span style="font-size:1.3rem;color:#666;" id="tprule"></span>
+            </div>
+        </div>
+    </div>
+    
+    <ul style="display:none;" id="fliht_template">
+        <li class="tripSort" id="F_{flihtNo}" data-lowprice="{lowPrice}" data-st="{sTemeinal}" data-tt="{tTemeinal}" data-stime="{sTime}" data-ttime="{tTime}" data-sport="{sPort}" data-tport="{tPort}" data-tax="{tax}" data-jj="{jj}" data-flihtname="{flihtName}" data-jixing="{jixing}" data-ishid="0">
+            <div class="tripBar">
+                <div class="LeftBar">
+                    <span class="spanInfo">{sTime}</span>
+                    <em class="emInfo">{sPort}{sTemeinal}</em>
+                </div>
+                <div class="MidBar" style="padding-top:1rem;text-align:center;">
+                    <img src="img/midArrow.png" style="width:100%;" />
+                </div>
+                <div class="RightBar">
+                    <span class="spanInfo">{tTime}</span>
+                    <em class="emInfo">{tPort}{tTemeinal}</em>
+                </div>
+                <div class="rightPrice">
+                    <span><em style="font-style:normal;font-size:1rem;">￥</em>{lowPrice}</span>
+                    <span class="smTitle">{lowZhekou}</span>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+            <div class="flihtInfo">
+                <img src="logo/{airCoNo}.jpg" class="am-circle" /> <span>{airCo}{flihtNo} | {plane}({isBig})</span>
+            </div>
+            <div class="infoList am-animation-slide-bottom">
+                <ul>
+                    {classList}
+                </ul>
+            </div>
+        </li>
+    </ul>
+    <!--
+    <ul style="display:none;" id="fliht_template">
+        <li id="F_{flihtNo}" data-st="{sTemeinal}" data-tt="{tTemeinal}" data-stime="{sTime}" data-ttime="{tTime}" data-sport="{sPort}" data-tport="{tPort}" data-tax="{tax}" data-jj="{jj}" data-flihtname="{flihtName}" data-jixing="{jixing}">
+            <div class="am-g tripBar">
+                <div class="am-u-sm-5">
+                    <span class="active">{sPort}{sTemeinal}</span>
+                    <span>{tPort}{tTemeinal}</span>
+                </div>
+                <div class="am-u-sm-3">
+                    <em class="active">{tTime}</em>
+                    <em>{sTime}</em>
+                </div>
+                <div class="am-u-sm-3 rightPrice">
+                    <span>￥{lowPrice}</span>
+                    <em>{lowZhekou}</em>
+                </div>
+                <div class="am-u-sm-1" style="padding-top:1.2rem;font-size:2.2rem;text-align:left;">
+                    <i class="am-icon-angle-down"></i>
+                </div>
+            </div>
+            <div class="flihtInfo">
+                <img src="logo/{airCoNo}.jpg" class="am-circle" /> <span>{airCo}{flihtNo} | {plane}({isBig})</span>
+            </div>
+            <div class="infoList am-animation-slide-bottom">
+                <ul>
+                    {classList}
+                </ul>
+            </div>
+        </li>
+    </ul>
+     -->
+    <ul style="display:none;" id="class_template">
+        <li>
+            <div class="infoPrice">
+                <span class="price"><em>￥</em>{price}<em class="wSign">{piaoshu}</em></span>
+                <span class="zhekou">{cangwei}{zhekou}</span>
+                <span class="tgqrule" data-bg="{bgrule}" data-tp="{tprule}">退改签规定</span>
+            </div>
+            <div class="infoBtn">
+                <button data-bg="{bgrule}" data-tp="{tprule}" data-price="{price}" data-zhekou="{zhekou}" data-class="{class}" data-no="{flihtNo}" data-cw="{cw}" type="button" class="am-btn am-radius am-btn-warning">预定</button>
+            </div>
+        </li>
+    </ul>
+    <!--内容区End-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/amazeui.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/c_trip_new.js?v=20170925"></script>
+    <script src="js/Main.js?v=20170925"></script>
+    <script>
+        _C.Init(_Trip);
+    </script>
+</body>
+</html>

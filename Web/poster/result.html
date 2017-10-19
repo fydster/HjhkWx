@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>圣诞个性贺卡</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <script src="/js/count.js"></script>
+    <link rel="stylesheet" href="/assets/css/amazeui.min.css" />
+</head>
+<body>
+    <img src="" style="width:100%;" />
+
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">长按可保存图片到本地！</div>
+            <div class="am-modal-bd">
+
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/amazeui.min.js"></script>
+    <script src="common.js"></script>
+    <script>
+        var no = _C.getParam("no");
+        $("img").attr("src", "/poster/result/" + no + ".jpg");
+        if (no.length > 0) {
+            $("#my-alert").modal("open");
+        }
+    </script>
+</body>
+</html>

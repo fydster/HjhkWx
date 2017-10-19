@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>2016飞行图</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <script src="/js/count.js"></script>
+  <link rel="stylesheet" href="/assets/css/amazeui.min.css" />
+</head>
+<body>
+   <img src="" style="width:100%;"/>
+
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">长按可保存图片,也可以直接分享给朋友！</div>
+            <div class="am-modal-bd">
+
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/amazeui.min.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script src="/js/common.js"></script>
+    <script>
+        var uid = _U.uid;
+        var title = _U.uName + "的2016飞行图，TA还送您120元飞行礼包，快来领";
+        if (uid == 0 || uid == null || eval(uid) == "undefined") {
+            uid = _C.getParam("uid");
+            title = "2016飞行图,还送您120元飞行礼包，快来领";
+        }
+        if (_C.getParam("uid").length > 0) {
+            uid = _C.getParam("uid");
+            title = "2016飞行图,还送您120元飞行礼包，快来领";
+        }
+        $("img").attr("src", "/active/result/" + uid + ".jpg");
+        var s = _C.getParam("s");
+        if (s.length == 0) {
+            $("#my-alert").modal("open");
+        }
+
+        
+
+        _C.initWx();
+        wx.ready(function () {
+            wx.onMenuShareTimeline({
+                title: title, // 分享标题
+                desp: title,
+                link: 'http://hjhk.edmp.cc/active/a_result.html?uid=' + uid + "&s=1", // 分享图标
+                imgUrl: 'http://hjhk.edmp.cc/active/img/share.jpg', // 分享图标
+                success: function () {
+                    //$("#div_img").hide();
+                    //window.location = "order.html?aid=2";
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () {
+                    //$("#div_img").hide();
+                    //$("#my-alert").modal('open');
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+
+            wx.onMenuShareAppMessage({
+                title: title, // 分享标题
+                desp: title,
+                link: 'http://hjhk.edmp.cc/active/a_result.html?uid=' + uid + "&s=1", // 分享图标
+                imgUrl: 'http://hjhk.edmp.cc/active/img/share.jpg', // 分享图标
+                success: function () {
+                    //$("#div_img").hide();
+                    //window.location = "order.html?aid=2";
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () {
+                    //$("#div_img").hide();
+                    //$("#my-alert").modal('open');
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+        });
+    </script>
+</body>
+</html>

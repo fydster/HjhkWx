@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link rel="stylesheet" href="/assets/css/amazeui.min.css"/>
+  <link href="/style/animate.css" rel="stylesheet" />
+  <style>
+      body{
+          background-color:#0094ff;
+      }
+      .infoList{
+          margin:1rem 1rem;
+          padding:0;
+          list-style:none;
+      }
+      .infoList li{
+          margin:0.3rem 0.3rem;
+          padding:0.4rem 0;
+          height:3.8rem;
+          list-style:none;
+          border-bottom:1px dashed #ddd;
+          color:#fff;
+      }
+      .infoList li span img{
+          width:2.8rem;
+          border:2px solid #fff;
+          margin-right:0.8rem;
+      }
+      .infoList li .leftP{
+          width:60%;
+          float:left;
+          font-size:1.3rem;
+          text-align:left;
+          color:#fff;
+      }
+      .infoList li .rightP{
+          width:40%;
+          float:left;
+          font-size:1.3rem;
+          text-align:right;
+          color:#fff;
+          padding-top:0.4rem;
+      }
+  </style>
+</head>
+<body>
+    <!--内容区Start-->  
+    <div>
+        <div id="uidNumInfo" style="font-size:1.4rem;color:#fff;border-bottom:1px solid #ddd;margin:0.5rem;text-align:right;">
+            目前已累计邀请<span style="font-size:2.8rem;color:#ff6a00;"></span>位好友！
+        </div>
+        <ul class="infoList">
+            
+        </ul>
+    </div>
+    <ul id="template_Flow" style="display:none;">
+        <li>
+            <span class="leftP">
+                <img src="{img}" class="am-circle" />
+                {nickName}
+            </span>
+            <span class="rightP">{date}</span>
+        </li>
+    </ul>
+    <!--内容区End-->   
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/amazeui.min.js"></script>
+<script src="/js/jquery.cookie.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/a_flow.js"></script>
+</body>
+</html>

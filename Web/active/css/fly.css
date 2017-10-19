@@ -1,0 +1,76 @@
+﻿.content img{
+          width:100%;
+          margin-top:-1px;
+      }
+      .inputPanel{
+          background-image:url(/active/pic/active02bg.jpg);
+          background-repeat:no-repeat;
+          text-align:left;
+      }
+      .inputPanel span input{
+          border-radius:0.2rem;
+      }
+      .am-modal-actions-group{
+          background-color:#fff;
+      }
+      .am-modal-actions-group ul{
+          list-style:none;
+          margin:0;
+          padding:0;
+          padding-left:0.5rem;
+      }
+      .am-modal-actions-group ul li{
+          list-style:none;
+          height:6rem;
+          color:#555;
+          padding-top:0.9rem;
+          text-align:left;
+          font-size:1.6rem;
+      }
+      .am-modal-actions-group ul .SCity{
+          list-style:none;
+          height:4rem;
+          color:#555;
+          padding-top:0.9rem;
+          text-align:center;
+          font-size:1.6rem;
+          border-bottom:1px dashed #ddd;
+      }
+      .cityList li{
+          height:6rem;
+          width:50%;
+          float:left;
+          padding-top:1.5rem;
+      }
+      .cityList li .title{
+          width:46%;
+          float:left;
+          display:block;
+          text-align:left;
+          padding-left:1.5rem;
+      }
+      .cityList li .num{
+          width:18%;
+          float:left;
+          display:block;
+          text-align:left;
+      }
+      .cityList li .operbtnl{
+          width:18%;
+          float:left;
+          display:block;
+          text-align:right;
+      }
+      .cityList li .operbtnr{
+          width:18%;
+          float:left;
+          display:block;
+          text-align:right;
+      }
+      .cityList li i{
+          margin-right:3rem;
+          font-size:1.8rem;
+      }
+      .am-icon-minus{
+          color:#dd514c;
+      }

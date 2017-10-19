@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <title>山西出行-微信后台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+      <script type="text/javascript" src="https://rawgit.com/jaywcjlove/iNotify/master/src/iNotify.js"></script>
+      <a href="javascript:inotifyTest()">请点击我测试一下！</a>
+      <script type="text/javascript">
+          var iN = new iNotify({
+              effect: 'flash',
+              interval: 500,
+              message: "有消息拉！2",
+              audio: {
+                  file: ['s/msg.mp4', 's/msg.mp3', 's/msg.wav']
+              },
+              notification: {
+                  title: "通知！",
+                  body: '您来了一条新消息'
+              }
+          });
+
+          function inotifyTest() {
+              iN.setFavicon(10).setTitle('新标题').notify({
+                  title: "新通知",
+                  body: "打雷啦，下雨啦..."
+              }).player()
+          }
+      </script>   
+  </body>
+</html>

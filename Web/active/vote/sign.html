@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>2017太原国际马拉松-代言人选拔赛报名</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <script src="/js/count.js"></script>
+  <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    <style>
+        body{
+            background-color:#fdd000;
+        }
+        .weui-cells{
+            background-color:#fdd000;
+        }
+    </style>
+</head>
+<body>
+    <div id="div_all">
+        <img src="img/bottom.jpg" style="width:100%;" />
+        <div style="text-align:center;font-size:1.2rem;color:#444;padding-top:0.6rem;">
+            上传报名资料
+        </div>
+        <div class="weui-cells__title" style="color:#0094ff;">基本信息填写</div>
+        <div class="weui-cells weui-cells_form" style="margin-bottom:55px;">
+            <div class="weui-cells__title">编号需和纸质报名表上的一致</div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">报名编号</label></div>
+                <div class="weui-cell__bd">
+                    <input id="bNo" class="weui-input" type="number" pattern="[0-9]*" placeholder="报名编号">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">姓名</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input id="Contact" class="weui-input" type="text" placeholder="姓名">
+                </div>
+            </div>
+            <div class="weui-cell" style="border-bottom:1px solid #eee;">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">手机号码</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input id="Mobile" class="weui-input" type="tel" placeholder="手机号码">
+                </div>
+            </div>
+
+            <div class="weui-cells__title" style="margin-top:20px;padding-bottom:0.4rem;border-bottom:1px solid #eee;color:#0094ff;">照片上传</div>
+            <div style="text-align:center;padding:0.6rem 0;margin-top:0.5rem;">
+                <div id="Img_one" style="width:80%;height:150px;border:1px dashed #aaa;margin-left:auto;margin-right:auto;">
+                    <span style="color:#555;width:100px;margin-left:auto;margin-right:auto;margin-top:50px;display:block;">未上传......</span>
+                </div>
+                <a href="javascript:;" style="margin:0.5rem 2.6rem;" class="weui-btn weui-btn_plain-default">上传个人照片</a>
+
+                <div id="Img_Home" style="width:80%;height:150px;border:1px dashed #aaa;margin-left:auto;margin-right:auto;">
+                    <span style="color:#555;width:100px;margin-left:auto;margin-right:auto;margin-top:50px;display:block;">未上传......</span>
+                </div>
+                <a href="javascript:;" style="margin:0.5rem 2.6rem;" class="weui-btn weui-btn_plain-default">上传家庭照片</a>
+            </div>
+            <a href="javascript:;" style="margin:1rem 2.6rem;" class="weui-btn weui-btn_primary">提交报名</a>
+        </div>
+    </div>
+    <div id="div_ok" style="display:none;">
+        <img src="img/bg.jpg" style="width:100%;" />
+    </div>
+    <div id="bottomMenu" style="position:fixed;bottom:0;left:0;width:100%;background-color:#eee;border-top:1px solid #ddd;">
+        <div class="weui-flex" style="padding-top:0.2rem;">
+            <div class="weui-flex__item" style="text-align:center;">
+                <img src="img/upload_a.png" alt="" style="width:1.3rem;">
+                <p style="font-family:'SimHei';font-size:0.7rem; color:#b41a85;">上传资料</p>
+            </div>
+            <div class="weui-flex__item" style="text-align:center;">
+                <img src="img/list.png" alt="" style="width:1.3rem;">
+                <p style="color:#555;font-family:'SimHei';font-size:0.7rem;">报名须知</p>
+            </div>
+            <div class="weui-flex__item" style="text-align:center;">
+                <img src="img/rule.png" alt="" style="width:1.3rem;">
+                <p style="color:#555;font-family:'SimHei';font-size:0.7rem;">赛制规则</p>
+            </div>
+        </div>
+    </div>
+    <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/json2.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/active/voteUser.js?v=20170807"></script>
+</body>
+</html>

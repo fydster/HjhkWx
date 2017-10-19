@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>山西出行-人气记录</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    <style>
+        .topList {
+            background-color: #fff;
+            width: 100%;
+            margin-bottom: 2rem;
+            -webkit-overflow-scrolling: touch;
+        }
+
+            .topList ul {
+                list-style: none;
+                margin: 0.3rem;
+                padding: 0;
+            }
+
+                .topList ul li {
+                    width: 100%;
+                    display: inline-block;
+                    min-height: 2.1rem;
+                    height: auto;
+                    padding: 0.1rem;
+                    box-shadow: #aaa 2px 2px 2px;
+                    margin-bottom: 0.2rem;
+                }
+
+                    .topList ul li .tnumber {
+                        color: #666;
+                        width: 20%;
+                        float: left;
+                        display: block;
+                        font-weight: 600;
+                        font-size: 1rem;
+                        text-align: center;
+                    }
+
+                    .topList ul li .timg {
+                        color: #666;
+                        width: 25%;
+                        float: left;
+                        display: block;
+                    }
+
+        .timg img {
+            width: 2rem;
+            border-radius: 50%;
+        }
+
+        .topList ul li .tname {
+            color: #666;
+            width: 40%;
+            float: left;
+            display: block;
+        }
+
+        .topList ul li .tdate {
+            width: 15%;
+            float: left;
+            font-size: 0.8rem;
+            color: #ff6a00;
+            font-weight: 600;
+            display: block;
+        }
+
+        .weui-badge {
+            width: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!--内容区Start-->
+    <div class="topList">
+        <ul></ul>
+    </div>
+
+    <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/c_count_fire.js"></script>
+</body>
+</html>

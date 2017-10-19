@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.1/weui.min.css">
+    <link href="style/c_list.css" rel="stylesheet" />
+    <script src="js/count.js"></script>
+</head>
+<body>
+    
+
+    <!--隐藏区域End-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/amazeui.min.js"></script>
+    <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/common.js?v=20161128"></script>
+    <script>
+        _C.initWx();
+        wx.ready(function () {
+            wx.openAddress({
+                trigger: function (res) {
+                    alert('用户开始拉出地址');
+                },
+                success: function (res) {
+                    alert('用户成功拉出地址');
+                    alert(JSON.stringify(res));
+                },
+                cancel: function (res) {
+                    alert('用户取消拉出地址');
+                },
+                fail: function (res) {
+                    alert(JSON.stringify(res));
+                }
+            });
+        });
+    </script>
+</body>
+</html>

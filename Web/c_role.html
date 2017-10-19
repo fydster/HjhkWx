@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+  <style>
+
+  </style>
+    <script src="js/count.js"></script>
+</head>
+<body>
+    <!--内容区Start-->  
+    <div style="text-align:center;margin-top:0px;padding:20px;padding-bottom:5px;padding-top:30px;">
+        <span style="font-size:2rem;display:block;margin-bottom:10px;">手机登录</span>
+        <form action="" class="am-form">
+
+            <div class="am-form-group am-form-icon">
+                <i class="am-icon-mobile-phone"></i>
+                <input type="text" id="contact" style="height:40px;" class="am-form-field" placeholder="姓名">
+            </div>
+
+            <div class="am-form-group am-form-icon">
+                <i class="am-icon-mobile-phone"></i>
+                <input type="number" id="mobile" style="height:40px;" class="am-form-field" placeholder="手机号码">
+            </div>
+
+            <button type="button" class="am-btn am-btn-lg am-btn-primary am-btn-block am-radius">获取验证码</button>
+
+            <div style="width:100%;height:20px;"></div>
+
+            <div style="width:65%;float:left;">
+                <div class="am-form-group am-form-icon">
+                    <i class="am-icon-qrcode"></i>
+                    <input type="number" id="code" style="height:40px;"  class="am-form-field" placeholder="验证码">
+                </div>
+            </div>
+            <div style="width:35%;float:left;text-align:right;">
+                <button type="button" class="am-btn am-btn-lg am-btn-success am-radius">确定</button>
+            </div>
+        </form>
+    </div>
+    <!--内容区End-->   
+    <!--隐藏区域-->
+    <div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="my-modal-loading">
+        <div class="am-modal-dialog" style="background-color:#eee;border-radius:4px 4px 4px 4px;">
+            <div class="am-modal-bd">
+                <span class="am-icon-spinner am-icon-spin" style="color:#7269ac;"></span>
+                <span style="font-size:1.6rem;display:block;">认证中...</span>
+            </div>
+        </div>
+    </div>
+    <!--隐藏区域End-->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/amazeui.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/json2.js"></script>
+<script src="js/c_role.js?v=20170914"></script>
+<script src="js/Main.js?v=20170925"></script>
+<script>
+    _C.Init(_Role);
+</script>
+
+</body>
+</html>

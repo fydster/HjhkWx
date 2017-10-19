@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.1/weui.min.css">
+  <style>
+      body{
+          background-color:#eee;
+      }
+      .BInfo{
+          color:#333;
+          font-size:1.6rem;
+      }
+      .SInfo{
+          color:#777;
+          font-size:1.4rem;
+          margin-top:0.3rem;
+      }
+      li{
+          height:5.2rem;
+          margin:1rem;
+          border-bottom:1px dashed #eee;
+      }
+      .bg{
+           background:url(img/payBg.jpg);
+           filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+           -moz-background-size:100% 100%;
+           background-size:100% 100%;
+        }
+      .BTitle{
+          color:#fff;
+          font-size:2rem;
+          letter-spacing:0.2rem;
+          text-shadow:1px 1px 1px #333;
+      }
+      .STitle{
+          color:#fff;
+          font-size:1.4rem;
+          text-shadow:1px 1px 1px #333;
+      }
+  </style>
+    <script src="js/count.js"></script>
+</head>
+<body>
+    <!--内容区Start-->  
+    <div style="background-color:#f7edd7;color:#93846b;border:0;height:36px;font-size:1.4rem;padding-top:0.8rem;padding-left:1rem;" data-am-alert>
+        <p id="span_time">正在为您排队购票，请留意微信通知。</p>
+    </div>
+    <div id="div_trip" class="bg" style="margin:0;padding:1rem;height:85px;text-align:center;">
+        <div class="am-g">
+            <div class="am-u-sm-4 STitle"></div>
+            <div class="am-u-sm-4 STitle"></div>
+            <div class="am-u-sm-4 STitle"></div>
+        </div>
+        <div class="am-g" style="margin-top:0.6rem;">
+            <div class="am-u-sm-4 BTitle"></div>
+            <div class="am-u-sm-4 BTitle"></div>
+            <div class="am-u-sm-4 BTitle"></div>
+        </div>
+    </div>
+    <div style="margin:0 0.5rem;border-radius:0.5rem;background-color:#fff;margin-top:-28px;">
+        <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default">
+            <h2 class="am-titlebar-title ">
+                车票信息
+            </h2>
+        </div>
+        <ul id="fare_list" style="margin:0;padding:0;list-style:none;">
+            
+        </ul>
+        <span id="span_state" style="color:#5eb95e;font-size:1.8rem;margin:2rem;">
+            排队中
+        </span>
+    </div>
+    <header id="header_0" class="am-topbar am-topbar-fixed-bottom am-topbar-inverse" style="padding-top:10px;background-color:#5eb95e; margin-bottom:0;text-align:center;border:0;">
+        <div id="btn_getOrder" style="font-size:2rem;letter-spacing:0.6rem;">刷新排队结果</div>
+    </header>
+
+    <header id="header_1" class="am-topbar am-topbar-fixed-bottom am-topbar-inverse" style="padding-top:10px;background-color:#a01678; margin-bottom:0;text-align:center;border:0;padding:0;display:none;">
+        <div class="am-g" style="height:50px;">
+            <div class="am-u-sm-4" style="background-color:#fff;height:100%;color:#555;padding-top:12px;font-size:1.8rem;font-weight:600;"></div>
+            <div class="am-u-sm-4" style="background-color:#fff;height:100%;"></div>
+            <div class="am-u-sm-4" style="background-color:#5eb95e;color:#fff;height:100%;padding-top:12px;font-size:1.8rem;font-weight:600;">支 付</div>
+        </div>
+    </header>
+
+    <ul id="template_fare" style="display:none;">
+        <li>
+            <div class="am-g BInfo">
+                <span class="am-u-sm-8">{passengerName}</span>
+                <span class="am-u-sm-4">{price}元</span>
+            </div>
+            <div class="am-g SInfo">
+                <span class="am-u-sm-8">{seatName}{seatNo}</span>
+                <span class="am-u-sm-4">保险{insurePrice}元</span>
+            </div>
+        </li>
+    </ul>
+    <div id="toast" style="display: none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p class="weui-toast__content">数据加载中</p>
+        </div>
+    </div>
+    <!--内容区End-->  
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/amazeui.min.js"></script>
+<script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+<script src="js/json2.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/c_train_pay.js?v=20170601"></script>
+<script src="js/Main.js?v=20170925"></script>
+<script>
+    _C.Init(_List);
+</script>
+</body>
+</html>

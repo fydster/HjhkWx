@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+    <link href="style/c_index.css" rel="stylesheet" />
+    <script src="js/count.js"></script>
+</head>
+<body>
+    <div class="top-Logo">
+        <img src="img/train/top.jpg" />
+    </div>
+    <div style="width:100%;margin-top:10px;margin-bottom:50px;">
+        <div class="sPanel">
+            <div class="sCity">
+                <div style="width:35%;float:left;">
+                    <span class="cityDesp">出发车站</span>
+                    <span data-type="1" class="noSelect">太原</span>
+                </div>
+                <div style="width:30%;float:left;text-align:center;">
+                    <span data-type="-1" style="border-bottom:1px solid #bbb;color:#a01678;width:100%;text-align:center;height:6.4rem;"><img src="img/Mid.png" style="width:45%;margin-top:1rem;" /></span>
+                </div>
+                <div style="width:35%;float:left;text-align:right;">
+                    <span class="cityDesp">到达车站</span>
+                    <span data-type="4" class="noSelect" style="text-align:right;">--</span>
+                </div>
+            </div>
+            <div id="Div_DatePanel">
+                <div class="sDateDesp">
+                    <span style="width:35%;color:#999;">出发日期</span>
+                    <span style="width:10%;"></span>
+                    <span style="width:10%;"></span>
+                    <span style="width:45%;color:#999;text-align:right;"></span>
+                </div>
+                <div class="sDate">
+                    <span data-date="" id="s-datepicker" data-am-datepicker="{theme:'warning'}" style="width:45%;color:#333;"><em></em><em class="sign">明天</em></span>
+                    <span style="width:10%;"></span>
+                    <span data-date="" id="e-datepicker" style="width:45%;color:#333;text-align:right;"><em></em></span>
+                    <span id="delete_Date" style="width:10%;display:none; text-align:center;"><i style="font-size:1.8rem;color:#aaa;" class="am-icon-times-circle-o"></i></span>
+                </div>
+                <div class="sBtn">
+                    <button type="button" class="am-btn am-radius am-btn-warning am-btn-block">查询</button>
+                </div>
+            </div>
+            <div id="Div_Date" style="display:none;">
+
+            </div>
+        </div>
+
+        <div style="margin-top:1rem;" class="HisTrip">
+            <ul>
+
+            </ul>
+        </div>
+
+        <div id="Div_CityPanel" style="padding:0.8rem; background-color:#fff;display:none;position:fixed;top:0;left:0;width:100%;height:100%;">
+            <div>
+                <form action="" class="am-form am-form-inline">
+                    <div class="am-form-group am-input-group am-form-icon">
+                        <span class="am-input-group-label"><i class="am-icon-search"></i></span>
+                        <input id="input_search" type="text" class="am-form-field" placeholder="太原/ty/taiyuan">
+                        <span id="input_cancel" style="display:none;" class="am-input-group-label">取消</span>
+                    </div>
+                </form>
+            </div>
+            <div id="Div_City" style="width:100%;">
+                <span style="font-size:1.2rem;color:#aaa;">热门城市</span>
+                <ul class="HotCity"></ul>
+            </div>
+            <div style="clear:both;"></div>
+            <div id="Div_ZM" style="width:100%;display:none;margin-top:0.5rem;">
+                <span style="font-size:1.2rem;color:#aaa;">字母检索</span>
+                <ul class="Alllater">
+                    <li><span>A</span></li>
+                    <li><span>B</span></li>
+                    <li><span>C</span></li>
+                    <li><span>D</span></li>
+                    <li><span>E</span></li>
+                    <li><span>F</span></li>
+                    <li><span>G</span></li>
+                    <li><span>H</span></li>
+                    <li><span>I</span></li>
+                    <li><span>J</span></li>
+                    <li><span>K</span></li>
+                    <li><span>L</span></li>
+                    <li><span>M</span></li>
+                    <li><span>N</span></li>
+                    <li><span>O</span></li>
+                    <li><span>P</span></li>
+                    <li><span>Q</span></li>
+                    <li><span>R</span></li>
+                    <li><span>S</span></li>
+                    <li><span>T</span></li>
+                    <li><span>U</span></li>
+                    <li><span>V</span></li>
+                    <li><span>W</span></li>
+                    <li><span>X</span></li>
+                    <li><span>Y</span></li>
+                    <li><span>Z</span></li>
+                </ul>
+            </div>
+            <div style="clear:both;"></div>
+            <div id="Div_ZMJS" style="width:100%;display:none;margin-top:0.5rem;">
+                <div id="Div_ZMJS_N">
+                    <span style="font-size:1.2rem;color:#aaa;">字母检索</span>
+                    <div class="CityGroup" style="margin-top:0.5rem;margin-bottom:0.5rem;">
+                        <span></span>
+                        <span>A - Z</span>
+                    </div>
+                </div>
+                <ul id="d1" style="overflow:auto;height:360px;overflow-y:auto;" class="CityList"></ul>
+            </div>
+            <div style="display:none;" id="cityData"></div>
+        </div>
+
+        <div class="bt-Logo">
+            <img src="img/logo-x.png"/>
+        </div>
+    </div>
+
+    <ul style="display:none;" id="temp_his">
+        <li class="am-g" data-sCity="{sCity}" data-sCode="{sCode}" data-tCity="{tCity}" data-tCode="{tCode}">
+            <span class="am-u-sm-5">{sCity}</span>
+            <span class="am-u-sm-2"><i class="am-icon-angle-right"></i></span>
+            <span class="am-u-sm-5">{tCity}</span>
+        </li>
+    </ul>
+    <!--内容区End-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/amazeui.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/c_train_index.js?v=20170411"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+    <link href="style/c_index.css" rel="stylesheet" />
+    <script src="js/count.js"></script>
+</head>
+<body>
+    <div class="top-Logo">
+        <img src="img/top.jpg" />
+    </div>
+    <div style="width:100%;margin-top:10px;">
+        <div style="margin:0 1.5rem;margin-bottom:-2rem;">
+            <img id="topImg" src="img/indexTop.png" style="width:100%;" />
+        </div>
+        <div class="sPanel">
+            <div class="sCity">
+                <div style="width:35%;float:left;">
+                    <span class="cityDesp">出发城市</span>
+                    <span data-type="1" class="noSelect">太原</span>
+                </div>
+                <div style="width:30%;float:left;text-align:center;">
+                    <span data-type="-1" style="border-bottom:1px solid #bbb;color:#a01678;width:100%;text-align:center;height:6.4rem;"><img src="img/Mid.png" style="width:45%;margin-top:1rem;" /></span>
+                </div>
+                <div style="width:35%;float:left;text-align:right;">
+                    <span class="cityDesp">到达城市</span>
+                    <span data-type="4" class="noSelect" style="text-align:right;">北京</span>
+                </div>
+            </div>
+            <div id="Div_DatePanel">
+                <div class="sDateDesp">
+                    <span style="width:35%;color:#999;">去程日期</span>
+                    <span style="width:10%;"></span>
+                    <span style="width:10%;"></span>
+                    <span style="width:45%;color:#999;text-align:right;">返程日期</span>
+                </div>
+                <div class="sDate">
+                    <span data-date="" id="s-datepicker" data-am-datepicker="{theme:'warning'}" style="width:45%;color:#333;"><em></em><em class="sign">明天</em></span>
+                    <span style="width:10%;"></span>
+                    <span data-date="" id="e-datepicker" data-am-datepicker="{theme:'warning'}" style="width:45%;color:#333;text-align:right;"><em>--</em></span>
+                    <span id="delete_Date" style="width:10%;display:none; text-align:center;"><i style="font-size:1.8rem;color:#aaa;" class="am-icon-times-circle-o"></i></span>
+                </div>
+                <div class="sBtn">
+                    <button type="button" class="am-btn am-radius am-btn-warning am-btn-block">查询</button>
+                </div>
+                <div style="margin:1rem 0;font-size:1.2rem;color:#888;" class="am-g">
+                    <span class="am-u-sm-3" style="text-align:center;">
+                        <a style="display:block;width:3.6rem;height:3.6rem;font-size:1.8rem;padding-top:-1rem;margin-left:0.6rem;" href="http://hjhk.edmp.cc/c_order_all.html" class="am-icon-btn am-primary am-icon-list"></a>
+                        我的订单
+                    </span>
+                    <span class="am-u-sm-3">
+                        <a href="http://hjhk.edmp.cc/c_set_list.html" style="display:block;width:3.6rem;height:3.6rem;font-size:1.8rem;padding-top:0;margin-left:0.6rem;" class="am-icon-btn am-warning am-icon-comment-o"></a>
+                        低价提醒
+                    </span>
+                    <span class="am-u-sm-3">
+                        <a href="http://m.veryzhun.com/flight/?token=5cf2036c3db9fe08a7ee0c9b2077d37d" style="display:block;width:3.6rem;height:3.6rem;font-size:1.8rem;padding-top:0;margin-left:0.6rem;" class="am-icon-btn am-success am-icon-plane"></a>
+                        航班动态
+                    </span>
+                    <span class="am-u-sm-3">
+                        <a href="http://hjhk.edmp.cc/c_uc.html" style="display:block;width:3.6rem;height:3.6rem;font-size:1.8rem;padding-top:0;margin-left:0.6rem;" class="am-icon-btn am-secondary am-icon-user"></a>
+                        个人中心
+                    </span>
+                    
+                </div>
+            </div>
+            <div id="Div_Date" style="display:none;">
+
+            </div>
+            
+        </div>
+
+        <div style="margin-top:1rem;" class="HisTrip">
+            <ul></ul>
+        </div>
+
+        <div id="Div_CityPanel" class="am-animation-slide-right" style="padding:0.8rem; background-color:#fff;display:none;z-index:20;position:fixed;top:0;left:0;overflow-y:auto;">
+            <div id="Div_City" style="width:100%;display:none;">
+                <span style="font-size:1.2rem;color:#aaa;">热门城市</span>
+                <ul class="HotCity"></ul>
+            </div>
+            <div style="clear:both;"></div>
+            <div id="Div_ZM" style="width:100%;display:none;margin-top:0.5rem;">
+                <span style="font-size:1.2rem;color:#aaa;">字母检索</span>
+                <ul class="Alllater">
+                    <li><span>A</span></li>
+                    <li><span>B</span></li>
+                    <li><span>C</span></li>
+                    <li><span>D</span></li>
+                    <li><span>E</span></li>
+                    <li><span>F</span></li>
+                    <li><span>G</span></li>
+                    <li><span>H</span></li>
+                    <li><span>I</span></li>
+                    <li><span>J</span></li>
+                    <li><span>K</span></li>
+                    <li><span>L</span></li>
+                    <li><span>M</span></li>
+                    <li><span>N</span></li>
+                    <li><span>O</span></li>
+                    <li><span>P</span></li>
+                    <li><span>Q</span></li>
+                    <li><span>R</span></li>
+                    <li><span>S</span></li>
+                    <li><span>T</span></li>
+                    <li><span>U</span></li>
+                    <li><span>V</span></li>
+                    <li><span>W</span></li>
+                    <li><span>X</span></li>
+                    <li><span>Y</span></li>
+                    <li><span>Z</span></li>
+                </ul>
+            </div>
+            <div style="clear:both;"></div>
+            <div id="Div_ZMJS" style="width:100%;display:none;margin-top:0.5rem;">
+                <span style="font-size:1.2rem;color:#aaa;">字母检索</span>
+                <div class="CityGroup" style="margin-top:0.5rem;margin-bottom:0.5rem;">
+                    <span></span>
+                    <span>A - Z</span>
+                </div>
+                <ul class="CityList"></ul>
+            </div>
+        </div>
+
+        <div class="bt-Logo">
+            <img src="img/logo-x.png"/>
+        </div>
+    </div>
+
+    <ul style="display:none;" id="temp_his">
+        <li class="am-g" data-scity="{sCity}" data-scode="{sCode}" data-tcity="{tCity}" data-tcode="{tCode}">
+            <span class="am-u-sm-5">{sCity}</span>
+            <span class="am-u-sm-2"><i class="am-icon-angle-right"></i></span>
+            <span class="am-u-sm-5">{tCity}</span>
+        </li>
+    </ul>
+    <!--内容区End-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/amazeui.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/c_index.js?v=20170925"></script>
+    <script src="js/Main.js"></script>
+    <script>
+        _C.Init(_Index);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <title>山西出行-微信后台-后台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pintuer/pintuer.css">
+    <link href="pintuer/animate.css" rel="stylesheet" />
+    <script src="pintuer/jquery.js"></script>
+    <script src="pintuer/pintuer.js"></script>
+    <script src="pintuer/respond.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/init.js"></script>
+    <style>
+        h5{font-weight:bold;cursor:pointer;}
+        .panel-body ul{list-style:none;text-align:center;margin:0;padding:0;}
+        .panel-body ul li{text-align:center;height:40px;margin-top:5px;margin-bottom:5px;border-bottom:1px dashed #eee;padding-top:8px;cursor:pointer;}
+        .tab-nav .now{font-weight:bold;color:#00aa88;}
+    </style>
+  </head>
+<body>
+    <div style="height:50px;width:100%;background-color:#00aa88;color:#fff;padding-top:12px;padding-left:6px;">
+        <div class="navbar">
+            <div class="navbar-head">
+                <h4>山西出行-微信后台后台管理平台</h4>
+            </div>
+            <div class="navbar-body nav-navicon" id="navbar1" style="padding-right:10px;">
+                <div class="navbar-text navbar-right hidden-s" style="color:#fff;">
+                    <span class="icon-user" id="Login_workNo"></span>
+                    <button type="button" id="btn_Logout" class="button bg-white">退出系统</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="line">
+        <div class="x2" style="padding:10px;">
+            <div class="collapse">
+
+            </div>
+        </div>
+        <div class="x10" style="padding-top:5px;">
+            <div class="tab">
+                <div class="tab-head text-left">
+                    <ul class="tab-nav"></ul>
+                </div>
+                <div class="tab-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--页面隐藏-->
+    <div style="display:none;" id="template_menu">
+        <div class="panel {active}">
+            <div class="panel-head">
+                <h5>
+                    <span class="icon-{icon}"></span>
+                    {Title}
+                </h5>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    {menu}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="mydialog">
+        <div class="dialog">
+            <div class="dialog-head">
+                <span class="close rotate-hover"></span><strong>修改分组</strong>
+            </div>
+            <div class="dialog-body">
+                <select class="input" id="index_group">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                </select>
+            </div>
+            <div class="dialog-foot">
+                <button class="button bg-sub">
+                    确认修改
+                </button>
+                <button class="button dialog-close">
+                    关闭
+                </button>
+            </div>
+        </div>
+    </div>
+    <button id="show_dialog" class="button button-small border-main dialogs hidden" data-toggle="click" data-target="#mydialog" data-mask="1" data-width="300">详情</button>
+    <!--页面隐藏-->
+    <!--页面初始化-->
+    <script language="javascript" type="text/javascript">
+        _Init.init();
+    </script>
+    <!--页面初始化END-->
+</body>
+
+</html>

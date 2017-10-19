@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>山西出行</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <script src="js/count.js"></script>
+</head>
+<body>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        var i = _C.getParam("i");
+        if (i == 0) {
+            window.location = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9d23334360aa6af4&redirect_uri=http%3a%2f%2fhjhk.edmp.cc%2fc_index_home.html&response_type=code&scope=snsapi_userinfo&state=00001wx9d23334360aa6af4#wechat_redirect";
+        }
+        if (i == 1) {
+            window.location = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9d23334360aa6af4&redirect_uri=http%3a%2f%2fhjhk.edmp.cc%2fc_index_gj.html&response_type=code&scope=snsapi_userinfo&state=00001wx9d23334360aa6af4#wechat_redirect";
+        }
+        if (i == 2) {
+            window.location = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9d23334360aa6af4&redirect_uri=http%3a%2f%2fhjhk.edmp.cc%2fc_index_home.html&response_type=code&scope=snsapi_userinfo&state=00000wx9d23334360aa6af4#wechat_redirect";
+        }
+        if (i == 3) {
+            window.location = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9d23334360aa6af4&redirect_uri=http%3a%2f%2fhjhk.edmp.cc%2fapp%2fhotel%2findex.aspx&response_type=code&scope=snsapi_userinfo&state=00001wx9d23334360aa6af4#wechat_redirect";
+        }
+        if (i == 4) {
+            window.location = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9d23334360aa6af4&redirect_uri=http%3a%2f%2fhjhk.edmp.cc%2fc_set_list.html&response_type=code&scope=snsapi_userinfo&state=00001wx9d23334360aa6af4#wechat_redirect";
+        }
+        if (i == 6) {
+            window.location = "travel/c_travel_city.html?name=%u5C71%u897F&id=36";
+        }
+        if (i == 5) {
+            window.location = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9d23334360aa6af4&redirect_uri=http%3a%2f%2fhjhk.edmp.cc%2fc_travel_home.html&response_type=code&scope=snsapi_userinfo&state=00001wx9d23334360aa6af4#wechat_redirect";
+        }
+        if (i == 7) {
+            window.location = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9d23334360aa6af4&redirect_uri=http%3a%2f%2fhjhk.edmp.cc%2fc_nav.html&response_type=code&scope=snsapi_userinfo&state=00001wx9d23334360aa6af4#wechat_redirect";
+        }
+    </script>
+</body>
+</html>

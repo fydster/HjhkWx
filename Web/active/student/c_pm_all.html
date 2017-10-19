@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>山西出行</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link rel="stylesheet" href="/assets/css/amazeui.min.css"/>
+  <script src="/js/count.js"></script>
+  <link href="pm.css" rel="stylesheet" />
+</head>
+<body style="margin:0;padding:0;">
+    <!--内容区Start-->  
+    
+    <img style="" src="top.png" />
+    <div class="content">
+        <ul class="pList">
+            <li class="bg-all" data-name="太原市" data-code="0351" style="height:6.2rem;width:50%;float:left;">
+                <span>太原老乡</span>
+            </li>
+            <li class="bg-all" data-name="大同市" data-code="0352" style="height:6.2rem;width:50%;float:left;">
+                <span>大同老乡</span>
+            </li>
+            <li class="bg-all" data-name="阳泉市" data-code="0353" style="height:6.2rem;width:50%;float:left;">
+                <span>阳泉老乡</span>
+            </li>
+            <li class="bg-all" data-name="晋中市" data-code="0354" style="height:6.2rem;width:50%;float:left;">
+                <span>晋中老乡</span>
+            </li>
+            <li class="bg-all" data-name="长治市" data-code="0355" style="height:6.2rem;width:50%;float:left;">
+                <span>长治老乡</span>
+            </li>
+            <li class="bg-all" data-name="晋城市" data-code="0356" style="height:6.2rem;width:50%;float:left;">
+                <span>晋城老乡</span>
+            </li>
+            <li class="bg-all" data-name="临汾市" data-code="0357" style="height:6.2rem;width:50%;float:left;">
+                <span>临汾老乡</span>
+            </li>
+            <li class="bg-all" data-name="吕梁市" data-code="0358" style="height:6.2rem;width:50%;float:left;">
+                <span>吕梁老乡</span>
+            </li>
+            <li class="bg-all" data-name="运城市" data-code="0359" style="height:6.2rem;width:50%;float:left;">
+                <span>运城老乡</span>
+            </li>
+            <li class="bg-all" data-name="忻州市" data-code="0349" style="height:6.2rem;width:50%;float:left;">
+                <span>忻州老乡</span>
+            </li>
+            <li class="bg-all" data-name="朔州市" data-code="0350" style="height:6.2rem;width:50%;float:left;">
+                <span>朔州老乡</span>
+            </li>
+        </ul>
+    </div>
+    <img src="banner.jpg" id="btn_toFans" style="position:fixed;bottom:0;left:0;" />
+    
+    <!--内容区End-->  
+  
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/amazeui.min.js"></script>
+    <script>
+        $(".pList").find("li").click(function () {
+            var code = $(this).attr("data-code");
+            var name = $(this).attr("data-name");
+            window.location = "c_pm.html?code=" + code + "&name=" + escape(name);
+        });
+
+        $("#btn_toFans").click(function () {
+            window.location = "https://www.myfans.cc/10oo34376c?from=singlemessage";
+        });
+    </script>
+</body>
+</html>

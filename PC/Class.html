@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <title>山西出行-微信后台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pintuer/pintuer.css">
+    <link rel="stylesheet" href="editor/themes/default/default.css" />
+  </head>
+  <body>
+      <div style=" margin-top:5px; margin-left:13px; margin-right:13px; min-height:400px;">
+          <div class="panel">
+              <div class="panel-head">分类管理</div>
+              <div class="panel-body">
+                  <form method="post" class="form-inline">
+                      <div class="form-group">
+                          <div class="label"><label for="username">一级分类名称&nbsp;</label></div>
+                          <div class="field">
+                              <input type="text" class="input" id="pName" name="pName" size="20" placeholder="一级分类名称" />
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="label"><label for="username">LOGO&nbsp;</label></div>
+                          <div class="field">
+                              <input type="text" class="input" id="logoUrl" name="logoUrl" size="7" placeholder="图片地址" />
+                              <input class="button" type="button" id="ChooseImg" value="浏览" />
+                          </div>
+                      </div>
+                      <div style="margin-left:20px;" class="form-button">
+                          <button class="button bg-main" type="button" id="btn_add"> 添加一级分类</button>
+                          <button class="button bg-dot hidden" type="button" id="btn_cancel"> 取消修改</button>
+                      </div>
+                      <div style="width:100%;height:20px;"></div>
+                      <div class="form-group">
+                          <div class="label"><label for="username">所属上级分类&nbsp;</label></div>
+                          <div class="field">
+                              <select class="input" id="fId">
+                                  <option value="">请选择所属上级</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="label"><label for="username">二级分类名称&nbsp;</label></div>
+                          <div class="field">
+                              <input type="text" class="input" id="fName" name="fName" size="20" placeholder="二级分类名称" />
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="label"><label for="username">LOGO&nbsp;</label></div>
+                          <div class="field">
+                              <input type="text" class="input" id="logoUrl_f" name="logoUrl_f" size="7" placeholder="图片地址" />
+                              <input class="button" type="button" id="ChooseImg_f" value="浏览" />
+                          </div>
+                      </div>
+                      <div style="margin-left:20px;" class="form-button">
+                          <button class="button bg-main" type="button" id="btn_add_s"> 添加二级分类</button>
+                          <button class="button bg-dot hidden" type="button" id="btn_cancel_s"> 取消修改</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+          <br />
+          <div class="tab">
+              <div class="tab-head">
+                  <ul class="tab-nav">
+                      <li class="active" id="tab-Li-List"><a href="#tab-OrderList">分类列表</a></li>
+                  </ul>
+              </div>
+              <div class="tab-body">
+                  <!--充值列表开始-->
+                  <div class="tab-panel active" id="tab-OrderList">
+                      <table class="table table-bordered table-hover" style="width:60%;" id="ListPanel"></table>
+                      <div style=" margin-top:10px; width:100%;overflow:hidden;display:none;" id="PagePanel">
+                          <div style=" width:30%; float:left;">
+                              <div class="alert alert-blue">总计<strong id="allPage"></strong>页,共<strong id="allNum"></strong>条记录</div>
+                          </div>
+                          <div style=" width:400px; float:right; text-align:right; padding-top:5px;">
+                              <ul class="pagination border-sub" id="Page_Info"></ul>
+                          </div>
+                      </div>
+                  </div>
+                  <!--充值列表结束-->
+              </div>
+          </div>
+      </div>
+      <!--操作面板END-->
+      <script charset="utf-8" src="editor/kindeditor.js"></script>
+      <script charset="utf-8" src="editor/lang/zh_CN.js"></script>
+      <script>
+          KindEditor.ready(function (K) {
+
+              var editor_img = K.editor({
+                  uploadJson: 'editor/asp.net/upload_json.ashx',
+                  fileManagerJson: 'editor/asp.net/file_manager_json.ashx',
+                  allowFileManager: true
+              });
+
+              K('#ChooseImg').click(function () {
+                  editor_img.loadPlugin('image', function () {
+                      editor_img.plugin.imageDialog({
+                          imageUrl: K('#logoUrl').val(),
+                          clickFn: function (url, title, width, height, border, align) {
+                              K('#logoUrl').val(url);
+                              editor_img.hideDialog();
+                          }
+                      });
+                  });
+              });
+
+              K('#ChooseImg_f').click(function () {
+                  editor_img.loadPlugin('image', function () {
+                      editor_img.plugin.imageDialog({
+                          imageUrl: K('#logoUrl_f').val(),
+                          clickFn: function (url, title, width, height, border, align) {
+                              K('#logoUrl_f').val(url);
+                              editor_img.hideDialog();
+                          }
+                      });
+                  });
+              });
+          });
+      </script>
+      <script src="pintuer/jquery.js"></script>
+      <script src="pintuer/pintuer.js"></script>
+      <script src="pintuer/respond.js"></script>
+      <script src="js/jquery.cookie.js"></script>
+      <script src="js/init.js"></script>
+      <script src="js/Class.js?v=20161228" type="text/javascript"></script>
+  </body>
+</html>

@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+  <link href="js/datepicker/datepicker.css" rel="stylesheet" />
+  <script src="js/count.js"></script>
+    <style>
+        body{
+            color:#666;
+            font-size:0.8rem;
+        }
+        .content{
+            border-bottom:1px solid #eee;
+            padding:0.6rem 0;
+            display:inline-block;
+            width:100%;
+        }
+        .content .leftPanel{
+            width:80%;
+            float:left;
+            text-align:left;
+        }
+        .content .rightPanel{
+            width:20%;
+            float:left;
+            text-align:center;
+            color:#04bb1c;
+        }
+        .weui-flex__item .leftMore{
+            width:85%;
+            float:left;
+            text-align:center;
+        }
+        em{
+            font-style:normal;
+            color:#ff6a00;
+        }
+        .weui-flex__item .rightLess{
+            width:15%;
+            float:left;
+            padding-top:0.6rem;
+        }
+        .dataPanel span{
+            text-align:center;
+            display:block;
+            float:left;
+            font-weight:600;
+            height:1.6rem;
+            padding-top:0.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="MainInfo">
+        <div class="content">
+            <div class="leftPanel">&nbsp;</div>
+            <div class="rightPanel">票种说明</div>
+        </div>
+        <div class="weui-flex" style="border-bottom:1px solid #eee;height:2rem;padding-top:0.4rem;">
+            <div class="weui-flex__item" style="padding-left:1rem;">使用时间</div>
+            <div class="weui-flex__item" id="TimeSelect">
+                <span>选择日期</span>
+                <em>[0元起]</em>
+                <img src="images/chevron_right.png" style="width:0.3rem;" />
+            </div>
+        </div>
+        <div class="weui-flex" style="border-bottom:1px solid #eee;height:2.6rem;padding-top:0.6rem;">
+            <div class="weui-flex__item" style="padding-left:1rem;padding-top:0.2rem;">购票数量</div>
+            <div class="weui-flex__item dataPanel">
+                <span style="width:2rem;border:1px solid #eee;">+</span>
+                <span style="width:3rem;border-top:1px solid #eee;border-bottom:1px solid #eee;">1</span>
+                <span style="width:2rem;border:1px solid #eee;">-</span>
+            </div>
+        </div>
+        <div class="weui-cells__title">取票信息</div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="contactName" type="text" placeholder="请填写真实姓名，否则会影响出票">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">手机</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="contactTel" type="tel" placeholder="接收确认消息">
+                </div>
+            </div>
+        </div>
+        <div id="bottomMenu" class="weui-flex" style="position:fixed;bottom:0;left:0;height:50px;width:100%;">
+            <div class="weui-flex__item" style="border-top:1px solid #eee;padding-top:0.5rem;text-align:center;">
+                应付金额：<em>￥0元</em>
+            </div>
+            <div class="weui-flex__item" style="background-color:#ff6a00;color:#fff;padding-top:0.5rem;text-align:center;">提交订单</div>
+        </div>
+    </div>
+    <div id="bookNotice" style="position:fixed;top:0;left:0;z-index:10;background-color:#fff;display:none;padding:1rem;height:100%;width:100%;">
+        <div style="width:100%;text-align:right;padding-right:3rem;">
+            <i class="weui-icon-cancel" style="font-size:1.5rem;margin-right:3rem;"></i>
+        </div>
+        <div style="font-size:0.8rem;text-indent:inherit;color:#666;margin-top:1.5rem;">
+
+        </div>
+    </div>
+    <div class="date-range-picker"></div>
+    <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+    <script src="//r.edmp.cc/seascape/dateclass.js"></script>
+    <script src="js/datepicker/date-range-picker.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/c_travel_ticket.js"></script>
+    <script src="js/Main.js?v=20170925"></script>
+    <script>
+        _C.Init(_Travel);
+    </script>
+</body>
+</html>

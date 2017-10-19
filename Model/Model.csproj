@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6B1589E5-ECD9-4A7E-A865-C92D05B47927}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Model</RootNamespace>
+    <AssemblyName>Model</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="active\ActiveLog.cs" />
+    <Compile Include="active\Fly.cs" />
+    <Compile Include="active\FlyPm.cs" />
+    <Compile Include="active\Gift.cs" />
+    <Compile Include="active\Student.cs" />
+    <Compile Include="active\Vote.cs" />
+    <Compile Include="active\VoteUser.cs" />
+    <Compile Include="admin\adminLimit.cs" />
+    <Compile Include="admin\adminLog.cs" />
+    <Compile Include="admin\adminRole.cs" />
+    <Compile Include="admin\adminUser.cs" />
+    <Compile Include="airGj.cs" />
+    <Compile Include="Basic\ChangeLog.cs" />
+    <Compile Include="Basic\Fare.cs" />
+    <Compile Include="Basic\msgConfig.cs" />
+    <Compile Include="Basic\Order.cs" />
+    <Compile Include="Basic\OrderInfo.cs" />
+    <Compile Include="Basic\Remind.cs" />
+    <Compile Include="Basic\UploadMM.cs" />
+    <Compile Include="cityCode.cs" />
+    <Compile Include="cityInfo.cs" />
+    <Compile Include="client.cs" />
+    <Compile Include="content\content.cs" />
+    <Compile Include="content\tClass.cs" />
+    <Compile Include="Count\CountAll.cs" />
+    <Compile Include="Count\CountFB.cs" />
+    <Compile Include="Count\CountMobile.cs" />
+    <Compile Include="Count\CountOrder.cs" />
+    <Compile Include="Count\CountSource.cs" />
+    <Compile Include="custom.cs" />
+    <Compile Include="distance.cs" />
+    <Compile Include="employee.cs" />
+    <Compile Include="evaluate.cs" />
+    <Compile Include="Finance.cs" />
+    <Compile Include="item.cs" />
+    <Compile Include="log.cs" />
+    <Compile Include="order.cs" />
+    <Compile Include="orderPList.cs" />
+    <Compile Include="product.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="searchLog.cs" />
+    <Compile Include="share.cs" />
+    <Compile Include="smscode.cs" />
+    <Compile Include="source.cs" />
+    <Compile Include="syslog.cs" />
+    <Compile Include="syssetting.cs" />
+    <Compile Include="templateMsg.cs" />
+    <Compile Include="uInfo.cs" />
+    <Compile Include="user.cs" />
+    <Compile Include="View\ClassInfo.cs" />
+    <Compile Include="View\ContentInfo.cs" />
+    <Compile Include="View\fire.cs" />
+    <Compile Include="View\roleInfo.cs" />
+    <Compile Include="View\SimpleContent.cs" />
+    <Compile Include="View\UserInfo.cs" />
+    <Compile Include="View\UserL.cs" />
+    <Compile Include="voucher.cs" />
+    <Compile Include="WxAccessToken.cs" />
+    <Compile Include="wxPay.cs" />
+    <Compile Include="wxPayRefund.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,74 @@
+﻿.date-range-picker {
+  display: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.date-range-picker .week-row {
+  position: fixed;
+  right: 0;
+  top: 0;
+  left: 0;
+  background-color: #f2f2f2;
+}
+.date-range-picker .week-row .week-item {
+  padding: 0.5rem;
+  font-size: 9pt;
+  color: #333;
+  font-weight:600;
+  text-align: center;
+  background-color: #f4f4f4;
+}
+.date-range-picker .week-row .week-item:first-child {
+
+}
+.date-range-picker .week-row .week-item:last-child {
+
+}
+.date-range-picker .month-card {
+  padding: 5px 5px 20px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.date-range-picker .month-card:last-child {
+  border-bottom: none;
+}
+.date-range-picker .month-card .month-title {
+  padding-top: 1rem;
+  color: #353535;
+  font-size: 11pt;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.date-range-picker .month-card .date-row {
+  margin: .5rem 0;
+  font-size: 11pt;
+  color: #353535;
+}
+.date-range-picker .month-card .date-row .date-item {
+  padding: 5px 3px 3px 3px;
+  height: 25pt;
+  line-height: 13pt;
+  color: #353535;
+  text-align: center;
+}
+.date-range-picker .month-card .date-row .date-disable {
+  color: #b2b2b2;
+}
+.date-range-picker .month-card .date-row .date-week {
+  
+}
+.date-range-picker .month-card .date-row .date-choose {
+  background-color: #09bb07;
+  border-radius: 3px;
+  color: #ffffff;
+}
+.date-range-picker .month-card .date-row span {
+  font-size: 8pt;
+  line-height: 9pt;
+  display: block;
+  color:#ff6a00;
+}
+
+.date-range-picker .month-card .date-row span em{
+  font-size: 5pt;
+  font-style:normal;
+}

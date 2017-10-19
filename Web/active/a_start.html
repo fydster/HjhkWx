@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <script src="/js/count.js"></script>
+  <link rel="stylesheet" href="/assets/css/amazeui.min.css"/>
+  <style>
+      .body{
+          background-color:#fdfdfd;
+      }
+      .content img{
+          width:100%;
+      }
+  </style>
+</head>
+<body>
+    <!--内容区Start-->  
+    <div class="content">
+        <img src="pic/active0101.jpg"/>
+        <img src="pic/active0102.jpg" />
+        <a href="a_fly.html">
+            <img src="pic/active01.gif" style="position:fixed;bottom:0;left:0;" />
+        </a>
+    </div>       
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/amazeui.min.js"></script>
+<script src="/js/jquery.cookie.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/c_fly.js"></script>
+ <script>
+     $(".content").click(function () {
+         window.location = "a_fly.html";
+     });
+ </script>
+</body>
+</html>

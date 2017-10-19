@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>和女神一起泡温泉</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <script src="/js/count.js"></script>
+  <link rel="stylesheet" href="/assets/css/amazeui.min.css"/>
+  <style>
+      .body{
+          background-color:#fdfdfd;
+      }
+      .content img{
+          width:100%;
+      }
+  </style>
+</head>
+<body>
+    <!--内容区Start-->  
+    <div class="content">
+        <img src="100.jpg"/>
+        <img src="101.jpg" />
+        <img src="102.jpg" />
+        <img src="103.jpg" />
+    </div>       
+    <header class="am-topbar am-topbar-fixed-bottom" style="padding-top:0;padding-right:0.2rem; background: linear-gradient(#247ae1, #0182bb); margin-bottom:0;">
+        <div id="topBar" class="am-g" style="color:#fff;font-size:1.8rem;text-align:center;">
+            <div class="am-u-sm-4" style="font-size:1.4rem;font-weight:500;color:#fff;padding-top:1.1rem;">距抢购开始余</div>
+            <div class="am-u-sm-4" style="font-size:1.4rem;font-weight:500;color:#fff;padding-top:0.6rem;text-align:left;"><span id="span_time" style="font-size:2rem;letter-spacing:0.1rem;"></span></div>
+            <div class="am-u-sm-4" style="font-size:2.2rem;font-weight:500;color:#aaa;margin-top:0.5rem;letter-spacing:0.5rem;"></div>
+        </div>
+    </header>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">抢购提示</div>
+            <div class="am-modal-bd">
+                很遗憾，没有抢上，不要气馁，15点再继续哦！
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert_2">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">抢购提示</div>
+            <div class="am-modal-bd">
+                很遗憾，没有抢上！
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="my-modal-loading">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">抢购中...</div>
+            <div class="am-modal-bd">
+                <span class="am-icon-spinner am-icon-spin"></span>
+            </div>
+        </div>
+    </div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/amazeui.min.js"></script>
+<script src="/js/jquery.cookie.js"></script>
+<script src="/js/common.js"></script>
+<script type="text/javascript">
+    $("#topBar").find(".am-u-sm-4").eq(0).text("活动结束！");
+    var dateFinal = new Date(2017, 3, 8, 9, 30, 0); //new Date("2017-03-08 09:30:00").pattern("yyyy-MM-dd HH:mm:ss");  //设置倒计时到达时间
+    var dateFinal_2 = new Date(2017, 3, 8, 15, 0, 0); //new Date("2017-03-08 15:00:00").pattern("yyyy-MM-dd HH:mm:ss");  //设置倒计时到达时间
+
+    var intDiff = Date.parse(dateFinal) - Date.parse(new Date());//_C.dateDiff("T", new Date().pattern("yyyy-MM-dd HH:mm:ss"), dateFinal);
+    var intDiff2 = Date.parse(dateFinal_2) - Date.parse(new Date());//_C.dateDiff("T", new Date().pattern("yyyy-MM-dd HH:mm:ss"), dateFinal_2);
+
+    function fund() {
+        $("#topBar").find(".am-u-sm-4").eq(2).css("color", "#fff");
+        $("#topBar").find(".am-u-sm-4").eq(2).click(function () {
+            $("#my-modal-loading").modal("open");
+            $.ajax(
+                {
+                    url: _C.ServerUrl,
+                    context: document.body,
+                    dataType: "json",
+                    cache: false,
+                    data: { fn: 202,aType:1, uid: _U.uid, t: new Date() },
+                    success: function (o) {
+                        if (o.Return == 0) {
+                            window.location = "a_ok.html?Fid=" + o.Msg;
+                        }
+                        else {
+                            $("#my-modal-loading").modal("close");
+                            $("#my-alert").modal("open");
+                            $("#topBar").find(".am-u-sm-4").eq(2).click(function () { return; });
+                            $("#topBar").find(".am-u-sm-4").eq(2).css("color", "#aaa");
+                            timer2();
+                        }
+                    }
+                }
+                );
+        });
+    }
+
+    function fund2() {
+        $("#topBar").find(".am-u-sm-4").eq(2).css("color", "#fff");
+        $("#topBar").find(".am-u-sm-4").eq(2).unbind().click(function () {
+            $("#my-modal-loading").modal("open");
+            $.ajax(
+                {
+                    url: _C.ServerUrl,
+                    context: document.body,
+                    dataType: "json",
+                    cache: false,
+                    data: { fn: 202,aType:2, uid: _U.uid, t: new Date() },
+                    success: function (o) {
+                        if (o.Return == 0) {
+                            window.location = "a_ok.html?Fid=" + o.Msg;
+                        }
+                        else {
+                            $("#my-modal-loading").modal("close");
+                            $("#my-alert_2").modal("open");
+                            $("#topBar").find(".am-u-sm-4").eq(0).text("活动结束！");
+                            $("#topBar").find(".am-u-sm-4").eq(2).unbind().click(function () { return; });
+                            $("#topBar").find(".am-u-sm-4").eq(2).css("color", "#aaa");
+                        }
+                    }
+                }
+                );
+        });
+    }
+
+    function timer() {
+        intDiff = Date.parse(dateFinal) - Date.parse(new Date());
+        var sid = window.setInterval(function () {
+            var day = 0,
+                hour = 0,
+                minute = 0,
+                second = 0;//时间默认值
+            if (intDiff > 0) {
+                day = Math.floor(intDiff / (1000 * 60 * 60 * 24));
+                hour = Math.floor(intDiff / (1000 * 60 * 60)) - (day * 24);
+                minute = Math.floor(intDiff / (1000 * 60)) - (day * 24 * 60) - (hour * 60);
+                second = Math.floor(intDiff/1000) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+            }
+            if (minute <= 9) minute = '0' + minute;
+            if (second <= 9) second = '0' + second;
+            if (hour <= 9) hour = '0' + hour;
+            $("#span_time").text(hour + ":" + minute + ":" + second);
+            if (minute == 0 && second == 0 && hour == 0) {
+                fund();
+                window.clearInterval(sid);
+            }
+            intDiff = intDiff - 1000;
+        }, 1000);
+    }
+
+    function timer2() {
+        intDiff2 = Date.parse(dateFinal_2) - Date.parse(new Date());
+        var sid2 = window.setInterval(function () {
+            var day = 0,
+                hour = 0,
+                minute = 0,
+                second = 0;//时间默认值
+            if (intDiff2 > 0) {
+                day = Math.floor(intDiff2 / (1000 * 60 * 60 * 24));
+                hour = Math.floor(intDiff2 / (1000 * 60 * 60)) - (day * 24);
+                minute = Math.floor(intDiff2 / (1000 * 60)) - (day * 24 * 60) - (hour * 60);
+                second = Math.floor(intDiff2 / 1000) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+            }
+            if (minute <= 9) minute = '0' + minute;
+            if (second <= 9) second = '0' + second;
+            if (hour <= 9) hour = '0' + hour;
+            $("#span_time").text(hour + ":" + minute + ":" + second);
+            if (minute == 0 && second == 0 && hour == 0) {
+                fund2();
+                window.clearInterval(sid2);
+            }
+            intDiff2 = intDiff2 - 1000;
+        }, 1000);
+    }
+
+    $(function () {
+        if (1==2&&intDiff > 0) {
+            //timer();
+        }
+        else {
+            //timer2();
+        }
+    });
+</script>
+</body>
+</html>

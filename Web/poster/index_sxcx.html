@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link rel="stylesheet" href="/assets/css/amazeui.min.css" />
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            background-color:#b80000;
+        }
+        img{
+            margin:0;
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align:center;margin:0;padding:0;">
+        <img src="img/top.jpg" style="width:100%;" />
+        <div style="min-height:26rem;text-align:center;height:auto;">
+            <textarea class="" style="width:80%;border:0;height:3rem;margin-top:1rem;border-radius:0.3rem;" placeholder="输入您的大名" id="nick"></textarea>
+            <textarea class="" style="width:80%;border:0;margin-top:1rem;height:7rem;border-radius:0.3rem;" placeholder="写点祝福语,最多45字" id="desp"></textarea>
+            <span id="btn_uploadImg" style="display:block;margin-top:1rem;color:#fff;"> <i class="am-icon-camera" style="font-size:5rem;"></i> 点击选择一张您的美照</span>
+            <img id="btn_create" src="img/button.png" style="width:80%;margin-top:1rem;" />
+        </div>
+        <img src="img/bottom.jpg" style="width:100%;position:fixed;bottom:0;left:0;" />       
+    </div>
+    
+    <!--隐藏区域-->
+    <div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="my-modal-loading">
+        <div class="am-modal-dialog" style="border-radius:0.3rem;">
+            <div class="am-modal-hd" style="color:#008ed6;">正在制作中...</div>
+            <div class="am-modal-bd">
+                <span style="color:#008ed6;" class="am-icon-spinner am-icon-spin"></span>
+            </div>
+        </div>
+    </div>
+    <!--隐藏区域End-->
+<script src="/assets/js/jquery.min.js"></script>  
+<script src="/assets/js/amazeui.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+<script src="common_sxcx.js"></script>
+</body>
+</html>

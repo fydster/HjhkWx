@@ -1,0 +1,389 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link href="js/unslider/css/unslider.css" rel="stylesheet" />
+    <link href="js/unslider/css/unslider-dots.css" rel="stylesheet" />
+    <!-- head 中 -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    <style>
+        #topMenu .weui-navbar__item:after {
+            border-right: 0;
+            color:#999;
+        }
+
+        #topMenu .weui-navbar-onborder {
+            border-bottom: 3px solid #ba3987;
+            color: #ba3987;
+        }
+
+        #topMenu {
+            height: 2.5rem;
+        }
+
+        .sCity {
+            padding: 0.6rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+            .sCity .cityDesp {
+                width: 100%;
+                display: block;
+                font-size: 0.8rem;
+                height: 1rem;
+                color: #999;
+            }
+
+            .sCity .City {
+                display: block;
+                height: 1.8rem;
+                padding-top: 0.2rem;
+                font-weight: 500;
+                font-size: 1.2rem;
+                color:#444;
+            }
+
+            .sCity .weui-flex__item {
+                text-align: center;
+            }
+
+            .sCity .title {
+                color: #999;
+                font-size: 0.8rem;
+                text-align: center;
+                padding-top: 0.3rem;
+            }
+
+            .sCity .date {
+                color: #555;
+                font-size: 1.1rem;
+                text-align: right;
+            }
+
+            .sCity .week {
+                color: #555;
+                font-size: 1.1rem;
+                text-align: center;
+            }
+
+            .HotCity{
+                list-style:none;
+                background-color:#fff;
+                padding:0.3rem;
+                padding-top:1rem;
+                margin:0;
+                display:inline-block;
+                width:100%;
+                min-height:2rem;
+            }
+            .HotCity li{
+                width:33.3%;
+                float:left;
+                background-color:#fff;
+                height:2.4rem;
+                margin:0;
+                text-align:center;
+            }
+            .HotCity li span{
+                border:1px solid #ddd;
+                border-radius:5px;
+                padding:0.3rem 1.2rem;
+                color:#666;
+                display:block;
+                width:40%;
+                font-size:0.8rem;
+            }
+            .Alllater{
+                list-style:none;
+                background-color:#fff;
+                padding:0.3rem;
+                padding-top:1rem;
+                margin:0;
+                display:inline-block;
+                width:100%;
+                min-height:2rem;
+            }
+            .Alllater li{
+                width:16.6%;
+                float:left;
+                background-color:#fff;
+                height:2.4rem;
+                margin:0;
+                text-align:center;
+            }
+            .Alllater li span{
+                border:1px solid #ddd;
+                border-radius:5px;
+                padding:0.3rem 0.6rem;
+                color:#666;
+                font-size:0.8rem;
+                font-weight:600;
+            }
+            .CityGroup{
+                width:100%;
+                background-color:#fff;
+                padding:0.6rem 0.6rem;
+                height:1.4rem;
+            }
+            .CityGroup span{
+                border:1px solid #ddd;
+                padding:0.3rem 0.6rem;
+                margin-right:1rem;
+                border-radius:5px;
+                font-weight:600;
+                color:#555;
+            }
+            .CityList{
+                list-style:none;
+                margin:0;
+                padding:0;
+                background-color:#fff;
+            }
+            .CityList li{
+                height:1.2rem;
+                background-color:#fff;
+                border-bottom:1px dashed #ddd;
+                padding:0.5rem 0.8rem;
+                color:#666;
+            }
+            .CityList li em{
+                font-style:normal;
+                font-size:0.6rem;
+                color:#999;
+            }
+            .midMenu{
+                margin-top:0.8rem;
+                margin-left:0.3rem;
+                margin-right:0.3rem;
+            }
+            .midMenu img{
+                width:28%;
+            }
+            .midMenu p{
+                display:block;
+                font-size:0.7rem;
+                color:#777;
+            }
+            .midMenu .weui-flex__item{
+                text-align:center;
+            }
+    </style>
+</head>
+<body>
+    <!-- 容器 -->
+    <div class="weui-tab">
+        <div class="weui-navbar" id="topMenu">
+            <a data-name="动车票" data-type="0" data-on="img/traindOn.png" data-default="img/traind.png" class="weui-navbar__item weui-bar__item--on weui-navbar-onborder" href="#tab1">
+                <div class="weui-tabbar__icon">
+                    <img src="img/traindOn.png" style="width:70%;height:70%;" alt="">
+                </div>动车票
+            </a>
+            <a data-name="飞机票" data-type="1" data-on="img/planeOn.png" data-default="img/plane.png" class="weui-navbar__item" href="#tab2">
+                <div class="weui-tabbar__icon"><img src="img/plane.png" style="width:60%;height:60%;" alt=""></div>飞机票
+            </a>
+            <a data-name="火车票" data-type="2" data-on="img/trainOn.png" data-default="img/train.png" class="weui-navbar__item" href="#tab3">
+                <div class="weui-tabbar__icon">
+                    <img src="img/train.png" style="width:60%;height:60%;" alt="">
+                </div>火车票
+            </a>
+        </div>
+        <div class="banner" style="margin-top:2.2rem;">
+            <ul>
+                <li><img src="ad/ad1.jpg" style="width:100%;"></li>
+                <li><img src="ad/ad2.jpg" style="width:100%;"></li>
+            </ul>
+        </div>
+        <div class="weui-flex sCity">
+            <div class="weui-flex__item">
+                <span class="cityDesp">出发车站</span>
+                <span data-type="0" class="City">太原</span>
+            </div>
+            <div class="weui-flex__item">
+                <img id="btn_exchange" src="img/Mid.png" style="width:40%;padding-top:0.5rem;" />
+            </div>
+            <div class="weui-flex__item">
+                <span class="cityDesp">到达车站</span>
+                <span data-type="1" class="City">北京</span>
+            </div>
+        </div>
+
+        <div class="weui-flex sCity">
+            <div class="weui-flex__item title">
+                出发日期
+            </div>
+            <div id="sDate" class="weui-flex__item date" data-date="">
+
+            </div>
+            <div class="weui-flex__item week">
+
+            </div>
+        </div>
+
+        <div style="width:100%;float:left;" id="my-input">
+        </div>
+
+        <a id="btn_selectDc" href="javascript:;" style="margin:0.5rem 0.5rem;background-color:#ba3987;color:#fff;" class="weui-btn">动车票查询</a>
+    </div>
+    <div class="weui-flex midMenu">
+        <div class="weui-flex__item">
+            <img src="img/listOn.png" alt="">
+            <p>我的订单</p>
+        </div>
+        <div class="weui-flex__item">
+            <img src="img/ucOn.png" alt="">
+            <p>个人中心</p>
+        </div>
+        <div class="weui-flex__item" style="display:none;">
+            <img src="img/hbdt.png" alt="">
+            <p>航班动态</p>
+        </div>
+        <div class="weui-flex__item" style="display:none;">
+            <img src="img/tipOn.png" alt="">
+            <p>低价提醒</p>
+        </div>
+        <div class="weui-flex__item">
+            <img src="img/infomation.png" alt="">
+            <p>旅游资讯</p>
+        </div>
+        <div class="weui-flex__item">
+            <img src="img/didi.png" alt="">
+            <p>滴滴专车</p>
+        </div>
+    </div>
+
+    <div id="Div_CityPanel" style="padding:0; background-color:#efeff4;display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:39;overflow-y:auto;overflow-x:hidden; -webkit-overflow-scrolling:touch;">
+        <div class="weui-search-bar" id="searchBar">
+            <form class="weui-search-bar__form">
+                <div class="weui-search-bar__box">
+                    <i class="weui-icon-search"></i>
+                    <input type="search" class="weui-search-bar__input" id="input_search" placeholder="太原/ty/taiyuan" required="">
+                    <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                </div>
+                <label class="weui-search-bar__label" id="searchText">
+                    <i class="weui-icon-search"></i>
+                    <span>太原/ty/taiyuan</span>
+                </label>
+            </form>
+            <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+        </div>
+        <div id="noSearch">
+            <div id="Div_NowCity" style="width:100%;">
+                <span style="font-size:0.8rem;color:#aaa;display:block;padding:0.3rem 0.5rem;">当前城市</span>
+                <ul id="NowCity" style="list-style:none;background-color:#fff;width:100%;height:4rem;">
+                    <li style="width:33.3%;padding-top:1rem;background-color:#fff; text-align:center;" data-name="" data-code="guangzhou"><span style="border:1px solid #ddd;border-radius:5px;text-align:center;padding:0.3rem 0;display:block;width:85%;margin-left:0.3rem;color:#666;">正在定位</span></li>
+                </ul>
+            </div>
+            <div id="Div_History" style="width:100%;">
+                <span style="font-size:0.8rem;color:#aaa;display:block;padding:0.3rem 0.5rem;">历史选择</span>
+                <ul id="HistoryList" class="HotCity">
+                </ul>
+            </div>
+            <div id="Div_City" style="width:100%;">
+                <span style="font-size:0.8rem;color:#aaa;display:block;padding:0.3rem 0.5rem;">热门</span>
+                <ul id="HotCityList" class="HotCity"></ul>
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+        <div id="Div_ZM" style="width:100%;display:none;">
+            <span style="font-size:0.8rem;color:#aaa;display:block;padding:0.3rem 0.5rem;">更多城市</span>
+            <ul class="Alllater">
+                <li><span>A</span></li>
+                <li><span>B</span></li>
+                <li><span>C</span></li>
+                <li><span>D</span></li>
+                <li><span>E</span></li>
+                <li><span>F</span></li>
+                <li><span>G</span></li>
+                <li><span>H</span></li>
+                <li><span>I</span></li>
+                <li><span>J</span></li>
+                <li><span>K</span></li>
+                <li><span>L</span></li>
+                <li><span>M</span></li>
+                <li><span>N</span></li>
+                <li><span>O</span></li>
+                <li><span>P</span></li>
+                <li><span>Q</span></li>
+                <li><span>R</span></li>
+                <li><span>S</span></li>
+                <li><span>T</span></li>
+                <li><span>U</span></li>
+                <li><span>V</span></li>
+                <li><span>W</span></li>
+                <li><span>X</span></li>
+                <li><span>Y</span></li>
+                <li><span>Z</span></li>
+            </ul>
+        </div>
+        <div style="clear:both;"></div>
+        <div id="Div_ZMJS" style="width:100%;display:none;">
+            <div id="Div_ZMJS_N">
+                <span style="font-size:0.8rem;color:#aaa;display:block;padding:0.3rem 0.5rem;">字母检索</span>
+                <div class="CityGroup" style="margin-top:0.1rem;margin-bottom:0.1rem;">
+                    <span></span>
+                    <span>A - Z</span>
+                </div>
+            </div>
+            <ul id="d1" class="CityList"></ul>
+        </div>
+        <div style="display:none;" id="cityData"></div>
+        <div style="display:none;" id="cityDataForAir"></div>
+    </div>
+
+    <div id="bottomMenu" style="position:absolute;bottom:0;left:0;width:100%;">
+        <div class="weui-tabbar">
+            <a href="javascript:;" class="weui-tabbar__item weui-bar__item--on">
+                <div class="weui-tabbar__icon">
+                    <img src="img/homeOn.png" alt="">
+                </div>
+                <p class="weui-tabbar__label" style="color:#ba3987;">首页</p>
+            </a>
+            <a href="c_order_all.html" class="weui-tabbar__item">
+                <div class="weui-tabbar__icon">
+                    <img src="img/list.png" alt="">
+                </div>
+                <p class="weui-tabbar__label">行程</p>
+            </a>
+            <a href="c_uc.html" class="weui-tabbar__item">
+                <div class="weui-tabbar__icon">
+                    <img src="img/uc.png" alt="">
+                </div>
+                <p class="weui-tabbar__label">我的</p>
+            </a>
+        </div>
+    </div>
+
+    <div id="caledar" class='weui-popup__container popup-bottom'>
+        <div class="weui-popup__overlay"></div>
+        <div class="weui-popup__modal">
+            <div class="toolbar">
+                <div class="toolbar-inner">
+                    <a href="javascript:;" class="picker-button close-popup">完成</a>
+                    <h1 class="title">选择日期</h1>
+                </div>
+            </div>
+            <div class="modal-content" id="sDate_panel">
+
+            </div>
+        </div>
+    </div>
+
+    <!-- body 最后 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp"></script>
+    <script src="js/unslider/js/unslider-min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/c_train_index_new.js"></script>
+</body>
+</html>

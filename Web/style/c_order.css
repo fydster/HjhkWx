@@ -1,0 +1,490 @@
+﻿body{
+            background-color:#fff;
+        }
+        .flihtInfo{
+            height:15rem;
+            padding:0.8rem;
+            background: linear-gradient(#ba3987, #ffffff);
+        }
+        .flihtInfo .info{
+            height:13rem;
+            background-color:#fff;
+            border-radius:0.4rem;
+        }
+        .flihtInfo .info .hb{
+            font-size:1.2rem;
+            color:#999;
+            padding-left:0.8rem;
+            padding-top:0.4rem;
+        }
+        .flihtInfo .info .hb img{
+            width:1rem;
+            margin-bottom:0.1rem;
+        }
+        .flihtInfo .info .hb span{
+            margin-right:1rem;
+        }
+        .fliht{
+            text-align:center;
+            line-height:1.8rem;
+            margin-top:0.4rem;
+        }
+        .fliht .date{
+            font-size:1.3rem;
+            color:#666;
+            display:block;
+        }
+        .fliht .date em{
+            font-size:1.2rem;
+            font-style:normal;
+        }
+        .fliht .time{
+            display:block;
+            letter-spacing:0.4rem;
+            font-weight:500;
+            font-size:2rem;
+        }
+        .fliht .air{
+            font-size:1.3rem;
+            color:#666;
+        }
+        .flihtInfo .info .price{
+            height:4rem;
+            /*background: linear-gradient(#008ed6, #ffffff);*/
+            background-color:#f3cde8;
+            padding-top:0.5rem;
+        }
+        .flihtInfo .info .price .am-u-sm-4{
+            text-align:center;
+            line-height:1.5rem;
+            border-right:1px solid #fff;
+        }
+        .flihtInfo .info .price .am-u-sm-4 span{
+            font-size:1.4rem;
+            letter-spacing:0.1rem;
+            display:block;
+            color:#666;
+        }
+        .flihtInfo .info .price .am-u-sm-4 em{
+            font-size:1.4rem;
+            color:#ff6a00;
+            font-style:normal;
+        }
+        .order_Fare{
+            background-color:#eee;
+        }
+        .maintitle{
+            font-size:1.6rem;
+            width:50%;
+            float:left;
+            color:#666;
+            display:block;
+            padding-left:1rem;
+            padding-bottom:0.5rem;
+            padding-top:0.5rem;
+            border-bottom:1px solid #ddd;
+            background-color:#fff;
+        }
+        .maintitle em{
+            font-size:1.4rem;
+            color:#999;
+            margin-left:1rem;
+            font-style:normal;
+        }
+        .mainbtn{
+            text-align:right;
+            font-size:1.6rem;
+            width:50%;
+            float:left;
+            color:#ba3987;
+            display:block;
+            padding-right:1rem;
+            padding-bottom:0.5rem;
+            padding-top:0.5rem;
+            border-bottom:1px solid #ddd;
+            background-color:#fff;
+        }
+        .order_Fare .cardadd{
+            padding:0 1rem;
+            height:15rem;
+            background-color:#fff;
+            margin-bottom:0.8rem;
+        }
+        .order_Fare .cardadd .sinput{
+            height:5rem;
+            display:block;
+        }
+        .order_Fare .cardadd .sinput input{
+            height:5rem;
+            border:0;
+            border-bottom:1px solid #ddd;
+        }
+        .order_Fare .cardadd .tinput{
+            width:60%;
+            display:block;
+            float:left;
+            border-bottom:1px solid #ddd;
+        }
+        .order_Fare .cardadd .tinput input{
+            height:5rem;
+            border:0;
+        }
+        .order_Fare .cardadd .tselect{
+            width:40%;
+            float:left;
+            border-bottom:1px solid #ddd;
+        }
+        .order_Fare .cardadd .tselect select{
+            height:5rem;
+            color:#999;
+            border:0;
+        }
+        .order_Fare .cardadd .tselect em{
+            font-size:1.4rem;
+            font-style:normal;
+            height:5rem;
+            display:block;
+            padding-top:1.8rem;
+            padding-left:0.5rem;
+            color:#ff6a00;
+            border:0;
+        }
+        .order_Fare .cardadd .tsubmit{
+            display:block;
+            width:100%;
+            height:4rem;
+            padding-top:0.5rem;
+            text-align:right;
+        }
+        .order_Fare .cardadd .tsubmit span{
+            font-size:1.4rem;
+            font-style:normal;
+            color:#ff6a00;
+        }
+        .order_other{
+            background-color:#eee;
+            padding-top:0.8rem;
+            padding-bottom:0.4rem;
+        }
+        .order_other .blockinput{
+            border-top:1px solid #ddd;
+            border-bottom:1px solid #ddd;
+            margin-bottom:0.8rem;
+            background-color:#fff;
+            min-height:6rem;
+            height:auto;
+        }
+        .order_other .blockinput input{
+            border:0;
+            height:6rem;
+        }
+        .order_other .blockinput .leftPanel{
+            width:70%;
+            float:left;
+            padding-left:1rem;
+            text-align:left;
+        }
+        .order_other .blockinput .leftPanel .title{
+            font-size:1.6rem;
+            padding-top:1rem;
+            color:#666;
+            display:block;
+        }
+        .order_other .blockinput .leftPanel .subtitle{
+            font-size:1.2rem;
+            color:#999;
+            padding-top:0.3rem;
+            display:block;
+        }
+        .order_other .blockinput .leftPanel .title em{
+            color:#ff6a00;
+            font-style:normal;
+            padding-left:1rem;
+        }
+        .order_other .blockinput .rightPanel{
+            width:30%;
+            float:left;
+            padding-right:1.4rem;
+            text-align:right;
+        }
+        .order_other .innerPanel{
+            width:100%;    
+            display:none;
+            clear:both;  
+            border-top:1px solid #ddd;
+        }
+        .order_other .innerPanel ul{
+            list-style:none;
+            margin:0;
+            padding:0;
+        }
+        .order_other .innerPanel ul li{
+            margin:1rem;
+            height:4.8rem;
+            padding-top:1rem;
+            border-bottom:1px solid #ddd;
+        }
+        .order_other .innerPanel ul li .title{
+            text-align:left;
+            font-size:1.6rem;
+            color:#666;
+            margin-right:3rem;
+        }
+        .order_other .innerPanel ul li input{
+            height:3rem;
+            margin:0;
+            padding:0;
+        }
+        .order_other .innerPanel .inputList{
+            padding-left:0.8rem;
+            padding-right:0.8rem;
+        }
+        .order_other .innerPanel .inputList input{
+            border-bottom:1px solid #ddd;
+        }
+
+        .order_other .innerPanel ul li .ltitle{
+            text-align:left;
+            font-size:1.4rem;
+            color:#666;
+            width:80%;
+            float:left;
+        }
+        .order_other .innerPanel ul li .ltitle em{
+            font-style:normal;
+            margin-left:0.3rem;
+            color:#ff6a00;
+        }
+        .order_other .innerPanel ul li .ltitle .desp{
+            color:#3bb4f2;
+            font-size:1.2rem;
+            display:block;
+            margin-left:0;
+        }
+        .order_other .innerPanel ul li .rtitle{
+            text-align:center;
+            font-size:2rem;
+            color:#ba3987;
+            width:20%;
+            float:left;
+        }
+        .farePanel{
+            position:fixed;
+            width:100%;
+            height:auto;
+            display:none;
+            top:0;
+            left:0;
+            background: linear-gradient(#a01678, #ffffff);
+            overflow-y:hidden;
+        }
+        .Alllater{
+            list-style:none;
+            margin:0;
+            padding:0;
+        }
+        .Alllater li{
+            margin:0;
+            width:16%;
+            float:left;
+            height:3.4rem;
+            padding:0.4rem 0.4rem 0.8rem 0.4rem;
+        }
+        .Alllater li span{
+            border:1px solid #bbb;
+            width:100%;
+            color:#999;
+            font-size:1.4rem;
+            padding:0.3rem 1.5rem 0.3rem 1.5rem;
+            border-radius:3px;
+        }
+        .FareList{
+            list-style:none;
+            margin:0;
+            padding:0;
+        }
+        .FareList li{
+            list-style:none;
+            margin:0;
+            padding:1rem;
+            height:6rem;
+            border-bottom:1px dashed #ddd;
+        }
+        .FareList .FLeft{
+            width:80%;
+            float:left;
+            text-align:left;
+        }
+        .FareList .FLeft span{
+            font-size:1.6rem;
+            color:#666;
+            display:block;
+        }
+        .FareList .FRight{
+            width:20%;
+            float:left;
+            text-align:center;
+            font-size:2.4rem;
+            padding-top:0.5rem;
+            color:#3bb4f2;
+        }
+
+        .PayPanel{
+            position:absolute;
+            width:100%;
+            height:auto;
+            display:none;
+            top:0;
+            left:0;
+            background: linear-gradient(#a01678, #ffffff);
+            overflow-y:auto;
+        }
+        .PriceList{
+            padding:0.8rem;
+            background-color:#fff;
+            line-height:2.4rem;
+            color:#666;
+            margin-bottom:1rem;
+            text-align:left;
+        }
+        .PriceList span{
+            display:block;
+            border-bottom:1px dashed #ddd;
+        }
+        .PriceList span em{
+            font-style:normal;
+        }
+        .PriceList .title{
+            font-weight:bold;
+        }
+        .PriceList .count{
+            font-weight:bold;
+            color:#ba3987;
+        }
+        .CheckFliht{
+            padding:0.8rem;
+            background-color:#fff;
+            line-height:2.4rem;
+            color:#666;
+            margin-bottom:1rem;
+            text-align:left;
+        }
+        .CheckFliht span{
+            display:block;
+            font-weight:bold;
+            border-bottom:1px dashed #ddd;
+        }
+        .CheckFliht span em{
+            font-weight:normal;
+            font-size:1.3rem;
+            color:#666;
+            line-height:1.6rem;
+            font-style:normal;
+        }
+        .VoucherPanel{
+            position:fixed;
+            width:100%;
+            height:auto;
+            display:none;
+            top:0;
+            left:0;
+            background-color:#eee;
+            overflow-y:auto;
+        }
+        .VoucherPanel ul{
+            list-style:none;
+            margin:0;
+            padding:0;
+        }
+        .VoucherPanel ul li{
+            margin:1.3rem 1rem;
+            background-color:#fff;
+            min-height:12rem;
+            height:auto;
+            border-radius:0.3rem;
+            box-shadow: 4px 4px 2px #888888;
+        }
+        .VoucherPanel ul .select{
+            margin:1.3rem 1rem;
+            background-color:#fff;
+            height:12rem;
+            background-image: url('/img/select.png');
+            background-repeat: no-repeat;
+            background-position: 100% 0%; 
+        }
+        .VoucherPanel ul li .leftTitle{
+            width:30%;
+            float:left;
+            font-size:4rem;
+            color:#ff6a00;
+            font-weight:700;
+            text-align:center;
+            padding-top:0.2rem;
+            line-height:3rem;
+        }
+        .VoucherPanel ul li .leftTitle em{
+            font-size:1.5rem;
+            color:#ff6a00;
+            font-style:normal;
+        }
+        .VoucherPanel ul li .leftTitle span{
+            border-radius:0.3rem;
+            border:1px solid #fb4e43;
+            padding:0.1rem 0.1rem;
+            font-size:1.2rem;
+            color:#fb4e43;
+            font-weight:normal;
+            width:5rem;
+        }
+            .VoucherPanel ul li .midInfo{
+                padding-left:1rem;
+                display:block;
+                font-size:1.5rem;
+                color:#666;
+                width:55%;
+                float:left;
+                margin-top:1rem;
+            }
+            .VoucherPanel ul li .midInfo em{
+                font-size:1.3rem;
+                display:block;
+                margin-top:0.5rem;
+                font-style:normal;
+                color:#999;
+            }
+            .VoucherPanel ul li .midInfo i{
+                font-size:1.3rem;
+                display:block;
+                margin-top:0.5rem;
+                font-style:normal;
+                color:#ba3987;
+            }
+            .VoucherPanel ul li .rightPrice{
+                margin-top:1rem;
+                font-size:2.5rem;
+                color:#999;
+                width:15%;
+                float:left;
+                text-align:left;
+                padding-left:0.3rem;
+                padding-top:1rem;
+                text-align:center;
+            }
+            .VoucherPanel ul li .bottomBtn{
+                display:block;
+                width:100%;
+                border-top:1px dashed #ddd;
+                color:#ba3987;
+                font-size:1.6rem;
+                text-align:center;
+                margin-top:0.4rem;
+                padding-top:0.5rem;
+            }
+            .VoucherPanel ul li .ruleDesp{
+                display:block;
+                width:100%;
+                color:#aaa;
+                font-size:1.3rem;
+                padding:0.6rem;
+                display:none;
+            }

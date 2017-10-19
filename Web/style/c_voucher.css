@@ -1,0 +1,105 @@
+﻿body{
+            background-color:#eee;
+        }
+        .VoucherPanel{
+            width:100%;
+            height:auto;
+            background-color:#eee;
+        }
+        .VoucherPanel ul{
+            list-style:none;
+            margin:0;
+            padding:0;
+        }
+        .VoucherPanel ul li{
+            margin:1.3rem 1rem;
+            background-color:#fff;
+            min-height:12rem;
+            height:auto;
+            border-radius:0.3rem;
+            box-shadow: 4px 4px 2px #888888;
+        }
+        .VoucherPanel ul .select{
+            margin:1.3rem 1rem;
+            background-color:#fff;
+            height:12rem;
+            background-image: url('/img/select.png');
+            background-repeat: no-repeat;
+            background-position: 100% 0%; 
+        }
+        .VoucherPanel ul li .leftTitle{
+            width:30%;
+            float:left;
+            font-size:4rem;
+            color:#ff6a00;
+            font-weight:700;
+            text-align:center;
+            padding-top:0.2rem;
+            line-height:3rem;
+        }
+        .VoucherPanel ul li .leftTitle em{
+            font-size:1.5rem;
+            color:#ff6a00;
+            font-style:normal;
+        }
+        .VoucherPanel ul li .leftTitle span{
+            border-radius:0.3rem;
+            border:1px solid #fb4e43;
+            padding:0.1rem 0.1rem;
+            font-size:1.2rem;
+            color:#fb4e43;
+            font-weight:normal;
+            width:5rem;
+        }
+            .VoucherPanel ul li .midInfo{
+                padding-left:1rem;
+                display:block;
+                font-size:1.5rem;
+                color:#666;
+                width:55%;
+                float:left;
+                margin-top:1rem;
+            }
+            .VoucherPanel ul li .midInfo em{
+                font-size:1.3rem;
+                display:block;
+                margin-top:0.5rem;
+                font-style:normal;
+                color:#999;
+            }
+            .VoucherPanel ul li .midInfo i{
+                font-size:1.3rem;
+                display:block;
+                margin-top:0.5rem;
+                font-style:normal;
+                color:#008ed6;
+            }
+            .VoucherPanel ul li .rightPrice{
+                margin-top:1rem;
+                font-size:2.5rem;
+                color:#999;
+                width:15%;
+                float:left;
+                text-align:left;
+                padding-left:0.3rem;
+                padding-top:1rem;
+                text-align:center;
+            }
+            .VoucherPanel ul li .bottomBtn{
+                display:block;
+                width:100%;
+                border-top:1px dashed #ddd;
+                color:#008ed6;
+                font-size:1.6rem;
+                text-align:center;
+                margin-top:0.4rem;
+                padding-top:0.5rem;
+            }
+            .VoucherPanel ul li .ruleDesp{
+                display:block;
+                width:100%;
+                color:#aaa;
+                font-size:1.3rem;
+                padding:0.6rem;
+                display:none;
+            }

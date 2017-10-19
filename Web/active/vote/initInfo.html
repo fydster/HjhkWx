@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>2017太原国际马拉松-代言人选拔赛投票</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <script src="/js/count.js"></script>
+  <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    <style>
+        body{
+            background-color:#fdd000;
+        }
+    </style>
+</head>
+<body>
+    <div style="width:100%;margin:100px 0;text-align:center;color:#666;">
+        基本信息刷新中
+    </div>
+    <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/json2.js"></script>
+    <script src="/js/common.js?v=20170901"></script>
+    <script>
+        $.showLoading();
+        setTimeout(toVote, 1500);
+        setTimeout(toVote, 3000);
+        setTimeout(toVote, 4500);
+        setTimeout(function () {
+            window.location = "vote.html";
+        }, 6000);
+        function toVote() {
+            if (_U != null && _U.openId.length > 1 && _U.uid > 0) {
+                $.hideLoading();
+                window.location = "vote.html";
+            }
+        }
+    </script>
+</body>
+</html>

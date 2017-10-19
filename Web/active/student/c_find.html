@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>山西出行</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    <style>
+        .weui-input{
+            color:#999;
+        }
+        .PanelC{
+            width:80%;
+            margin-left:auto;
+            margin-right:auto;
+        }
+        .PanelC div{
+            height:2.8rem;
+        }
+        .PanelC span{
+            font-size:0.6rem;
+            color:#329e96;
+        }
+        .weui-input{
+            border-bottom:1px dashed #ddd;
+            font-size:15pt;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align:center;font-size:1.2rem;color:#329e96;margin-top:1rem;margin-bottom:0.6rem;border-bottom:1px solid #eee;font-weight:bold;">
+        免费飞机票申请
+    </div>
+    <div class="PanelC">
+        <div>
+            <span>所在地市：</span>
+            <input class="weui-input" type="text" placeholder="所在地市" readonly="readonly" id="srcCity">
+        </div>
+        <div>
+            <span>学生姓名：</span>
+            <input class="weui-input" type="text" placeholder="学生姓名" id="contact">
+        </div>
+        <div>
+            <span>联系电话：</span>
+            <input class="weui-input" type="tel" placeholder="联系电话" id="mobile">
+        </div>
+        <div>
+            <span>申请原因：</span>
+            <input class="weui-input" type="text" placeholder="申请原因" id="memo">
+        </div>
+        
+        <a href="javascript:;" id="btn_save" style="margin:1rem 1rem 2rem 1rem;" class="weui-btn weui-btn_plain-default">提交申请</a>
+    </div>
+
+    <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/city-picker.min.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/json2.js"></script>
+    <script src="/js/common.js?v=20170420"></script>
+    <script src="/js/active/findStudent.js"></script>
+</body>
+</html>

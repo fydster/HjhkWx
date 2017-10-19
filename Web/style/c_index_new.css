@@ -1,0 +1,131 @@
+﻿body{
+            background-color:#eee;
+        }
+        .HotCity{
+            list-style:none;
+            margin:0;
+            padding:0;
+        }
+        .HotCity li{
+            margin:0;
+            width:25%;
+            float:left;
+            height:2.4rem;
+            padding:0.1rem 0.1rem 0.2rem 0.1rem;
+        }
+        .HotCity li span{
+            border:1px solid #bbb;
+            width:100%;
+            color:#999;
+            font-size:0.8rem;
+            padding:0.1rem 0.4rem 0.1rem 0.4rem;
+            border-radius:3px;
+        }
+        .Alllater{
+            list-style:none;
+            margin:0;
+            padding:0;
+            height:auto;
+        }
+        .Alllater li{
+            margin:0;
+            width:16%;
+            float:left;
+            height:2.4rem;
+            padding:0.1rem 0.1rem 0.2rem 0.1rem;
+        }
+        .Alllater li span{
+            border:1px solid #bbb;
+            width:100%;
+            color:#999;
+            font-size:0.8rem;
+            padding:0.1rem 0.5rem 0.1rem 0.5rem;
+            border-radius:3px;
+        }
+        .CityGroup span{
+            border:1px solid #bbb;
+            border-radius:3px;
+            color:#999;
+            margin-right:0.3rem;
+            font-size:0.8rem;
+            padding:0.1rem 0.6rem 0.1rem 0.6rem;
+        }
+        .CityList{
+            margin:0;
+            padding:0;
+            overflow-y:auto;
+            list-style:none;
+        }
+        .CityList li{
+            width:100%;
+            height:3.2rem;
+            padding-top:0.3rem;
+            padding-bottom:0.5rem;
+            border-bottom:1px solid #ccc;
+        }
+        .CityList li span{
+            font-size:0.9rem;
+            color:#666;
+        }
+        .CityList li em{
+            font-size:0.8rem;
+            font-style:normal;
+            color:#aaa;
+        }
+        .hdPanel{
+            background-color:#fff;
+            border-radius:5px;
+            height:17rem;
+            margin:0.5rem;
+        }
+        .hdPanel ul{
+            list-style:none;
+            margin:0;
+            padding:1rem 1rem;
+        }
+        .hdPanel ul li{
+            width:50%;
+            float:left;
+            height:5.6rem;
+            padding-right:0.9rem;
+        }
+        .hdPanel ul li div{
+            padding-bottom:0.5rem;
+            height:4rem;
+            border-bottom:1px solid #ccc;
+        }
+        .hdPanel ul li div span{
+            display:block;
+            width:50%;
+            float:left;
+            font-size:1.3rem;
+            color:#666;
+        }
+        .hdPanel ul li div span em{
+            display:block;
+            font-size:1.2rem;
+            color:#999;
+            font-style:normal;
+        }
+
+        .HisTrip{
+            margin:1.5rem;
+        }
+
+        .HisTrip ul{
+            list-style:none;
+            margin:0;
+            padding:0;
+        }
+        .HisTrip ul li{
+            border-radius:0.4rem;
+            margin-bottom:0.4rem;
+            height:4rem;
+            padding:1rem 0;
+            background-color:#fff;
+            border-bottom:1px solid #eee;
+        }
+        .HisTrip ul li span{
+            text-align:center;
+            color:#555;
+        }

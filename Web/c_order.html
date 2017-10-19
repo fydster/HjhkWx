@@ -1,0 +1,353 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="alternate icon" type="image/png" href="img/logo.png">
+    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+    <link href="style/c_order.css" rel="stylesheet" />
+    <script src="js/count.js"></script>
+</head>
+<body>
+    <div class="flihtInfo">
+        <div class="info">
+            <div class="hb">
+                <span>--</span><span>--</span><span>--</span>
+            </div>
+            <div class="am-g" style="padding-bottom:1rem;">
+                <div class="am-u-sm-5 fliht">
+                    <span class="date">-- <em>--</em></span>
+                    <span class="time">--</span>
+                    <span class="air">--</span>
+                </div>
+                <div class="am-u-sm-2" style="margin-top:2rem;">
+                    <i class="am-icon-long-arrow-right"></i>
+                </div>
+                <div class="am-u-sm-5 fliht">
+                    <span class="date">-- <em>--</em></span>
+                    <span class="time">--</span>
+                    <span class="air">--</span>
+                </div>
+            </div>
+            <div id="div_goback" style="padding-left:1rem;display:none;">
+                <i style="font-size:2rem;color:#aaa;" class="am-icon-chevron-circle-left"></i>
+                <span style="font-size:1.4rem;color:#aaa;"> 返回重选</span>
+            </div>
+            <div id="div_second" style="padding:0.5rem 1rem 1rem 1rem;display:none;">
+                <div>
+                    <span class="am-badge am-badge-danger am-radius" style="padding:0.4rem 0.4rem;">去</span>
+                    <span style="font-size:1.4rem;color:#666;"></span>
+                </div>
+                <div style="margin-top:0.8rem;">
+                    <span class="am-badge am-badge-danger am-radius" style="padding:0.4rem 0.4rem;">返</span>
+                    <span style="font-size:1.4rem;color:#666;"></span>
+                </div>
+            </div>
+            <div class="am-g price">
+                <div class="am-u-sm-4">
+                    <span>票价</span>
+                    <em>￥--</em>
+                </div>
+                <div class="am-u-sm-4">
+                    <span>基建</span>
+                    <em>￥--</em>
+                </div>
+                <div class="am-u-sm-4" style="border:0;">
+                    <span>燃油</span>
+                    <em>￥--</em>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--乘机人-->
+    <div class="order_Fare">
+        <span class="maintitle">
+            乘机人 <em>0人</em>
+        </span>
+        <span class="mainbtn" id="btn_show_fare">
+             <i style="font-size:1.5rem;" class="am-icon-plus-square-o"> 从常旅客添加</i>
+        </span>
+        <div style="clear:both;"></div>
+        <div id="btn_add_fare" style="width:100%;background:#fff;padding:0.8rem;color:#a01678;">
+            <i class="am-icon-plus"> 添加乘客</i>
+        </div>
+
+        <div id="fare_Before" style="clear:both;"></div>
+
+        <div class="order_other">
+            <div class="blockinput">
+                <input type="number" id="mobile" class="am-form-field" placeholder="联系人手机号码" />
+            </div>
+            <div class="blockinput" style="height:7rem;">
+                <div class="leftPanel">
+                    <span class="title">航空意外险<em>￥30/人</em></span>
+                    <span class="subtitle">最高保额50万，起飞当日有效</span>
+                </div>
+                <div class="rightPanel">
+                    <i id="check_insurce" style="font-size:2.2rem;color:#a01678;margin-top:1.5rem;" class="am-icon-check-square-o"></i>
+                </div>
+            </div>
+            <div class="blockinput" style="min-height:7rem;">
+                <div class="leftPanel">
+                    <span class="title" style="padding-top:1.7rem;">贵宾服务</span>
+                    <span class="subtitle">机场贵宾休息室、换登机牌等服务</span>
+                </div>
+                <div class="rightPanel">
+                    <i id="check_gb" style="font-size:2.2rem;margin-top:1.5rem;color:#aaa;" class="am-icon-square-o"></i>
+                </div>
+
+                <div class="innerPanel am-animation-slide-bottom">
+                    <ul>
+                        <li style="padding-top:0.3rem;margin-top:0.5rem;">
+                            <span class="ltitle">套餐1<em>20元/人</em><em class="desp">代办值机</em></span>
+                            <span class="rtitle"><i data-service="套餐6" data-price="20" class="am-icon-circle-o"></i></span>
+                        </li>
+                        <li style="padding-top:0.3rem;margin-top:0.5rem;">
+                            <span class="ltitle">套餐2<em>80元/人</em><em class="desp">代办乘机手续+快速安检通道</em></span>
+                            <span class="rtitle"><i data-service="套餐2" data-price="80" class="am-icon-circle-o"></i></span>
+                        </li>
+                        <li style="padding-top:0.3rem;margin-top:0.5rem;">
+                            <span class="ltitle">套餐3<em>200元/人</em><em class="desp">代办乘机手续+快速安检通道+头舱休息室</em></span>
+                            <span class="rtitle"><i data-service="套餐3" data-price="200" class="am-icon-circle-o"></i></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="blockinput">
+                <div class="leftPanel"><span class="title" style="padding-top:1.7rem;">报销凭证</span></div>
+                <div class="rightPanel">
+                    <i id="check_bx" style="font-size:2.2rem;margin-top:1.5rem;color:#aaa;" class="am-icon-square-o"></i>
+                </div>
+
+                <div id="div_bx" class="innerPanel am-animation-slide-bottom">
+                    <ul>
+                        <li>
+                            <span class="title">凭证类型</span>
+                            <span class="content">行程单+附加产品发票</span>
+                        </li>
+                        <li>
+                            <span class="title">配送方式</span>
+                            <span class="content">快递  10元</span>
+                        </li>
+                    </ul>
+                    <div class="inputList">
+                        <input id="Post_Name" class="am-form-field" placeholder="收件人姓名" />
+                        <input id="Post_Tel" class="am-form-field" placeholder="收件人手机号码" />
+                        <input id="Post_Addr" class="am-form-field" placeholder="详细地址" />
+                    </div>
+                </div>
+            </div>
+            <div class="blockinput" style="height:5rem;">
+                <div class="leftPanel" style="margin-top:1rem;">
+                    <span class="title">优惠券<em>已选0元</em></span>
+                </div>
+                <div class="rightPanel">
+                    <i style="font-size:2.2rem;color:#a01678;margin-top:1.5rem;" class="am-icon-angle-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="am-modal-actions" id="my-actions">
+        <div class="am-modal-actions-group">
+            <div class="CheckFliht" style="display:none;">
+                <span style="color:red;">注 <em style="color:red;">请仔细核对行程，确保无误后进行支付！</em></span>
+                <span>去 <em></em></span>
+                <span style="display:none;">回 <em></em></span>
+            </div>
+            <div class="PriceList">
+                <span class="title">成人</span>
+                <span>机票：<em>--</em></span>
+                <span>基建：<em>--</em></span>
+                <span>燃油：<em>--</em></span>
+                <span>保险：<em>--</em></span>
+                <span>小计：<em>--</em></span>
+                <span class="title">儿童</span>
+                <span>机票：<em>--</em></span>
+                <span>基建：<em>--</em></span>
+                <span>燃油：<em>--</em></span>
+                <span>保险：<em>--</em></span>
+                <span>小计：<em>--</em></span>
+                <span style="display:none;" class="title">报销凭证邮寄费：<em>10</em>元</span>
+                <span style="display:none;" class="title">贵宾服务：<em></em></span>
+                <span class="title">优惠：<em>0元</em></span>
+                <span class="count">合计：<em>--</em></span>
+            </div>
+        </div>
+        <div class="am-modal-actions-group">
+            <button class="am-btn am-btn-default am-btn-block" data-am-modal-close>关&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;闭</button>
+            <button id="btn_ToPay" class="am-btn am-btn-warning am-btn-block am-hide">确定支付</button>
+        </div>
+    </div>
+
+    <header class="am-topbar am-topbar-fixed-bottom" style="padding-top:0.4rem;padding-right:1rem; background-color:#fff; margin-bottom:0;">
+        <div id="topBar" class="am-g" style="color:#fff;font-size:1.8rem;">
+            <div class="am-u-sm-4" style="font-size:2.2rem;font-weight:700;color:#ff6a00;">￥0</div>
+            <div class="am-u-sm-4"><button id="btn_price_show" type="button" class="am-btn am-radius am-btn-block am-btn-link">费用明细</button></div>
+            <div class="am-u-sm-4" style="padding-right:3rem;"><button id="btn_toSave" type="button" class="am-btn am-radius am-btn-warning">去支付</button></div>
+        </div>
+    </header>
+
+    <!--乘客信息-->
+    <div class="farePanel am-animation-slide-right">
+        <div style="margin:0.8rem;background:#fff;border-radius:0.2rem;height:auto;">
+            <div id="Div_ZM" style="width:100%;margin-top:0.5rem;">
+                <span class="maintitle">
+                    字母检索
+                </span>
+                <span class="mainbtn">
+                    <i id="btn_fare_hide" style="font-size:1.6rem;" class="am-icon-arrow-circle-o-left"> 完成</i>
+                </span>
+                <div style="clear:both;"></div>
+                <ul class="Alllater">
+                    <li><span>A</span></li>
+                    <li><span>B</span></li>
+                    <li><span>C</span></li>
+                    <li><span>D</span></li>
+                    <li><span>E</span></li>
+                    <li><span>F</span></li>
+                    <li><span>G</span></li>
+                    <li><span>H</span></li>
+                    <li><span>I</span></li>
+                    <li><span>J</span></li>
+                    <li><span>K</span></li>
+                    <li><span>L</span></li>
+                    <li><span>M</span></li>
+                    <li><span>N</span></li>
+                    <li><span>O</span></li>
+                    <li><span>P</span></li>
+                    <li><span>Q</span></li>
+                    <li><span>R</span></li>
+                    <li><span>S</span></li>
+                    <li><span>T</span></li>
+                    <li><span>U</span></li>
+                    <li><span>V</span></li>
+                    <li><span>W</span></li>
+                    <li><span>X</span></li>
+                    <li><span>Y</span></li>
+                    <li><span>Z</span></li>
+                </ul>
+                <span class="am-btn am-btn-link" id="btn_showAll">显示全部</span>
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+        <div id="Div_ZMJS" style="margin:0.8rem;background:#fff;border-radius:0.2rem;overflow:auto;height:360px;overflow-y:auto;">
+            <ul class="FareList">
+                
+            </ul>
+        </div>
+        <div style="width:100%;height:75px;">
+            &nbsp;
+        </div>
+    </div>
+
+    <!--优惠券信息-->
+    <div class="VoucherPanel am-animation-slide-right">
+        <ul></ul>
+        <div style="width:100%;height:75px;">
+            &nbsp;
+        </div>
+    </div>
+
+    <div style="display:none;" id="fare_template">
+        <div class="cardadd" id="Fare_{num}" data-faretype="{fareType_value}">
+            <span class="tinput">
+                <input id="FareName_{num}" value="{namevalue}" class="am-form-field" placeholder="姓名" />
+            </span>
+            <span class="tselect">
+                <select class="am-form-field" id="FareType_{num}">
+                    <option value="" >选择类别</option>
+                    <option value="1" {faretype1}>成人</option>
+                    <option value="2" {faretype2}>儿童(2-12岁)</option>
+                </select>
+            </span>
+            <span class="tinput">
+                <input id="FareCard_{num}" value="{cardvalue}" class="am-form-field" placeholder="证件号码" />
+            </span>
+            <span class="tselect">
+                <select class="am-form-field" id="CardType_{num}">
+                    <option value="身份证">身份证</option>
+                    <option value="护照">护照</option>
+                </select>
+            </span>
+            <div style="clear:both;"></div>
+            <div class="tsubmit">
+                <span style="float:left;width:70%;display:block;color:#aaa;padding-top:0.8rem;">请您仔细核实信息！</span>
+                <span style="float:left;width:30%;display:block;text-align:right;">
+                    <button type="button" data-id="{id}" data-num="{num}" style="margin-top:0.5rem;" class="am-btn am-radius am-btn-xs am-btn-danger">删除</button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="my-modal-loading">
+        <div class="am-modal-dialog" style="border-radius:0.3rem;">
+            <div class="am-modal-hd" style="color:#008ed6;">正在提交订单...</div>
+            <div class="am-modal-bd">
+                <span style="color:#008ed6;" class="am-icon-spinner am-icon-spin"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">提醒</div>
+            <div class="am-modal-bd">
+                
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-chd">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">提醒</div>
+            <div class="am-modal-bd">
+                儿童不能单独订票
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+
+    <ul style="display:none;" id="template_voucher">
+        <li>
+            <div class="leftTitle">
+                <span>{voucherType}</span><br />
+                {voucherPrice}<em>元</em>
+            </div>
+            <div class="midInfo">
+                {voucherTitle}
+                <em>有效期至：{voucherDate}</em>
+            </div>
+            <div data-type="{type}" class="rightPrice">
+                <i class="am-icon-angle-down"></i>
+            </div>
+            <div style="clear:both;"></div>
+            <div class="ruleDesp am-animation-fade">
+
+            </div>
+            <div data-id ="{id}" data-price="{price}" data-title="{title}" data-type="{type}" class="bottomBtn">
+                立即使用
+            </div>
+        </li>
+    </ul>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/amazeui.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/common.js?v=20170531"></script>
+    <script src="js/c_order.js?v=20170527"></script>
+</body>
+</html>

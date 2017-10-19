@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+  <link href="style/c_set_list.css" rel="stylesheet" />
+    <script src="js/count.js"></script>
+    <style>
+        body {
+            background: url('images/bg.jpg') no-repeat center fixed;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+    <div class="topMenu" style="height:60px;width:100%;text-align:center;padding-top:7px;color:#fff;font-size:3rem;">
+        低价提醒
+    </div>    
+    <div style="background-color:#f7f7f7;height:600px;padding-top:10px;">
+        <div id="div_addSet" style="font-family:'SimHei';background-color:#fff;text-align:center;color:#be1884;height:4rem;padding-top:0.8rem;font-size:1.8rem;margin-bottom:1.5rem;">
+            <span style="font-size:2rem;font-weight:600;">+</span> 添加提醒
+        </div>
+        <div id="div_info" style="text-align:center;margin-top:0px;padding:2px;margin-bottom:2rem;">
+            <ul id="ul_order" style="list-style:none;margin:0;padding:0;"></ul>
+        </div>
+        <div id="div_setNo" style="text-align:center;margin-top:150px;color:#777;font-size:1.4rem;">
+            <img src="images/setNo.jpg" style="width:20%;"/>
+            <span style="display:block;">亲，你还没有添加任何低价提醒</span>
+        </div>
+    </div>
+    <!--隐藏区域-->
+    <ul style="display:none;" id="template_SetList">
+        <li style="padding-top:5px;padding-bottom:5px;font-size:1.5rem;">
+            <div class="am-g" style="margin-top:0.5rem;">
+                <div class="am-u-sm-4" style="font-size:1.6rem;color:#888;text-align:left;">{RecordDate}</div>
+                <div class="am-u-sm-8" style="font-size:1.4rem;color:#888;border-bottom:1px dashed #ddd;text-align:left;height:2.8rem;">
+                    <span style="font-size:1.6rem;font-weight:600;">{FlihtFrom}</span>
+                    <i class="am-icon-long-arrow-right"></i>
+                    <span style="font-size:1.6rem;font-weight:600;">{FlihtTo}</span>
+                </div>
+            </div>
+            <div class="am-g">
+                <div class="am-u-sm-4" style="font-size:1.3rem;text-align:left;">
+                    <a class="am-badge am-badge-{stateTheme} am-radius">{state}</a>
+                </div>
+                <div class="am-u-sm-8" style="font-size:1.4rem;color:#888;border-bottom:1px dashed #ddd;padding-top:0.5rem;padding-bottom:0.5rem;text-align:left;">
+                    {Date}
+                </div>
+            </div>
+            <div class="am-g">
+                <div class="am-u-sm-4" style="font-size:1.4rem;text-align:left;">
+
+                </div>
+                <div class="am-u-sm-8" style="font-size:1.4rem;color:#888;border-bottom:1px dashed #ddd;padding-top:0.5rem;padding-bottom:0.5rem;text-align:left;">
+                   {Price}
+                </div>
+            </div>
+            <div class="am-g {btnhide}" style="margin-top:1rem;border-bottom:1px dashed #ddd;padding-bottom:0.5rem;">
+                <div class="am-u-sm-4" style="font-size:1.4rem;color:#888;">
+
+                </div>
+                <div class="am-u-sm-8" style="font-size:1.4rem;text-align:left;">
+                    <button data-id="{id}" type="button" class="am-btn am-btn-xs am-btn-danger am-radius">取消提醒</button>
+                    <button data-id="{id}" type="button" style="margin-left:1rem;" class="am-btn am-btn-xs am-btn-secondary am-radius am-hide">申请退改签</button>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">操作提示</div>
+            <div class="am-modal-bd">
+                确定要取消该提醒吗！
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                <span id="btn_cancel" class="am-modal-btn" data-am-modal-confirm>确定</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="my-modal-loading">
+        <div class="am-modal-dialog" style="border-radius:0.3rem;">
+            <div class="am-modal-hd" style="color:#008ed6;">正在处理中...</div>
+            <div class="am-modal-bd">
+                <span style="color:#008ed6;" class="am-icon-spinner am-icon-spin"></span>
+            </div>
+        </div>
+    </div>
+    <!--隐藏区域End-->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/amazeui.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/json2.js"></script>
+<script src="js/c_set_list.js?v=20170914"></script>
+<script src="js/Main.js"></script>
+<script>
+    _C.Init(_SetList);
+</script>
+
+</body>
+</html>

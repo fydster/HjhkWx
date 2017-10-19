@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link rel="stylesheet" href="/assets/css/amazeui.min.css" />
+    <style>
+        .topImg{
+            width:100%;
+        }
+        .topBarBg{
+            padding-top:10px;background: linear-gradient(#871779, #d01577); margin-bottom:0; text-shadow:2px 2px 2px #555;
+        }
+        .content{
+            margin-top:50px;
+        }
+        .priceList ul{
+            margin:0;
+            padding:0.5rem;
+        }
+        .priceList ul li{
+            list-style:none;
+            width:100%;
+            padding:0.2rem;
+            display:inline-block;
+            margin-bottom:0.6rem;
+            border-bottom:1px solid #ddd;
+        }
+        .am-u-sm-4 img{
+            width:6rem;
+        }
+        .am-u-sm-7 .cityValue{
+            color:#333;
+            font-size:1.6rem;
+            display:block;
+        }
+        .am-u-sm-7 .cityNum{
+            color:#666;
+            font-size:1.4rem;
+            display:block;
+            margin-top:0.4rem;
+        }
+        .am-u-sm-1{
+            text-align:right;
+            padding-right:1rem;
+            padding-top:1.3rem;
+        }
+    </style>
+    <script src="/js/count.js"></script>
+</head>
+<body style="margin:0;padding:0;">
+    <header class="am-topbar am-topbar-fixed-top am-topbar-inverse topBarBg">
+        <div class="am-g" style="color:#fff;font-size:2rem;">
+            <div class="am-u-sm-2"><i class="am-icon-chevron-left"></i></div>
+            <div class="am-u-sm-8" style="text-align:center;"></div>
+            <div class="am-u-sm-2"><i class="am-icon-home"></i></div>
+        </div>
+    </header>
+    <div class="content">
+        <div class="priceList">
+            <ul>
+
+            </ul>
+        </div>
+    </div>
+
+    <ul style="display:none;" id="template">
+        <li class="am-g" data-url="{url}">
+            <div class="am-u-sm-4">
+                <img src="{logourl}" class="am-radius">
+            </div>
+            <div class="am-u-sm-7">
+                <span class="cityValue">{name}</span>
+                <span class="cityNum">{num}个</span>
+            </div>
+            <div class="am-u-sm-1">
+                <i class="am-icon-angle-right"></i>
+            </div>
+        </li>
+    </ul>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/amazeui.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/json2.js"></script>
+    <script src="/js/common.js?v=20161111"></script>
+    <script src="/js/c_travel_city.js?v=20170925"></script>
+</body>
+</html>

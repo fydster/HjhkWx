@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+    <link href="style/c_train_trip.css?v=20170719" rel="stylesheet" />
+    <script src="js/count.js"></script>
+    <style>
+    body{
+            background: url('images/bg.jpg') no-repeat;
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+    <div style="height:75px;width:100%;padding-top:10px;">
+        <div id="topCityBar" class="am-g" style="color:#fff;font-size:2.4rem;height:2.6rem;margin-bottom:0.5rem;">
+            <div class="am-u-sm-3"></div>
+            <div class="am-u-sm-6" data-date="" id="s-datepicker" data-am-datepicker="{theme:'warning'}" style="text-align:center;font-weight:bold;">
+                <span></span>
+                <span style="margin:0 0.5rem;"><img src="img/topArrow.png" style="width:15%;" /></span>
+                <span></span>
+            </div>
+            <div class="am-u-sm-3"></div>
+        </div>
+        <div id="BottomCityBar" class="am-g" style="color:#fff;font-size:1.6rem;height:2.6rem;margin-bottom:0.5rem;">
+            <div class="am-u-sm-3" data-type="-1"><i style="font-size:1.6rem;margin-right:0.4rem;" class="am-icon-angle-left"></i> 前一天</div>
+            <div class="am-u-sm-6" style="border-right:1px solid #fff;border-left:1px solid #fff;text-align:center;font-weight:bold;">
+                <span></span>
+                <span><i class="am-icon-calendar"></i></span>
+            </div>
+            <div class="am-u-sm-3" data-type="1">后一天 <i style="font-size:1.6rem;margin-left:0.4rem;" class="am-icon-angle-right"></i></div>
+        </div>
+    </div>
+    <div style="width:100%;margin-bottom:60px;z-index:10;">
+        <ul class="TripList">
+            
+        </ul>
+    </div>
+    <div id="btn_sort" style="position:fixed;bottom:0;left:0;width:100%;height:4rem;padding:0;">
+        <div data-n="0" style="width:50%;float:left; text-align:center;background-color:#dcdddd;color:#333;font-size:1.6rem;margin:0;height:4rem;padding-top:0.8rem;">价格低到高</div>
+        <div data-n="1" style="width:50%;float:left;text-align:center;background-color:#eeeeef;color:#a72185;font-size:1.6rem;margin:0;height:4rem;padding-top:0.8rem;">时间早到晚</div>
+    </div>
+    <!--隐藏区域-->
+    <div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="my-modal-loading">
+        <div class="am-modal-dialog" style="border-radius:0.3rem;">
+            <div class="am-modal-hd" style="color:#a01678;">正在查询中...</div>
+            <div class="am-modal-bd">
+                <span style="color:#a01678;" class="am-icon-spinner am-icon-spin"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-1">
+        <div class="am-modal-dialog" style="border-radius:0.3rem;">
+            <div class="am-modal-hd">
+                退改签规定
+                <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+            </div>
+            <div class="am-modal-bd" style="text-align:left;">
+                <span style="font-weight:bold;font-size:1.3rem;">变更：</span><span style="font-size:1.3rem;color:#666;" id="bgrule"></span><br />
+                <span style="font-weight:bold;font-size:1.3rem;">退票：</span><span style="font-size:1.3rem;color:#666;" id="tprule"></span>
+            </div>
+        </div>
+    </div>
+    
+    <ul style="display:none;" id="train_template">
+        <li class="tripSort" id="F_{trainNo}" data-lowprice="{lowPrice}" data-stime="{sTime}" data-ttime="{tTime}" data-seat="{seat}" data-ishid="0" data-isks="{isks}">
+            <div class="tripBar">
+                <div class="LeftBar">
+                    <em class="emInfo">{sTime}</em>
+                    <em class="emInfo">{sCity}</em>
+                </div>
+                <div class="MidBar" style="text-align:center;">
+                    <span class="spanInfo">{trainNo}</span>
+                    <img src="img/midArrow.png" style="width:50%;margin-top:-0.5rem;" />
+                </div>
+                <div class="RightBar">
+                    <em class="emInfo">{tTime}</em>
+                    <em class="emInfo">{tCity}</em>
+                </div>
+                <div class="rightPrice">
+                    <span>{Price}</span>
+                    <em><i class="am-icon-angle-down"></i></em>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+            <div class="infoList am-animation-slide-bottom">
+                <ul>
+                    {seatList}
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul style="display:none;" id="class_template">
+        <li>
+            <div class="infoPrice">
+                <span class="price"><em>￥</em>{price}<label>{priceMemo}</label></span>
+                <span class="zhekou">{seatName}<em class="wSign">{piaoshu}</em></span>
+            </div>
+            <div class="infoBtn">
+                <button data-price="{price}" data-querykey="{queryKey}" data-trainno="{trainNo}" data-seatname="{seatName}" data-seat="{seat}" data-isps="{isPs}" data-stime="{sTime}" data-ttime="{tTime}" data-sCity="{sCity}" data-tCity="{tCity}" data-sCode="{sCode}" data-tCode="{tCode}" type="button" class="am-btn am-radius am-btn-warning">预定</button>
+            </div>
+        </li>
+    </ul>
+    <!--内容区End-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/amazeui.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/c_train_trip.js?v=20170925"></script>
+    <script src="js/Main.js?v=20170925"></script>
+    <script>
+        _C.Init(_Trip);
+    </script>
+</body>
+</html>

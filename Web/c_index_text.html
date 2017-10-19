@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link href="js/unslider/css/unslider.css" rel="stylesheet" />
+    <link href="js/unslider/css/unslider-dots.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.1/weui.min.css">
+    <style>
+        #topMenu .weui-navbar__item:after {
+            border-right: 0;
+            color: #999;
+        }
+
+        #topMenu .weui-navbar-onborder {
+            border-bottom: 3px solid #a01678;
+            color: #a01678;
+        }
+
+        #topMenu {
+            height: 3.2rem;
+        }
+
+        .sCity {
+            padding: 0.6rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+            .sCity .cityDesp {
+                width: 100%;
+                display: block;
+                font-size: 0.8rem;
+                height: 1rem;
+                color: #999;
+            }
+
+            .sCity .City {
+                display: block;
+                height: 1.8rem;
+                padding-top: 0.2rem;
+                font-weight: 500;
+                font-size: 1.4rem;
+            }
+
+            .sCity .weui-flex__item {
+                text-align: center;
+            }
+
+            .sCity .title {
+                color: #999;
+                font-size: 0.8rem;
+                text-align: center;
+                padding-top: 0.3rem;
+            }
+
+            .sCity .date {
+                color: #333;
+                font-size: 1.1rem;
+                text-align: right;
+            }
+
+            .sCity .week {
+                color: #333;
+                font-size: 1.1rem;
+                text-align: center;
+            }
+    </style>
+</head>
+<body>
+    <!-- 容器 -->
+    <div class="weui-tab">
+        <div class="weui-navbar" id="topMenu">
+            <a data-on="img/traindOn.png" data-default="img/traind.png" class="weui-navbar__item weui-bar__item--on weui-navbar-onborder" href="#tab1">
+                <div class="weui-tabbar__icon">
+                    <img src="img/traindOn.png" style="width:70%;height:70%;" alt="">
+                </div>动车票
+            </a>
+            <a data-on="img/planeOn.png" data-default="img/plane.png" class="weui-navbar__item" href="#tab2">
+                <div class="weui-tabbar__icon"><img src="img/plane.png" style="width:60%;height:60%;" alt=""></div>飞机票
+            </a>
+            <a data-on="img/trainOn.png" data-default="img/train.png" class="weui-navbar__item" href="#tab3">
+                <div class="weui-tabbar__icon">
+                    <img src="img/train.png" style="width:60%;height:60%;" alt="">
+                </div>火车票
+            </a>
+        </div>
+        <div class="banner" style="margin-top:1.4rem;">
+            <ul>
+                <li><img src="ad/ad1.jpg"></li>
+                <li><img src="ad/ad2.jpg"></li>
+            </ul>
+        </div>
+        <div class="weui-tab__bd">
+            <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+                <div class="weui-flex sCity">
+                    <div class="weui-flex__item">
+                        <span class="cityDesp">出发地</span>
+                        <span class="City">太原</span>
+                    </div>
+                    <div class="weui-flex__item">
+                        <img src="img/Mid.png" style="width:40%;padding-top:0.5rem;" />
+                    </div>
+                    <div class="weui-flex__item">
+                        <span class="cityDesp">到达地</span>
+                        <span class="City">北京</span>
+                    </div>
+                </div>
+
+                <div class="weui-flex sCity">
+                    <div class="weui-flex__item title">
+                        出发日期
+                    </div>
+                    <div id="s-datepicker" class="weui-flex__item date" data-am-datepicker="{theme:'warning'}" data-date="">
+                        4月13日
+                    </div>
+                    <div class="weui-flex__item week">
+                        周四
+                    </div>
+                </div>
+
+                <a href="javascript:;" style="margin:0.5rem 0.5rem;background-color:#a01678;color:#fff;" class="weui-btn">动车票查询</a>
+            </div>
+            <div id="tab2" class="weui-tab__bd-item">
+
+            </div>
+            <div id="tab3" class="weui-tab__bd-item">
+
+            </div>
+        </div>
+    </div>
+    <div id="bottomMenu" class="weui-tab" style="position:fixed;bottom:0;left:0;width:100%;">
+        <div class="weui-tabbar">
+            <a href="javascript:;" class="weui-tabbar__item weui-bar__item--on">
+                <div class="weui-tabbar__icon">
+                    <img src="img/homeOn.png" alt="">
+                </div>
+                <p class="weui-tabbar__label" style="color:#a01678;">首页</p>
+            </a>
+            <a href="javascript:;" class="weui-tabbar__item">
+                <div class="weui-tabbar__icon">
+                    <img src="img/list.png" alt="">
+                </div>
+                <p class="weui-tabbar__label">行程</p>
+            </a>
+            <a href="javascript:;" class="weui-tabbar__item">
+                <div class="weui-tabbar__icon">
+                    <img src="img/uc.png" alt="">
+                </div>
+                <p class="weui-tabbar__label">我的</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- body 最后 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/unslider/js/unslider-min.js"></script>
+    <script src="assets/js/amazeui.min.js"></script>
+    <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+
+    <script>
+        $("#topMenu").find("a").css("font-size", "1.2rem");
+        $("#topMenu").find("a").css("font-weight", "600");
+        $("#topMenu").find("a").css("color", "#888");
+        $("#topMenu").find(".weui-bar__item--on").css("background-color", "#ffffff");
+        $("#topMenu").find(".weui-bar__item").css("background-color", "#ffffff");
+        $("#topMenu").find(".weui-bar__item--on").css("color", "#a01678");
+
+        $("#topMenu").find("a").click(function () {
+            $("#topMenu").find("a").removeClass("weui-navbar-onborder");
+            $("#topMenu").find("a").css("color", "#666666");
+            $(this).addClass("weui-navbar-onborder");
+            $(this).css("color", "#a01678");
+            initTopMenu();
+            $(this).find("img").attr("src", $(this).attr("data-on"));
+        });
+
+        function initTopMenu() {
+            $("#topMenu").find("a").each(function () {
+                $(this).find("img").attr("src", $(this).attr("data-default"));
+            });
+        }
+
+        $('.banner').unslider({
+            autoplay: true,
+            nav: false,
+            arrows: false
+        });
+
+        $('#s-datepicker').datepicker({
+            onRender: function (date, viewMode) {
+                var nowTemp = new Date();
+                var nowDay = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0).valueOf();
+                var nowMoth = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), 1, 0, 0, 0, 0).valueOf();
+                var nowYear = new Date(nowTemp.getFullYear(), 0, 1, 0, 0, 0, 0).valueOf();
+                var viewDate = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0).valueOf();
+                return date.valueOf() < viewDate ? 'am-disabled' : '';
+            }
+        }).
+          on('changeDate.datepicker.amui', function (event) {
+              var d = new Date(event.date).pattern("MM月dd日")
+              $("#s-datepicker").find("em").eq(0).text(d);
+              //$("#Div_Hd").show();
+              var week = _C.getWeek(new Date(event.date).pattern("yyyy-MM-dd"));
+              $("#s-datepicker").find("em").eq(1).text(week);
+              $(".bt-Logo").show();
+              $("#s-datepicker").attr("data-date", event.date);
+              _Index.gzDate(0);
+          });
+
+    </script>
+</body>
+</html>

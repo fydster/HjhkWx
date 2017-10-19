@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+  <link href="js/datepicker/datepicker.css" rel="stylesheet" />
+  <script src="js/count.js"></script>
+    <style>
+        .card-list{
+              list-style:none;
+              margin:0;
+              padding:0 0.5rem;
+          }
+          .card-list li{
+              display:inline-block;
+              padding:0.5rem 0;
+              width:100%;
+              border-bottom:1px solid #eee;
+          }
+          .card-list .leftTitle{
+              width:80%;
+              float:left;
+              font-size:0.7rem;
+              color:#333;
+          }
+          .card-list .rightTitle{
+              width:20%;
+              float:left;
+              font-size:0.7rem;
+              color:#ff6a00;
+              text-align:right;
+          }
+
+          .card-list .rightTitle em{
+              font-size:0.6rem;
+              font-style:normal;
+          }
+          .card-list .rightTitle span{
+              color:#999;
+              text-decoration:line-through;
+          }
+
+          .card-list .leftTitleB{
+              width:70%;
+              float:left;
+              font-size:0.6rem;
+              color:#666;
+          }
+          .card-list .leftTitleB span{
+              font-size:0.6rem;
+              color:#5cb8fa;
+              display:block;
+          }
+          .card-list .rightTitleB{
+              width:30%;
+              float:left;
+              font-size:0.7rem;
+              color:#ff6a00;
+              text-align:right;
+          }
+          .sign-list{
+              list-style:none;
+              margin:0;
+              padding:0;
+          }
+          .sign-list li{
+              width:33%;
+              float:left;
+          }
+          .sign-list li span{
+              border:1px solid #eee;
+              border-radius:0.2rem;
+              padding:0.2rem;
+              color:#666;
+              text-align:center;
+              display:block;
+              margin:0.2rem;
+          }
+    </style>
+</head>
+<body>
+    <div class="weui-search-bar" id="searchBar">
+        <form class="weui-search-bar__form">
+            <div class="weui-search-bar__box">
+                <i class="weui-icon-search"></i>
+                <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+                <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+            </div>
+            <label class="weui-search-bar__label" id="searchText">
+                <i class="weui-icon-search"></i>
+                <span>搜索</span>
+            </label>
+        </form>
+        <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+    </div>
+    <div class="weui-flex" style="border:1px solid #eee;height:2.4rem;display:none;" id="div_provice">
+        <div class="weui-flex__item" style="padding:0.6rem;color:#666;">
+            <span style="border:1px solid #eee;border-radius:0.2rem;padding:0.2rem 1rem;"></span>
+        </div>
+        <div class="weui-flex__item" style="padding:0.6rem;text-align:right;color:#666;">
+            查看更多省份<img src="images/chevron_right.png" style="width:0.4rem;margin-left:0.2rem;" />
+        </div>
+    </div>
+    <ul class="sign-list">
+
+    </ul>
+    <ul class="card-list"></ul>
+
+    <ul id="template" style="display:none;">
+        <li>
+            <div>
+                <div class="leftTitle">
+                    {scenicName}
+                </div>
+                <div class="rightTitle">
+                    <em>￥</em>{salePrice}<em>起</em>
+                </div>
+            </div>
+            <div style="clear:both;height:20px;width:100%;"></div>
+            <div>
+                <div class="leftTitleB">
+                    {address}
+                    <span>{bizTime}</span>
+                </div>
+                <div class="rightTitleB">
+                    <a href="javascript:;" data-id="{scenicId}" class="weui-btn weui-btn_mini weui-btn_primary">预定</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/swiper.min.js"></script>
+    <script src="//r.edmp.cc/seascape/dateclass.js"></script>
+    <script src="js/datepicker/date-range-picker.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/common.js?v=20170531"></script>
+    <script src="js/c_travel_search.js"></script>
+</body>
+</html>

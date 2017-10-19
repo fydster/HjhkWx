@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>山西出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="/assets/js/jquery.min.js"></script>
+    <style>
+        body {
+            background-color: #f74a43;
+            margin:0;
+            padding:0;
+        }
+        span{
+            display:block;
+            line-height:2rem;
+        }
+    </style>
+
+</head>
+<body>
+    <img src="topnew.jpg" style="width:100%;margin-top:20px;"/>
+    <div id="divImg">
+        <div id="gua1" style="width:295px;margin:0 auto;">
+            <img id="gua1_img" src="/images/gua_image.png" style="position: absolute;">
+            <canvas id="front" style="position:absolute;no-repeat" />
+        </div>
+    </div>
+    <div style="text-align:center;display:block;position:fixed;bottom:20px;left:0;">
+        <img id="go_img" src="fundbtn.png" style="width:75%;display:none;">
+    </div>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/json2.js"></script>
+    <script src="/js/common.js?v=20170420"></script>
+    <script src="/js/c_Gift_gg.js"></script>
+    <script type="text/javascript">
+        var gua = 1, re = 2;
+        var isShow = false;
+        var imgSrc = '/active/student/fund002.jpg';
+        var tempimgSrc = _C.getParam("giftType");
+        if (tempimgSrc.length > 0) {
+            imgSrc = '/active/student/fund00'+tempimgSrc+'.jpg';
+        }
+
+        function showBtn() {
+            _Fly.addGift();
+            setTimeout(function () {
+                $("#go_img").fadeIn();
+                $("#go_img").click(function () {
+                    _Fly.HxGift();
+                });
+            }, 1000);
+        }
+
+        function showdiv() {
+            document.getElementById("bg1").style.display = "block";
+            document.getElementById("show").style.display = "block";
+        }
+
+        function hidediv() {
+            document.getElementById("bg1").style.display = 'none';
+            document.getElementById("show").style.display = 'none';
+        }
+
+        $(function () {
+            var width = $("#show_img").width();
+            var height = $("#show_img").height();
+            var winheight = $(window).height();
+            var winwidth = $(window).width();
+            $("#show").css({ "width": 300 + "px", "height": 160 + "px", "overflow": "hidden", "margin-left": (winwidth - 320) / 2 + "px", "margin-top": winheight / 3 + "px" });
+            $("#show_btn").css({ "width": 176 * 0.5 + "px", "height": 76 * 0.5 + "px" });
+            $("#gua_div").html("x" + gua);
+            $("#re_div").html("x" + re);
+
+            if (gua == 0) {
+                showdiv();
+            }
+        })
+
+        $("img").load(function () {
+            var body_width = $(window).width();
+            var body_height = $(window).height();
+            $("#gua1_img").width(300).height(160);
+            var height = 141;
+            var width = 285;
+            var bg2_width = $("#bg2_img").width();
+            var bg2_height = $("#bg2_img").height();
+
+            $("#gua1").css({ "margin-top": "20px" });
+
+            $("#notify").css({ "margin-top": "200px" });
+            $("#nImg").width(300).height(101);
+
+            $("#di").css({ "margin-top": "50px" });
+            $("#di_img").width(414 * 0.7).height(24 * 0.7);
+
+
+            $("#gua").width(width / 10).height(width / 10);
+            $("#gua_div").css({ "line-height": width / 10 + "px", "width": width / 10 + "px", "height": width / 10 + "px", "margin-top": "-" + ($("#gua").height()) + "px", "margin-left": $("#gua").height() + 5 + "px", "font-size": $("#gua").height() / 1.6 + "px" });
+            $("#re").width(width / 10).height(width / 10);
+            $("#re_div").css({ "line-height": width / 10 + "px", "width": width / 10 + "px", "height": width / 10 + "px", "margin-top": "-" + ($("#gua").height()) + "px", "margin-left": $("#gua").height() + 5 + "px", "font-size": $("#gua").height() / 1.6 + "px" });
+            var gua1_img_width = $("#gua1_img").width();
+            $("#front").css({ "margin-top": 9.3 + "px", "margin-left": 7.5 + "px" });
+            $("#bg").width("100%").height($(window).height() - 1);
+            if (gua > 0) {
+                bodys(height, width);
+            }
+        });
+        function bodys(height, width) {
+            var img = new Image();
+            var canvas = document.querySelector('canvas');
+            canvas.style.position = 'absolute';
+            img.addEventListener('load', function (e) {
+                var ctx;
+                var w = width, h = height;
+                var offsetX = canvas.offsetLeft, offsetY = canvas.offsetTop;
+                var mousedown = false;
+                function layer(ctx) {
+                    ctx.fillStyle = 'gray';
+                    ctx.fillRect(0, 0, w, h);
+                }
+                function eventDown(e) {
+                    e.preventDefault();
+                    mousedown = true;
+                }
+                function eventUp(e) {
+                    e.preventDefault();
+                    mousedown = false;
+                    if (!isShow) {
+                        isShow = true;
+                        showBtn();
+                    }
+                }
+                function eventMove(e) {
+                    e.preventDefault();
+                    if (mousedown) {
+                        if (e.changedTouches) {
+                            e = e.changedTouches[e.changedTouches.length - 1];
+                        }
+                        var x = (e.clientX + document.body.scrollLeft || e.pageX) - offsetX || 0,
+                        y = (e.clientY + document.body.scrollTop || e.pageY) - offsetY || 0;
+                        with (ctx) {
+                            beginPath()
+                            arc(x, y, 15, 0, Math.PI * 2);
+                            fill();
+                        }
+                    }
+                }
+                canvas.width = w;
+                canvas.height = h;
+
+                canvas.style.backgroundImage = 'url(' + img.src + ')';
+                ctx = canvas.getContext('2d');
+                ctx.fillStyle = 'b9b9b9';
+                ctx.fillRect(0, 0, w, h);
+
+                layer(ctx);
+                ctx.globalCompositeOperation = 'destination-out';
+                canvas.addEventListener('touchstart', eventDown);
+                canvas.addEventListener('touchend', eventUp);
+                canvas.addEventListener('touchmove', eventMove);
+                canvas.addEventListener('mousedown', eventDown);
+                canvas.addEventListener('mouseup', eventUp);
+                canvas.addEventListener('mousemove', eventMove);
+            });
+
+            img.src = imgSrc;
+            (document.body.style);
+        }
+    </script>
+</body>
+</html>

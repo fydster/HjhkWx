@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>和女神一起泡温泉</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="/assets/css/amazeui.min.css" />
+    <style>
+    </style>
+</head>
+<body>
+    <!--内容区Start-->
+    <div style="text-align:center;margin-top:5px;">
+        <i class="am-icon-check-circle" style="font-size:7rem;color:#5eb95e;"></i>
+    </div>
+    <div id="div_info" style="text-align:center;margin-top:0px;padding:20px;">
+        <span style="font-size:2.2rem;"></span>
+        <span style="font-size:1.5rem;color:#cc116a;display:block;margin-top:10px;">
+
+        </span>
+        <span style="font-size:1.8rem;color:#333;display:block;margin-top:10px;">
+
+        </span>
+        <br />
+        <div>
+            <img src="code.jpg" style="width:13rem;" />
+            <br /><span style="font-size:1.2rem;color:#666;">长按识别二维码添加客服微信</span>
+        </div>
+    </div>
+    <!--内容区End-->
+    <!--隐藏区域-->
+    <!--隐藏区域End-->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/amazeui.min.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/common.js"></script>
+    <script language="javascript" type="text/javascript">
+        var s = _C.getParam("Fid");
+        $("#div_info").find("span").eq(0).text("恭喜，抢购成功！");
+        $("#div_info").find("span").eq(1).text("请持抢票成功的兑换码于活动结束一周内至海景航空领取梦幻海纸质名片，逾期未领取者视为自动放弃。");
+        $("#div_info").find("span").eq(2).text("兑换码[ " + s + " ]");
+    </script>
+</body>
+</html>

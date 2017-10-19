@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="alternate icon" type="image/png" href="img/logo.png">
+    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+    <link href="style/c_order.css" rel="stylesheet" />
+    <script src="js/count.js"></script>
+</head>
+<body>
+    <div class="am-modal-actions" id="my-actions">
+        <div class="am-modal-actions-group">
+        </div>
+        <div class="am-modal-actions-group">
+            <button class="am-btn am-btn-default am-btn-block" data-am-modal-close>关&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;闭</button>
+            <button id="btn_ToPay" class="am-btn am-btn-warning am-btn-block am-hide">确定支付</button>
+        </div>
+    </div>
+
+    <header class="am-topbar am-topbar-fixed-bottom" style="padding-top:0.4rem;padding-right:1rem; background-color:#fff; margin-bottom:0;">
+        <div id="topBar" class="am-g" style="color:#fff;font-size:1.8rem;">
+            <div class="am-u-sm-4" style="font-size:2.2rem;font-weight:700;color:#ff6a00;">￥0</div>
+            <div class="am-u-sm-4"><button id="btn_price_show" type="button" class="am-btn am-radius am-btn-block am-btn-link">费用明细</button></div>
+            <div class="am-u-sm-4" style="padding-right:3rem;"><button id="btn_toSave" type="button" class="am-btn am-radius am-btn-warning">去支付</button></div>
+        </div>
+    </header>
+
+    
+
+    <div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="my-modal-loading">
+        <div class="am-modal-dialog" style="border-radius:0.3rem;">
+            <div class="am-modal-hd" style="color:#008ed6;">正在提交订单...</div>
+            <div class="am-modal-bd">
+                <span style="color:#008ed6;" class="am-icon-spinner am-icon-spin"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">提醒</div>
+            <div class="am-modal-bd">
+                
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/amazeui.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/common.js?v=20161111"></script>
+    <script src="js/c_order_red.js"></script>
+</body>
+</html>

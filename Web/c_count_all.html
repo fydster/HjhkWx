@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!-- head 中 -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    <style>
+
+    </style>
+</head>
+<body>
+<!-- 容器 -->
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label for="" class="weui-label">选择起始日期</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" id="sDate" type="date" value="">
+            </div>
+        </div>
+        <div class="weui-cell weui-cells_form">
+            <div class="weui-cell__hd">
+                <label class="weui-label">选择截至日期</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" id="eDate" type="date" placeholder="">
+            </div>
+        </div>
+        <div class="weui-form-preview__ft" id="btn_CountYG">
+            <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">总体统计</a>
+            <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">按内部员工统计</a>
+        </div>
+    </div>
+
+    <div class="weui-cells" id="infoList">
+        <div class="weui-cells__title">用户统计</div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>新增用户</p>
+            </div>
+            <div class="weui-cell__ft">0</div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>未关注用户</p>
+            </div>
+            <div class="weui-cell__ft">0</div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>新增关注用户</p>
+            </div>
+            <div class="weui-cell__ft">0</div>
+        </div>
+        <div class="weui-form-preview__ft" id="btn_countType" style="border-bottom:1px solid #eee;">
+            <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">按地区统计</a>
+            <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">按来源统计</a>
+        </div>
+        <div class="weui-cells__title">查询统计</div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>查询总计</p>
+            </div>
+            <div class="weui-cell__ft">0</div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>查询机票</p>
+            </div>
+            <div class="weui-cell__ft">0</div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>查询火车票</p>
+            </div>
+            <div class="weui-cell__ft">0</div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>查询酒店</p>
+            </div>
+            <div class="weui-cell__ft">0</div>
+        </div>
+        <div class="weui-cells__title">分享统计</div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>特价分享朋友圈</p>
+            </div>
+            <div class="weui-cell__ft">0</div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>特价发送给朋友</p>
+            </div>
+            <div class="weui-cell__ft">0</div>
+        </div>
+        <div class="weui-cells__title">订票统计</div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>火车票订单</p>
+            </div>
+            <div class="weui-cell__ft">0</div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>火车票票数</p>
+            </div>
+            <div class="weui-cell__ft">0</div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>飞机票订单</p>
+            </div>
+            <div class="weui-cell__ft">0</div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>飞机票票数</p>
+            </div>
+            <div class="weui-cell__ft">0</div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>酒店订单</p>
+            </div>
+            <div class="weui-cell__ft">0</div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p>酒店房间数</p>
+            </div>
+            <div class="weui-cell__ft">0</div>
+        </div>
+    </div>
+
+    <div id="count_source" class="weui-popup__container">
+        <div class="weui-popup__overlay"></div>
+        <div class="weui-popup__modal">
+                <div class="weui-cells">
+                    
+                </div>
+                <div class="weui-form-preview__ft" id="btn_countType">
+                    <a class="weui-form-preview__btn weui-form-preview__btn_primary close-popup" href="javascript:">关闭</a>
+                </div>
+        </div>
+    </div>
+    <div style="display:none;">
+        <a href="javascript:;" id="btn_showPop" class="open-popup" data-target="#count_source">About</a>
+    </div>
+    
+
+    <!-- body 最后 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/common.js?v=20170531"></script>
+    <script src="js/c_count_all.js?v=20170731"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    <script src="js/count.js"></script>
+    <style>
+        #div_uinfo{
+            height:3rem;
+            padding:0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="div_uinfo" class="weui-flex">
+        <div class="weui-flex__item">
+            <img src="img/user.gif" style="border-radius:50%;border:1px solid #ccc;padding:0.1rem; " width="60" height="60" />
+        </div>
+        <div class="weui-flex__item">
+            <a style="margin-top:1rem;font-size:1rem;"></a>
+        </div>
+        <div class="weui-flex__item">
+        </div>
+    </div>
+    <div style="margin-top:0;" id="menu_01">
+        <div class="weui-cells">
+            <a class="weui-cell weui-cell_access" href="javascript:;">
+                <div class="weui-cell__hd"><img src="images/uc_list.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                <div class="weui-cell__bd">
+                    <p>我的订单</p>
+                </div>
+                <div class="weui-cell__ft"></div>
+            </a>
+            <a class="weui-cell weui-cell_access" href="javascript:;">
+                <div class="weui-cell__hd"><img src="images/uc_tx.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                <div class="weui-cell__bd">
+                    <p>我的提醒</p>
+                </div>
+                <div class="weui-cell__ft"></div>
+            </a>
+            <a class="weui-cell weui-cell_access" href="javascript:;">
+                <div class="weui-cell__hd"><img src="images/uc_voucher.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                <div class="weui-cell__bd">
+                    <p>我的优惠券</p>
+                </div>
+                <div class="weui-cell__ft"></div>
+            </a>
+            <a class="weui-cell weui-cell_access" href="javascript:;">
+                <div class="weui-cell__hd"><img src="images/uc_hotel.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                <div class="weui-cell__bd">
+                    <p>酒店订单</p>
+                </div>
+                <div class="weui-cell__ft"></div>
+            </a>
+            <a class="weui-cell weui-cell_access" href="javascript:;">
+                <div class="weui-cell__hd"><img src="images/uc_refresh.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                <div class="weui-cell__bd">
+                    <p>清除缓存</p>
+                </div>
+                <div class="weui-cell__ft"></div>
+            </a>
+        </div>
+    </div>
+
+    <div id="bottomMenu" style="position:fixed;bottom:0;left:0;width:100%;background-color:#eeeeef;border-top:1px solid #bbb;">
+        <div class="weui-flex" style="padding-top:0.2rem;">
+            <div class="weui-flex__item" style="text-align:center;">
+                <img src="images/Menu_home.png" alt="" style="width:1.5rem;">
+                <p style="color:#555;font-family:'SimHei';font-size:0.7rem;">首页</p>
+            </div>
+            <div class="weui-flex__item" style="text-align:center;">
+                <img src="images/Menu_list.png" alt="" style="width:1.5rem;">
+                <p style="color:#555;font-family:'SimHei';font-size:0.7rem;">行程</p>
+            </div>
+            <div class="weui-flex__item" style="text-align:center;">
+                <img src="images/Menu_user_a.png" alt="" style="width:1.5rem;">
+                <p style="color:#ba3987;font-family:'SimHei';font-size:0.7rem;">我的</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/c_uc_test.js"></script>
+    <script src="js/Main.js"></script>
+    <script>
+        _C.Init(_UC);
+    </script>
+</body>
+</html>

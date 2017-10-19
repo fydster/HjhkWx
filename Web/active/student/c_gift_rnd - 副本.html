@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>山西出行</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+</head>
+<body>
+    <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/json2.js"></script>
+    <script src="/js/common.js?v=20170420"></script>
+    <script>
+        var num = Math.random() * 10;
+        var giftType = 0;
+        if (num == 1 || num == 2) {
+            giftType = 5;
+        }
+        if (num == 3 || num == 4) {
+            giftType = 2;
+        }
+        if (num == 5 || num == 6 || num == 7) {
+            giftType = 3;
+        }
+        if (num == 0 || num == 8 || num == 9) {
+            giftType = 4;
+        }
+        window.location = "c_fund_0001.html?giftType=" + giftType;
+    </script>
+</body>
+</html>

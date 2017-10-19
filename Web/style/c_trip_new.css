@@ -1,0 +1,250 @@
+﻿        #topBar .am-u-sm-6{
+            font-size:1.5rem;
+            height:2.8rem;
+            text-align:center;
+            line-height:1.4rem;
+            padding:0.2rem;
+            letter-spacing:0;
+            font-weight:500;
+            color:#333;
+        }
+        #topBar .am-u-sm-3{
+            font-size:1.4rem;
+            height:2.8rem;
+            text-align:center;
+            line-height:1.4rem;
+            padding:0.2rem;
+            padding-top:0.4rem;
+        }
+        #topBar .active{
+            border-bottom:1px solid #fff;
+            border-top:1px solid #fff;
+        }
+        #topBar .am-u-sm-6 em{
+            margin:0;
+            padding:0;
+            font-size:1.5rem;
+            font-style:normal;
+            letter-spacing:0;
+            font-weight:500;
+            color:#ba3987;
+            margin-left:0.5rem;
+        }
+        .TripList{
+            list-style:none;
+            margin:0;
+            padding:0;
+        }
+        .TripList li{
+            background-color:#fff;
+            margin:0.1rem 0.6rem;
+            border-radius:0.2rem;
+        }
+        .tripBar{
+            margin:0.5rem 0;
+            padding:0.2rem 0 0 0;
+            display:inline-block;
+        }
+        /*
+        .tripBar .am-u-sm-5{
+            text-align:left;
+        }
+        .tripBar .am-u-sm-5 span{
+            display:block;
+            padding-top:0.5rem;
+            font-weight:500;
+            font-size:1.4rem;
+            color:#666;
+        }
+        .tripBar .am-u-sm-5 .active{
+            display:block;
+            padding-top:0.5rem;
+            font-weight:500;
+            font-size:1.4rem;
+            color:#333;
+        }
+        .tripBar .am-u-sm-3 em{
+            display:block;
+            font-size:1.4rem;
+            padding-top:0.5rem;
+            font-weight:500;
+            font-style:normal;
+            color:#666;
+        }
+        .tripBar .am-u-sm-3 .active{
+            display:block;
+            font-size:1.4rem;
+            padding-top:0.5rem;
+            font-weight:500;
+            font-style:normal;
+            color:#333;
+        }
+        
+        .tripBar .am-u-sm-3{
+            text-align:center;
+        }
+        .tripBar .am-u-sm-3 span{
+            display:block;
+            padding-top:0.5rem;
+            font-weight:500;
+            font-size:2rem;
+        }
+        .tripBar .am-u-sm-3 em{
+            display:block;
+            font-size:1.2rem;
+            font-style:normal;
+        }
+        */
+        .LeftBar{
+            width:28%;
+            float:left;
+        }
+        .MidBar{
+            width:14%;
+            float:left;
+        }
+        .RightBar{
+            width:28%;
+            float:left;
+        }
+
+        .spanInfo{
+            text-align:center;
+            display:block;
+            padding-top:0.5rem;
+            font-family:Microsoft YaHei,Tahoma,Arial,Roboto,Droid Sans,Helvetica,Helvetica Neue,Droid Sans Fallback,Heiti SC,Hiragino Sans GB,Simsun,sans-self;
+            font-weight:400;
+            color:#666;
+            font-size:2.2rem;
+        }
+        .emInfo{
+            display:block;
+            text-align:center;
+            font-size:1.2rem;
+            font-style:normal;
+            color:#888;
+        }
+        .tripBar .rightPrice{
+            width:30%;
+            float:left;
+            text-align:center;
+        }
+        .tripBar .rightPrice span{
+            display:block;
+            padding-top:0.5rem;
+            font-family:Microsoft YaHei,Tahoma,Arial,Roboto,Droid Sans,Helvetica,Helvetica Neue,Droid Sans Fallback,Heiti SC,Hiragino Sans GB,Simsun,sans-self;
+            color:#ba3987;
+            font-size:2.4rem;
+        }
+        .tripBar .rightPrice .smTitle{
+            font-size:1.3rem;
+            padding-top:0;
+            margin-top:0;
+            color:#999;
+        }
+        .flihtInfo{
+            font-size:1.2rem;
+            background-color:#fff;
+            color:#999;
+            border-bottom-left-radius:0.5rem;
+            border-bottom-right-radius:0.5rem;
+            padding-left:1rem;
+            margin-top:0;
+            padding-top:0;
+            padding-bottom:0.2rem;
+        }
+        .flihtInfo img{
+            width:1.5rem;
+            margin-bottom:0.4rem;
+        }
+        .am-icon-angle-down{
+            color:#999;
+        }
+        .infoList{
+            display:none;
+            background-color:#e7eff3;
+            border-top:1px solid #ddd;
+            margin-top:0.5rem;
+        }
+        .infoList ul{
+            list-style:none;
+            margin:0;
+            padding:0.8rem;
+        }
+        .infoList ul li{
+            height:6.2rem;
+            padding:0.5rem;
+            background-color:#fff;
+            margin-bottom:0.3rem;
+            border-radius:0.5rem;
+        }
+        .am-btn-warning{
+            background-color:#ba3987;
+            border:0;
+        }
+        .infoPrice{
+            width:50%;
+            float:left;
+        }
+        .infoPrice .price{
+            display:block;
+            color:#ba3987;
+            font-size:1.8rem;
+            font-weight:700;
+        }
+        .infoPrice .price em{
+            font-size:1.2rem;
+            font-style:normal;
+        }
+        .infoPrice .price .wSign{
+            margin-left:3rem;
+            color:#fb0505;
+        }
+        .infoPrice .zhekou{
+            padding-left:0.3rem;
+            color:#999;
+            font-size:1.4rem;
+        }
+        .infoPrice .tgqrule{
+            padding-left:1.2rem;
+            color:#6dc9f7;
+            cursor:pointer;
+            font-size:1.4rem;
+        }
+        .infoBtn{
+            width:50%;
+            padding-top:0.5rem;
+            float:left;
+            text-align:right;
+        }
+        .noResult{
+            text-align:center;
+            margin-top:10rem;
+            font-size:1.6rem;
+            color:#999;
+        }
+        .topPic{
+            margin:0 0.6rem;
+            margin-bottom:-0.4rem;
+            margin-top:0.2rem;
+            text-align:center;
+            padding:0.4rem 0;
+            border-radius:0.2rem;
+            background-color:#fdd900;
+            color:#666;
+            letter-spacing:0.1rem;
+            font-size:1.5rem;
+        }
+
+        .bt-Logo{
+            text-align:center;
+            background-color:#ba3987;
+            position:fixed;
+            bottom:0;
+            left:0;
+            width:100%;
+            margin-top:1rem;
+        }
+        .bt-Logo img{
+            width:10rem;
+        }

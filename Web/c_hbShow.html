@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>山西出行海报生成</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    <style>
+        body{
+            background-color:#fff;
+        }
+    </style>
+</head>
+<body style="text-align:center;padding-top:4rem;">
+    <img src="" style="width:100%;"/>
+    <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+    <script>
+        function GetParam(pname) {
+            var aQuery = window.location.href.split("?");
+            var avar = "";
+            if (aQuery.length > 1) {
+                var aBuf = aQuery[1].split("&");
+                for (var i = 0, iLoop = aBuf.length; i < iLoop; i++) {
+                    var aTmp = aBuf[i].split("="); //分离key与Value
+                    if (aTmp[0] == pname) {
+                        avar = aTmp[1];
+                        break;
+                    }
+                }
+            }
+            return avar;
+        }
+
+        var src = GetParam("src");
+        if (src.length > 0) {
+            $("img").attr("src", src);
+            if (src.indexOf("userCode") > -1) {
+                $("img").css("width", "200px");
+            }
+            $.alert("长按可保存图片到本地,分享朋友圈或者邀请好友扫码关注即可。");
+        }
+    </script>
+</body>
+</html>

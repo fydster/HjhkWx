@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{536EC377-C736-4593-9CCB-158944D531E3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Data</RootNamespace>
+    <AssemblyName>Data</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="com.seascape.db, Version=1.6.0.1, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\com.seascape.db.dll</HintPath>
+    </Reference>
+    <Reference Include="com.seascape.tools, Version=1.5.0.7, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\com.seascape.tools.dll</HintPath>
+    </Reference>
+    <Reference Include="LitJSON">
+      <HintPath>..\..\..\..\2015\DataLd\DataLd\Include\LitJSON.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\..\2015\DataLd\DataLd\Include\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\..\2015\DataLd\DataLd\Include\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="active\_ActiveLog.cs" />
+    <Compile Include="active\_ActiveVote.cs" />
+    <Compile Include="active\_Fly.cs" />
+    <Compile Include="active\_Gift.cs" />
+    <Compile Include="active\_Student.cs" />
+    <Compile Include="admin\Sys_Result.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="admin\_AdminLimit.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="admin\_AdminLog.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="admin\_AdminRole.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="admin\_AdminUser.cs" />
+    <Compile Include="content\_Class.cs" />
+    <Compile Include="content\_Content.cs" />
+    <Compile Include="Count\_CountAll.cs" />
+    <Compile Include="Count\_CountOrder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tmessage\MessageValue.cs" />
+    <Compile Include="Tmessage\TMsg_C.cs" />
+    <Compile Include="Tmessage\TMsg_Gift.cs" />
+    <Compile Include="Tmessage\TMsg_Order.cs" />
+    <Compile Include="Tmessage\TMsg_Refund.cs" />
+    <Compile Include="Tmessage\TMsg_Vote.cs" />
+    <Compile Include="Tmessage\TMsg_Voucher.cs" />
+    <Compile Include="Tmessage\TMsg_Work.cs" />
+    <Compile Include="Tmessage\_MsgConfig.cs" />
+    <Compile Include="Tool\DataConnectionManager.cs" />
+    <Compile Include="Tool\DbCenter.cs" />
+    <Compile Include="Tool\Main.cs" />
+    <Compile Include="_CityCode.cs" />
+    <Compile Include="_Client.cs" />
+    <Compile Include="_Custom.cs" />
+    <Compile Include="_Distance.cs" />
+    <Compile Include="_Fire.cs" />
+    <Compile Include="_Remind.cs" />
+    <Compile Include="_Share.cs" />
+    <Compile Include="_SmsCode.cs" />
+    <Compile Include="_Source.cs" />
+    <Compile Include="_Syslog.cs" />
+    <Compile Include="_Syssetting.cs" />
+    <Compile Include="_TemplateMsg.cs" />
+    <Compile Include="_User.cs" />
+    <Compile Include="_Voucher.cs" />
+    <Compile Include="_WxAccessToken.cs" />
+    <Compile Include="_WxPay.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{6b1589e5-ecd9-4a7e-a865-c92d05b47927}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

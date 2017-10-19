@@ -1,0 +1,459 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link href="js/unslider/css/unslider.css" rel="stylesheet" />
+    <link href="js/unslider/css/unslider-dots.css" rel="stylesheet" />
+    <!-- head 中 -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    <style>
+        body{
+            background-color:#eee;
+        }
+        #topMenu .weui-navbar__item:after {
+            border-right: 0;
+            color:#999;
+        }
+
+        #topMenu .weui-navbar-onborder {
+            border-bottom: 3px solid #ba3987;
+            color: #ba3987;
+        }
+
+        #topMenu {
+            height: 2.5rem;
+        }
+
+        .sCity {
+            padding: 0.4rem;
+            background-color:#fff;
+        }
+
+            .sCity .cityDesp {
+                width: 100%;
+                display: block;
+                font-size: 0.6rem;
+                height: 0.8rem;
+                color: #999;
+            }
+
+            .sCity .City {
+                display: block;
+                font-family:'SimHei';
+                height: 1.4rem;
+                padding-top: 0.1rem;
+                font-weight: 500;
+                font-size: 1.3rem;
+                color:#444;
+            }
+
+            .sCity .weui-flex__item {
+                text-align: center;
+            }
+
+            .sCity .title {
+                color: #999;
+                font-size: 0.8rem;
+                text-align: center;
+                padding-top: 0.3rem;
+            }
+
+            .sCity .date {
+                color: #555;
+                font-size: 1.1rem;
+                text-align: right;
+            }
+
+            .sCity .week {
+                color: #555;
+                font-size: 1.1rem;
+                text-align: center;
+            }
+
+            .HotCity{
+                list-style:none;
+                background-color:#fff;
+                padding:0.3rem;
+                padding-top:1rem;
+                margin:0;
+                display:inline-block;
+                width:100%;
+                min-height:2rem;
+            }
+            .HotCity li{
+                width:33.3%;
+                float:left;
+                background-color:#fff;
+                height:2.4rem;
+                margin:0;
+                text-align:center;
+            }
+            .HotCity li span{
+                border:1px solid #ddd;
+                border-radius:5px;
+                padding:0.3rem 1.2rem;
+                color:#666;
+                display:block;
+                width:40%;
+                font-size:0.8rem;
+            }
+            .Alllater{
+                list-style:none;
+                background-color:#fff;
+                padding:0.3rem;
+                padding-top:1rem;
+                margin:0;
+                display:inline-block;
+                width:100%;
+                min-height:2rem;
+            }
+            .Alllater li{
+                width:16.6%;
+                float:left;
+                background-color:#fff;
+                height:2.4rem;
+                margin:0;
+                text-align:center;
+            }
+            .Alllater li span{
+                border:1px solid #ddd;
+                border-radius:5px;
+                padding:0.3rem 0.6rem;
+                color:#666;
+                font-size:0.8rem;
+                font-weight:600;
+            }
+            .CityGroup{
+                width:100%;
+                background-color:#fff;
+                padding:0.6rem 0.6rem;
+                height:1.4rem;
+            }
+            .CityGroup span{
+                border:1px solid #ddd;
+                padding:0.3rem 0.6rem;
+                margin-right:1rem;
+                border-radius:5px;
+                font-weight:600;
+                color:#555;
+            }
+            .CityList{
+                list-style:none;
+                margin:0;
+                padding:0;
+                background-color:#fff;
+            }
+            .CityList li{
+                height:1.2rem;
+                background-color:#fff;
+                border-bottom:1px dashed #ddd;
+                padding:0.5rem 0.8rem;
+                color:#666;
+            }
+            .CityList li em{
+                font-style:normal;
+                font-size:0.6rem;
+                color:#999;
+            }
+            .midMenu{
+                margin-top:1.3rem;
+                margin-left:0.3rem;
+                margin-right:0.3rem;
+            }
+            .midMenu img{
+                width:32%;
+            }
+            .midMenu p{
+                display:block;
+                font-family:'SimHei';
+                font-size:0.7rem;
+                color:#777;
+            }
+            .midMenu .weui-flex__item{
+                text-align:center;
+            }
+
+            .topMenu
+            {
+                padding:0;
+                height:1.9rem;
+                font-size:0.9rem;
+                font-family:'SimHei';
+                padding-top:0.5rem;
+                color:#332c2b;
+                background-color:#fefefe;
+            }
+            .topMenuActive{
+                height:1.8rem;
+                color:#fff;
+                font-size:0.9rem;
+                font-family:'SimHei';
+                padding-top:0.5rem;
+                background:-moz-linear-gradient(left,#a72185,#e40082);/*Mozilla*/
+                background:-webkit-gradient(linear,0 50%,100% 50%,from(#a72185),to(#e40082));/*Old gradient for webkit*/
+                background:-webkit-linear-gradient(left,#a72185,#e40082);/*new gradient for Webkit*/
+                background:-o-linear-gradient(left,#a72185,#e40082); /*Opera11*/
+            }
+            .notice{
+                border-bottom:1px solid #ececef;
+                height:1.3rem;
+                padding-top:0.2rem;
+                width:100%;
+                color:#777;
+                font-size:0.7rem;
+                margin-top:2.4rem;
+                background: #000000;
+                background: -moz-linear-gradient(top,  #fdfbde 0%, #fffdf9 100%);
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fdfbde), color-stop(100%,#fffdf9));
+                background: -webkit-linear-gradient(top,  #fdfbde 0%,#fffdf9 100%);
+                background: -o-linear-gradient(top,  #fdfbde 0%,#fffdf9 100%);
+                background: -ms-linear-gradient(top,  #fdfbde 0%,#fffdf9 100%);
+                background: linear-gradient(to bottom,  #fdfbde 0%,#fffdf9 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfbde', endColorstr='#fffdf9',GradientType=0 );
+            }
+    </style>
+</head>
+<body>
+<!-- 容器 -->
+    <div id="topMenuDiv" class="weui-flex" style="border-bottom:1px solid #ececef;position:fixed;top:0;left:0;width:100%;z-index:90;">
+        <div data-type="0" class="weui-flex__item topMenu">
+            <span style="width:40%;float:left;"><img src="images/topMenu_dc.png" style="width:95%;padding-top:0.2rem;" /></span>
+            <span style="width:60%;float:left;text-align:left;">动车票</span>
+        </div>
+        <div data-type="1" class="weui-flex__item topMenuActive">
+            <span style="width:40%;float:left;"><img src="images/topMenu_fj_a.png" style="width:95%;padding-top:0.2rem;" /></span>
+            <span style="width:60%;float:left;text-align:left;">飞机票</span>
+        </div>
+        <div data-type="2" class="weui-flex__item topMenu">
+            <span style="width:40%;float:left;"><img src="images/topMenu_hc.png" style="width:95%;padding-top:0.2rem;" /></span>
+            <span style="width:60%;float:left;text-align:left;">火车票</span>
+        </div>
+    </div>
+    <div id="div_coninfo" style="height:auto;overflow-y:auto;margin-bottom:60px;height:300px;-webkit-overflow-scrolling: touch;">
+        <div class="notice">
+            <span style="width:15%;float:left;text-align:center;">
+                <img src="images/voice.png" style="width:35%;padding-top:0.1rem;" />
+            </span>
+            <span style="width:85%;float:left;">
+                免费享受南站贵宾休息服务进行中[戳详情]
+            </span>
+        </div>
+        <div style="clear:both;"></div>
+        <div class="banner" style="background-color:#fff;">
+            <ul>
+                <li><img src="ad/ad3.jpg" style="width:100%;"></li>
+                <li><img src="ad/ad4.jpg" style="width:100%;"></li>
+            </ul>
+        </div>
+        <div class="weui-flex sCity">
+            <div class="weui-flex__item">
+                <span class="cityDesp">出发地</span>
+                <span data-type="0" class="City">太原</span>
+            </div>
+            <div class="weui-flex__item">
+                <img id="btn_exchange" src="images/exchange.png" style="width:35%;padding-top:0.5rem;" />
+            </div>
+            <div class="weui-flex__item">
+                <span class="cityDesp">目的地</span>
+                <span data-type="1" class="City">北京</span>
+            </div>
+        </div>
+
+        <div style="width:100%;height:0.2rem;background-color:#fff;">
+            <div style="width:83%;border-bottom:1px solid #eee;display:block;height:0.1rem;margin-left:auto;margin-right:auto;">&nbsp;</div>
+        </div>
+
+        <div class="weui-flex sCity">
+            <div class="weui-flex__item title">
+                出发日期
+            </div>
+            <div id="sDate" class="weui-flex__item date" data-date="">
+
+            </div>
+            <div class="weui-flex__item week">
+
+            </div>
+        </div>
+
+        <div style="width:100%;height:0.2rem;background-color:#fff;">
+            <div style="width:83%;border-bottom:1px solid #eee;display:block;height:0.1rem;margin-left:auto;margin-right:auto;">&nbsp;</div>
+        </div>
+
+        <div style="width:100%;float:left;" id="my-input">
+        </div>
+
+        <div style="text-align:center;padding-top:0.5rem;background-color:#fff;height:2.5rem;">
+            <img id="btn_Select" src="images/btn_fj.png" style="width:80%;" />
+        </div>
+
+
+        <div id="btn_lowPrice" class="weui-flex" style="text-align:center;background-color:#fff;height:1.7rem;margin-top:0.3rem;color:#555;padding-top:0.4rem;">
+            <div class="weui-flex__item">
+                <span style="font-family:'SimHei';font-size:0.9rem;">特价机票</span>
+                <span style="background-color:#fdd100;font-size:0.3rem;">￥150起</span>
+            </div>
+            <div class="weui-flex__item" style="padding-top:0.1rem;">
+                <span style="font-size:0.7rem;color:#999;width:70%;float:left;text-align:right;">说走就走的旅程</span>
+                <span style="width:30%;float:left;text-align:center;">
+                    <img src="images/chevron_right.png" style="width:0.4rem;" />
+                </span>
+            </div>
+        </div>
+        <!--
+    <a id="btn_selectDc" href="javascript:;" style="margin:0.5rem 0.5rem;background-color:#ba3987;color:#fff;" class="weui-btn">动车票查询</a>
+    -->
+
+        <div class="weui-flex midMenu">
+            <div class="weui-flex__item">
+                <img src="images/subMenu_gj.png" alt="">
+                <p>国际机票</p>
+            </div>
+            <div class="weui-flex__item">
+                <img src="images/subMenu_dd.png" alt="">
+                <p>我的订单</p>
+            </div>
+            <div class="weui-flex__item">
+                <img src="images/subMenu_dt.png" alt="">
+                <p>航班动态</p>
+            </div>
+            <div class="weui-flex__item">
+                <img src="images/subMenu_tx.png" alt="">
+                <p>低价提醒</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="Div_CityPanel" style="padding:0; background-color:#efeff4;display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:91;overflow-y:auto;overflow-x:hidden; -webkit-overflow-scrolling:touch;">
+        <div class="weui-search-bar" id="searchBar">
+            <form class="weui-search-bar__form">
+                <div class="weui-search-bar__box">
+                    <i class="weui-icon-search"></i>
+                    <input type="search" class="weui-search-bar__input" id="input_search" placeholder="太原/ty/taiyuan" required="">
+                    <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                </div>
+                <label class="weui-search-bar__label" id="searchText">
+                    <i class="weui-icon-search"></i>
+                    <span>太原/ty/taiyuan</span>
+                </label>
+            </form>
+            <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+        </div>
+        <div id="noSearch">
+            <div id="Div_NowCity" style="width:100%;">
+                <span style="font-size:0.8rem;color:#aaa;display:block;padding:0.3rem 0.5rem;">当前城市</span>
+                <ul id="NowCity" style="list-style:none;background-color:#fff;width:100%;height:4rem;">
+                    <li style="width:33.3%;padding-top:1rem;background-color:#fff; text-align:center;" data-name="" data-code="guangzhou"><span style="border:1px solid #ddd;border-radius:5px;text-align:center;padding:0.3rem 0;display:block;width:85%;margin-left:0.3rem;color:#666;">正在定位</span></li>
+                </ul>
+            </div>
+            <div id="Div_History" style="width:100%;">
+                <span style="font-size:0.8rem;color:#aaa;display:block;padding:0.3rem 0.5rem;">历史选择</span>
+                <ul id="HistoryList" class="HotCity">
+                </ul>
+            </div>
+            <div id="Div_City" style="width:100%;">
+                <span style="font-size:0.8rem;color:#aaa;display:block;padding:0.3rem 0.5rem;">热门</span>
+                <ul id="HotCityList" class="HotCity"></ul>
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+        <div id="Div_ZM" style="width:100%;display:none;">
+            <span style="font-size:0.8rem;color:#aaa;display:block;padding:0.3rem 0.5rem;">更多城市</span>
+            <ul class="Alllater">
+                <li><span>A</span></li>
+                <li><span>B</span></li>
+                <li><span>C</span></li>
+                <li><span>D</span></li>
+                <li><span>E</span></li>
+                <li><span>F</span></li>
+                <li><span>G</span></li>
+                <li><span>H</span></li>
+                <li><span>I</span></li>
+                <li><span>J</span></li>
+                <li><span>K</span></li>
+                <li><span>L</span></li>
+                <li><span>M</span></li>
+                <li><span>N</span></li>
+                <li><span>O</span></li>
+                <li><span>P</span></li>
+                <li><span>Q</span></li>
+                <li><span>R</span></li>
+                <li><span>S</span></li>
+                <li><span>T</span></li>
+                <li><span>U</span></li>
+                <li><span>V</span></li>
+                <li><span>W</span></li>
+                <li><span>X</span></li>
+                <li><span>Y</span></li>
+                <li><span>Z</span></li>
+            </ul>
+        </div>
+        <div style="clear:both;"></div>
+        <div id="Div_ZMJS" style="width:100%;display:none;">
+            <div id="Div_ZMJS_N">
+                <span style="font-size:0.8rem;color:#aaa;display:block;padding:0.3rem 0.5rem;">字母检索</span>
+                <div class="CityGroup" style="margin-top:0.1rem;margin-bottom:0.1rem;">
+                    <span></span>
+                    <span>A - Z</span>
+                </div>
+            </div>
+            <ul id="d1" class="CityList"></ul>
+        </div>
+        <div style="display:none;" id="cityData"></div>
+        <div style="display:none;" id="cityDataForAir"></div>
+    </div>
+
+    <div id="bottomMenu" style="position:fixed;bottom:0;left:0;width:100%;background-color:#eeeeef;border-top:1px solid #bbb;">
+        <div class="weui-flex" style="padding-top:0.2rem;">
+            <div class="weui-flex__item" style="text-align:center;">
+                <img src="images/Menu_home_a.png" alt="" style="width:1.5rem;">
+                <p style="color:#ba3987;font-family:'SimHei';font-size:0.7rem;">首页</p>
+            </div>
+            <div class="weui-flex__item" style="text-align:center;">
+                <img src="images/Menu_list.png" alt="" style="width:1.5rem;">
+                <p style="color:#555;font-family:'SimHei';font-size:0.7rem;">行程</p>
+            </div>
+            <div class="weui-flex__item" style="text-align:center;">
+                <img src="images/Menu_user.png" alt="" style="width:1.5rem;">
+                <p style="color:#555;font-family:'SimHei';font-size:0.7rem;">我的</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="caledar" class='weui-popup__container popup-bottom'>
+        <div class="weui-popup__overlay"></div>
+        <div class="weui-popup__modal">
+            <div class="toolbar">
+                <div class="toolbar-inner">
+                    <a href="javascript:;" class="picker-button close-popup">完成</a>
+                    <h1 class="title">选择日期</h1>
+                </div>
+            </div>
+            <div class="modal-content" id="sDate_panel">
+
+            </div>
+        </div>
+    </div>
+
+    <!-- body 最后 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp"></script>
+    <script src="js/unslider/js/unslider-min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/c_index_home.js?v=20170925"></script>
+    <script src="js/Main.js"></script>
+    <script>
+        _C.Init(_Index);
+    </script>
+
+</body>
+</html>

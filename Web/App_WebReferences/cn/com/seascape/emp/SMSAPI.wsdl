@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://m.8808888.cn/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://m.8808888.cn/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://m.8808888.cn/">
+      <s:element name="SendMMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mms" type="tns:MMS" />
+            <s:element minOccurs="0" maxOccurs="1" name="sendtime" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MMS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MMsId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ChannelId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FrameList" type="tns:ArrayOfMMSFrame" />
+          <s:element minOccurs="1" maxOccurs="1" name="State" type="tns:SmsState" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResultInfo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SendOn" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="StreamNo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MobileCount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMMSFrame">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MMSFrame" nillable="true" type="tns:MMSFrame" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MMSFrame">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Text" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImageByte" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImagePath" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="SmsState">
+        <s:restriction base="s:string">
+          <s:enumeration value="NotSend" />
+          <s:enumeration value="WaitSend" />
+          <s:enumeration value="Sending" />
+          <s:enumeration value="Success" />
+          <s:enumeration value="Fail" />
+          <s:enumeration value="Cancel" />
+          <s:enumeration value="ReSend" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SendMMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendMMSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destnumbers" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sendtime" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReceiveMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReceiveMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReceiveMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReceiveReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReceiveReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReceiveReportResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryUserInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryUserInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryUserInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBlance">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBlanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBlanceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMMSBlance">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMMSBlanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMMSBlanceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUnicast">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cmd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mobiles" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUnicastResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateUnicastResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AccountStatement">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="month" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AccountStatementResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AccountStatementResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendMMSSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMMS" />
+  </wsdl:message>
+  <wsdl:message name="SendMMSSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMMSResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMessage" />
+  </wsdl:message>
+  <wsdl:message name="SendMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReceiveMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:ReceiveMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReceiveMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:ReceiveMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReceiveReportSoapIn">
+    <wsdl:part name="parameters" element="tns:ReceiveReport" />
+  </wsdl:message>
+  <wsdl:message name="ReceiveReportSoapOut">
+    <wsdl:part name="parameters" element="tns:ReceiveReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryUserInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryUserInfo" />
+  </wsdl:message>
+  <wsdl:message name="QueryUserInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryUserInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBlanceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBlance" />
+  </wsdl:message>
+  <wsdl:message name="GetBlanceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBlanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMMSBlanceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMMSBlance" />
+  </wsdl:message>
+  <wsdl:message name="GetMMSBlanceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMMSBlanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUnicastSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateUnicast" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUnicastSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateUnicastResponse" />
+  </wsdl:message>
+  <wsdl:message name="AccountStatementSoapIn">
+    <wsdl:part name="parameters" element="tns:AccountStatement" />
+  </wsdl:message>
+  <wsdl:message name="AccountStatementSoapOut">
+    <wsdl:part name="parameters" element="tns:AccountStatementResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SMSAPISoap">
+    <wsdl:operation name="SendMMS">
+      <wsdl:input message="tns:SendMMSSoapIn" />
+      <wsdl:output message="tns:SendMMSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <wsdl:input message="tns:SendMessageSoapIn" />
+      <wsdl:output message="tns:SendMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveMessage">
+      <wsdl:input message="tns:ReceiveMessageSoapIn" />
+      <wsdl:output message="tns:ReceiveMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveReport">
+      <wsdl:input message="tns:ReceiveReportSoapIn" />
+      <wsdl:output message="tns:ReceiveReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryUserInfo">
+      <wsdl:input message="tns:QueryUserInfoSoapIn" />
+      <wsdl:output message="tns:QueryUserInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBlance">
+      <wsdl:input message="tns:GetBlanceSoapIn" />
+      <wsdl:output message="tns:GetBlanceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMMSBlance">
+      <wsdl:input message="tns:GetMMSBlanceSoapIn" />
+      <wsdl:output message="tns:GetMMSBlanceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUnicast">
+      <wsdl:input message="tns:UpdateUnicastSoapIn" />
+      <wsdl:output message="tns:UpdateUnicastSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AccountStatement">
+      <wsdl:input message="tns:AccountStatementSoapIn" />
+      <wsdl:output message="tns:AccountStatementSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SMSAPISoap" type="tns:SMSAPISoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendMMS">
+      <soap:operation soapAction="http://m.8808888.cn/SendMMS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <soap:operation soapAction="http://m.8808888.cn/SendMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveMessage">
+      <soap:operation soapAction="http://m.8808888.cn/ReceiveMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveReport">
+      <soap:operation soapAction="http://m.8808888.cn/ReceiveReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryUserInfo">
+      <soap:operation soapAction="http://m.8808888.cn/QueryUserInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBlance">
+      <soap:operation soapAction="http://m.8808888.cn/GetBlance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMMSBlance">
+      <soap:operation soapAction="http://m.8808888.cn/GetMMSBlance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUnicast">
+      <soap:operation soapAction="http://m.8808888.cn/UpdateUnicast" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountStatement">
+      <soap:operation soapAction="http://m.8808888.cn/AccountStatement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SMSAPISoap12" type="tns:SMSAPISoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendMMS">
+      <soap12:operation soapAction="http://m.8808888.cn/SendMMS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <soap12:operation soapAction="http://m.8808888.cn/SendMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveMessage">
+      <soap12:operation soapAction="http://m.8808888.cn/ReceiveMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveReport">
+      <soap12:operation soapAction="http://m.8808888.cn/ReceiveReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryUserInfo">
+      <soap12:operation soapAction="http://m.8808888.cn/QueryUserInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBlance">
+      <soap12:operation soapAction="http://m.8808888.cn/GetBlance" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMMSBlance">
+      <soap12:operation soapAction="http://m.8808888.cn/GetMMSBlance" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUnicast">
+      <soap12:operation soapAction="http://m.8808888.cn/UpdateUnicast" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountStatement">
+      <soap12:operation soapAction="http://m.8808888.cn/AccountStatement" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SMSAPI">
+    <wsdl:port name="SMSAPISoap" binding="tns:SMSAPISoap">
+      <soap:address location="http://emp.seascape.com.cn:9010/SMSAPI.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SMSAPISoap12" binding="tns:SMSAPISoap12">
+      <soap12:address location="http://emp.seascape.com.cn:9010/SMSAPI.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

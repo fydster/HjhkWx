@@ -1,0 +1,234 @@
+﻿body{
+            background: linear-gradient(#ddd, #ffffff);
+        }
+        #topCityBar .am-u-sm-6{
+            font-size:1.5rem;
+            height:2.8rem;
+            text-align:center;
+            line-height:1.4rem;
+            padding-top:0.5rem;
+            letter-spacing:0;
+            font-weight:500;
+            color:#333;
+        }
+        #topCityBar .am-u-sm-6 span{
+            font-size:2.2rem;
+            letter-spacing:0;
+            font-weight:600;
+            color:#fff;
+        }
+        #topCityBar .am-u-sm-3{
+            font-size:1.4rem;
+            height:2.8rem;
+            text-align:center;
+            line-height:1.4rem;
+            padding:0.2rem;
+            padding-top:0.4rem;
+        }
+        #BottomCityBar .am-u-sm-3{
+            font-size:1.4rem;
+            height:2.8rem;
+            text-align:center;
+            line-height:1.4rem;
+            padding:0.2rem;
+            padding-top:0.4rem;
+        }
+        #topCityBar .active{
+            border-bottom:1px solid #fff;
+            border-top:1px solid #fff;
+        }
+        #topCityBar .am-u-sm-6 em{
+            margin:0;
+            padding:0;
+            font-size:1.5rem;
+            font-style:normal;
+            letter-spacing:0;
+            font-weight:500;
+            color:#ba3987;
+            margin-left:0.5rem;
+        }
+        .TripList{
+            list-style:none;
+            margin:0;
+            padding:0;
+        }
+        .TripList li{
+            background-color:#fff;
+            margin:0.3rem 0.6rem;
+            border-radius:0.5rem;
+            min-height:4rem;
+            height:auto;
+            display:block;
+        }
+        .tripBar{
+            margin:0.5rem 0;
+            padding:0.2rem 0 0 0;
+            height:4.8rem;
+            display:inline-block;
+        }
+        .LeftBar{
+            width:20%;
+            float:left;
+            padding-top:0.7rem;
+        }
+        .MidBar{
+            width:30%;
+            float:left;
+        }
+        .RightBar{
+            width:20%;
+            float:left;
+            padding-top:0.7rem;
+        }
+
+        .spanInfo{
+            text-align:center;
+            display:block;
+            padding-top:0.5rem;
+            font-family:Microsoft YaHei,Tahoma,Arial,Roboto,Droid Sans,Helvetica,Helvetica Neue,Droid Sans Fallback,Heiti SC,Hiragino Sans GB,Simsun,sans-self;
+            font-weight:600;
+            font-size:2rem;
+        }
+        .emInfo{
+            display:block;
+            text-align:center;
+            font-size:1.4rem;
+            font-style:normal;
+            color:#666;
+        }
+        .tripBar .rightPrice{
+            width:30%;
+            float:left;
+            text-align:center;
+        }
+        .tripBar .rightPrice span{
+            display:block;
+            padding-top:0.5rem;
+            color:#ba3987;
+            font-size:1.8rem;
+        }
+        .tripBar .rightPrice span em{
+            color:#999;
+            font-size:1.8rem;
+            font-style:normal;
+        }
+        .tripBar .rightPrice em{
+            display:block;
+            font-size:1.2rem;
+            font-style:normal;
+        }
+        .flihtInfo{
+            font-size:1.2rem;
+            background-color:#fff;
+            color:#999;
+            border-bottom-left-radius:0.5rem;
+            border-bottom-right-radius:0.5rem;
+            padding-left:1rem;
+            margin-top:0.4rem;
+            padding-top:0.5rem;
+            padding-bottom:0.2rem;
+        }
+        .flihtInfo img{
+            width:1.5rem;
+            margin-bottom:0.4rem;
+        }
+        .am-icon-angle-down{
+            color:#999;
+        }
+        .infoList{
+            display:none;
+            background-color:#e7eff3;
+            border-top:1px solid #ddd;
+            margin-top:0.5rem;
+        }
+        .infoList ul{
+            list-style:none;
+            margin:0;
+            padding:0.8rem;
+        }
+        .infoList ul li{
+            height:6.2rem;
+            padding:0.5rem;
+            background-color:#fff;
+            margin-bottom:0.3rem;
+            border-radius:0.5rem;
+        }
+        .am-btn-warning{
+            background-color:#a01678;
+            border:0;
+        }
+        .infoPrice{
+            width:50%;
+            float:left;
+        }
+        .infoPrice .price{
+            display:block;
+            color:#ba3987;
+            font-size:1.8rem;
+            font-weight:700;
+        }
+        .infoPrice .price em{
+            font-size:1.2rem;
+            font-style:normal;
+        }
+        .infoPrice .price label{
+            font-size:1.2rem;
+            color:#999;
+            margin-left:20px;
+        }
+        .infoPrice .zhekou em{
+            font-size:1.2rem;
+            font-style:normal;
+        }
+        .infoPrice .zhekou .wSign{
+            margin-left:3rem;
+            color:#fb0505;
+        }
+        .infoPrice .zhekou{
+            padding-left:0.3rem;
+            color:#999;
+            font-size:1.4rem;
+        }
+        .infoPrice .tgqrule{
+            padding-left:1.2rem;
+            color:#6dc9f7;
+            cursor:pointer;
+            font-size:1.4rem;
+        }
+        .infoBtn{
+            width:50%;
+            padding-top:0.5rem;
+            float:left;
+            text-align:right;
+        }
+        .noResult{
+            text-align:center;
+            margin-top:4rem;
+            padding:1.5rem 0.8rem;
+            font-size:1.6rem;
+            color:#f9a50a;
+        }
+        .topPic{
+            margin:0 0.6rem;
+            margin-bottom:-0.4rem;
+            margin-top:0.2rem;
+            text-align:center;
+            padding:0.2rem 0;
+            border-radius:0.5rem;
+            background: linear-gradient(#f8e902, #f9a50a);
+            color:#ba3987;
+            font-size:1.4rem;
+        }
+
+        .bt-Logo{
+            text-align:center;
+            background-color:#ba3987;
+            position:fixed;
+            bottom:0;
+            left:0;
+            width:100%;
+            margin-top:1rem;
+        }
+        .bt-Logo img{
+            width:10rem;
+        }

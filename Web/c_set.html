@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+  <link href="style/c_set.css" rel="stylesheet" />
+  <script src="js/count.js"></script>
+  <style>
+        body{
+            background: url('images/bg.jpg') no-repeat center fixed;
+            background-attachment: fixed;
+        }
+  </style>
+</head>
+<body>
+    <div class="topMenu" style="height:60px;width:100%;text-align:center;padding-top:7px;color:#fff;font-size:3rem;">
+        低价提醒
+    </div>    
+    <div style="padding:0.8rem;background-color:#fff;">
+        <div style="margin:0.8rem;border-bottom:1px dashed #ddd;color:#666;display:none;">
+            第一步：选择期望出行的日期范围
+        </div>    
+        <div class="sDesp">
+            <span style="width:43%;color:#999;font-size:1rem;">出发地</span>
+            <span style="width:14%;text-align:center;color:#999;">
+            </span>
+            <span style="width:43%;color:#999;text-align:right;font-size:1rem;">目的地</span>
+        </div> 
+        <div class="sTitle" id="div_City">
+            <span style="width:43%;color:#666;border-bottom:1px solid #eee;"></span>
+            <span style="width:14%;text-align:center;color:#999;">
+                <img id="btn_exchange" src="images/exchange.png" style="width:85%;padding-top:0;" />
+            </span>
+            <span style="width:43%;color:#666;text-align:right;border-bottom:1px solid #eee;"></span>
+        </div>
+        <div class="sDesp" style="margin-top:1rem;">
+            <span style="width:38%;color:#999;">最早出发</span>
+            <span style="width:24%;">&nbsp;</span>
+            <span style="width:38%;color:#999;text-align:right;">最晚出发</span>
+        </div>
+        <div class="sDate">
+            <span data-date="" id="s-datepicker" data-am-datepicker="{theme:'warning'}" style="width:45%;color:#666;border-bottom:1px solid #eee;">08月30日</span>
+            <span style="width:10%;text-align:center;color:#999;border-bottom:1px solid #eee;"></span>
+            <span data-date="" id="e-datepicker" data-am-datepicker="{theme:'warning'}" style="width:45%;color:#666;text-align:right;border-bottom:1px solid #eee;">09月05日</span>
+        </div>
+        <div style="clear:both;"></div>
+        <div class="BigTitle">
+            <span></span>
+            <em>点击选择其他折扣</em>
+        </div>  
+        <div class="btnList am-animation-slide-bottom">
+            <div class="am-g" style="background-color:#033c56;color:#fff;height:32px;">
+                <span style="text-align:center;padding-top:0.3rem;" class="am-u-sm-3">取消</span>
+                <span style="text-align:center;padding-top:0.3rem;" class="am-u-sm-6">选择折扣</span>
+                <span style="text-align:center;padding-top:0.3rem;" class="am-u-sm-3">确定</span>
+            </div>
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+    <div style="text-align:center;padding-top:0.5rem;">
+        <img id="btn_submit" src="images/btnSet.png" style="width:80%;" />
+    </div>
+    <!--内容区End-->   
+    <!--隐藏区域-->
+    <div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="my-modal-loading">
+        <div class="am-modal-dialog" style="background-color:#eee;border-radius:4px 4px 4px 4px;">
+            <div class="am-modal-bd">
+                <span class="am-icon-spinner am-icon-spin" style="color:#7269ac;"></span>
+                <span style="font-size:1.6rem;display:block;">设置中...</span>
+            </div>
+        </div>
+    </div>
+    <!--隐藏区域End-->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/amazeui.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/json2.js"></script>
+<script src="js/c_set.js?v=20170925"></script>
+<script src="js/Main.js?v=20170925"></script>
+<script>
+    _C.Init(_Set);
+</script>
+</body>
+</html>
