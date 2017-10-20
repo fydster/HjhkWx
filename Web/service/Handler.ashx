@@ -15,7 +15,9 @@ using NPinyin;
 using Model.Basic;
 using Model.active;
 using Model.View;
+using Model.Count;
 using Data.active;
+using Data.Count;
 using System.Net;
 using System.IO;
 
@@ -302,6 +304,21 @@ public class Handler : IHttpHandler {
                     break;
                 case 228:
                     Result = ToVoteNew(c);//投票新版
+                    break;
+                case 300:
+                    Result = GetFxCount(c);//获取分销总体统计
+                    break;
+                case 301:
+                    Result = GetFxOrderList(c);//获取分销订单列表
+                    break;
+                case 302:
+                    Result = GetFxUserList(c);//获取分销用户列表
+                    break;
+                case 303:
+                    Result = ToRegFx(c);//分销注册
+                    break;
+                case 304:
+                    Result = FxCheck(c);//分销审核
                     break;
                 case 888:
                     Result = SendVoteMsg(c);//发送投票提醒消息
@@ -1172,6 +1189,10 @@ public class Handler : IHttpHandler {
         if (uid > 0)
         {
             string FilePath = c.Server.MapPath("/pic/QrCode/" + uid + ".jpg");
+            if (File.Exists(FilePath))
+            {
+                return Sys_Result.GetR(0, "");    
+            }
             int SceneID = uid;
             string Result = new Common(appid, secret).GetQR_Code(access_token, FilePath, SceneID);
             return Sys_Result.GetR(0, "");
@@ -1946,6 +1967,7 @@ public class Handler : IHttpHandler {
             Paras += "&bx_total_price=" + bx_total_price.ToString().Replace(".00", "");
             Paras += "&bx_total_price_back=" + bx_total_price_back.ToString().Replace(".00", "");
             Paras += "&uid=" + uid;
+            Paras += "&srcUid=" + u.srcUid;
             Paras += "&User_name=" + User_name;
             Paras += "&Send_type=" + Send_Type;
             if (Send_Type == "邮寄")
@@ -2078,6 +2100,211 @@ public class Handler : IHttpHandler {
             }
         }
         return Sys_Result.GetR(1, "获取失败");
+    }
+
+    /// <summary>
+    /// 获取分销总体统计
+    /// </summary>
+    /// <param name="c"></param>
+    /// <returns></returns>
+    public string GetFxCount(HttpContext c)
+    {
+        string sDate = string.IsNullOrEmpty(c.Request["sDate"]) ? "" : c.Request["sDate"].ToString();
+        string eDate = string.IsNullOrEmpty(c.Request["eDate"]) ? "" : c.Request["eDate"].ToString();
+        string openId = string.IsNullOrEmpty(c.Request["openId"]) ? "" : c.Request["openId"].ToString();
+        int uid = string.IsNullOrEmpty(c.Request["uid"]) ? 0 : Convert.ToInt32(c.Request["uid"]);
+
+        bool isValid = false;
+        
+        if (openId.Length > 0)
+        {
+            user u = new _User().GetUser(openId, "", 0);
+            if (u != null)
+            {
+                if (u.id == uid)
+                {
+                    isValid = true;
+                }
+            }
+        }
+
+        if (isValid && sDate.Length > 0 && eDate.Length > 0)
+        {
+            CountFx ca = new _CountFx().GetCount(Convert.ToDateTime(sDate), Convert.ToDateTime(eDate),uid);
+            if (ca != null)
+            {
+                var o = new { Return = 0, Msg = "", Info = ca };
+                return JsonMapper.ToJson(o);
+            }
+        }
+        return Sys_Result.GetR(1, "获取失败");
+    }
+
+
+    /// <summary>
+    /// 获取分销订单明细
+    /// </summary>
+    /// <param name="c"></param>
+    /// <returns></returns>
+    public string GetFxOrderList(HttpContext c)
+    {
+        string sDate = string.IsNullOrEmpty(c.Request["sDate"]) ? "" : c.Request["sDate"].ToString();
+        string eDate = string.IsNullOrEmpty(c.Request["eDate"]) ? "" : c.Request["eDate"].ToString();
+        string openId = string.IsNullOrEmpty(c.Request["openId"]) ? "" : c.Request["openId"].ToString();
+        int uid = string.IsNullOrEmpty(c.Request["uid"]) ? 0 : Convert.ToInt32(c.Request["uid"]);
+
+        bool isValid = false;
+
+        if (openId.Length > 0)
+        {
+            user u = new _User().GetUser(openId, "", 0);
+            if (u != null)
+            {
+                if (u.id == uid)
+                {
+                    isValid = true;
+                }
+            }
+        }
+
+        if (isValid && sDate.Length > 0 && eDate.Length > 0)
+        {
+            string airInfo = BasicTool.webRequest("http://59.49.19.109:8016/weixin/WxHandler.ashx?Fn=12&srcUid=" + uid + "&sDate=" + sDate + "&eDate=" + eDate);
+            if (airInfo.Length > 0)
+            {
+                return airInfo;
+            }
+        }
+        return "";
+    }
+
+    /// <summary>
+    /// 获取分销用户明细
+    /// </summary>
+    /// <param name="c"></param>
+    /// <returns></returns>
+    public string GetFxUserList(HttpContext c)
+    {
+        string sDate = string.IsNullOrEmpty(c.Request["sDate"]) ? "" : c.Request["sDate"].ToString();
+        string eDate = string.IsNullOrEmpty(c.Request["eDate"]) ? "" : c.Request["eDate"].ToString();
+        string openId = string.IsNullOrEmpty(c.Request["openId"]) ? "" : c.Request["openId"].ToString();
+        int uid = string.IsNullOrEmpty(c.Request["uid"]) ? 0 : Convert.ToInt32(c.Request["uid"]);
+
+        bool isValid = false;
+
+        if (openId.Length > 0)
+        {
+            user u = new _User().GetUser(openId, "", 0);
+            if (u != null)
+            {
+                if (u.id == uid)
+                {
+                    isValid = true;
+                }
+            }
+        }
+
+        if (isValid && sDate.Length > 0 && eDate.Length > 0)
+        {
+            List<user> ca = new _User().GetUserWithFx(uid, sDate, eDate);
+            if (ca != null)
+            {
+                var o = new { Return = 0, Msg = "", List = ca };
+                return JsonMapper.ToJson(o);
+            }
+        }
+        return Sys_Result.GetR(1, "获取失败");
+    }
+
+    /// <summary>
+    /// 分销注册
+    /// </summary>
+    /// <param name="c"></param>
+    /// <returns></returns>
+    public string ToRegFx(HttpContext c)
+    {
+        string mobile = string.IsNullOrEmpty(c.Request["mobile"]) ? "" : c.Request["mobile"].ToString();
+        string contact = string.IsNullOrEmpty(c.Request["contact"]) ? "" : c.Request["contact"].ToString();
+        string openId = string.IsNullOrEmpty(c.Request["openId"]) ? "" : c.Request["openId"].ToString();
+        int uid = string.IsNullOrEmpty(c.Request["uid"]) ? 0 : Convert.ToInt32(c.Request["uid"]);
+
+        bool isValid = false;
+
+        if (openId.Length > 0)
+        {
+            user u = new _User().GetUser(openId, "", 0);
+            if (u != null)
+            {
+                if (u.id == uid)
+                {
+                    if (u.balance == 1)
+                    {
+                        return Sys_Result.GetR(1, "您已注册过，请直接联系业务人员开通！");
+                    }
+                    if (u.balance == 2)
+                    {
+                        return Sys_Result.GetR(1, "您已注册过，请直接在个人中心-我的分销进入！");
+                    }
+                    isValid = true;
+                }
+            }
+        }
+
+        if (isValid && mobile.Length > 0 && contact.Length > 0)
+        {
+            var o = new
+            {
+                balance = 1
+            };
+            if (new Main().UpdateDb(o, "t_user", "openId = '" + openId + "'"))
+            {
+                string MsgContent = "";
+                TMsg_Work tmo = new TMsg_Work().GetMessageBody("有新分销注册，分销ID:"+uid+"！", DateTime.Now.ToString("yyyyMMddHHmm"), DateTime.Now.ToString("yyyy-MM-dd HH:mm"), "[山西出行]", out MsgContent);
+                SendTemplateMessage(c, tmo, new TMsg_Work().Key(), "oKhuCwXUcG1KFsUd0Cti9HakBLC8", "", MsgContent, "0000");
+                return Sys_Result.GetR(0, "");
+            }
+        }
+        return Sys_Result.GetR(1, "申请失败，请刷新页面后重新再试！");
+    }
+
+    /// <summary>
+    /// 分销验证
+    /// </summary>
+    /// <param name="c"></param>
+    /// <returns></returns>
+    public string FxCheck(HttpContext c)
+    {
+        string openId = string.IsNullOrEmpty(c.Request["openId"]) ? "" : c.Request["openId"].ToString();
+        int uid = string.IsNullOrEmpty(c.Request["uid"]) ? 0 : Convert.ToInt32(c.Request["uid"]);
+
+        bool isValid = false;
+
+        if (openId.Length > 0)
+        {
+            user u = new _User().GetUser(openId, "", 0);
+            if (u != null)
+            {
+                if (u.id == uid)
+                {
+                    if (u.balance == 2)
+                    {
+                        isValid = true;    
+                    }
+                }
+            }
+        }
+
+        if (isValid)
+        {
+            string FilePath = c.Server.MapPath("/pic/QrCode/" + uid + ".jpg");
+            if (!File.Exists(FilePath))
+            {
+                int SceneID = uid;
+                string Result = new Common(appid, secret).GetQR_Code(Get_Access_Token(c), FilePath, SceneID);    
+            }
+            return Sys_Result.GetR(0, "");
+        }
+        return Sys_Result.GetR(1, "您的分销资质还未审核通过，请联系业务人员进行审核后再打开！");
     }
 
     /// <summary>

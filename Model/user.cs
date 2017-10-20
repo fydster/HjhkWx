@@ -52,5 +52,6 @@ namespace Model
         /// 是否关注
         /// </summary>
         public int isSubscribe { get; set; }
+        public Double balance { get; set; }
     }
 }

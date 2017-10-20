@@ -78,6 +78,7 @@
     <Compile Include="content\_Class.cs" />
     <Compile Include="content\_Content.cs" />
     <Compile Include="Count\_CountAll.cs" />
+    <Compile Include="Count\_CountFx.cs" />
     <Compile Include="Count\_CountOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tmessage\MessageValue.cs" />

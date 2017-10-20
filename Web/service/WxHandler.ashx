@@ -132,6 +132,7 @@ public class WxHandler : IHttpHandler {
         string ToUserName = "";
         string Content = "";
         string VoucherContent = "";
+        string GetContent = "";
         string GiftContent = "";
         string StreamNo = "";
         string MsgType = "";
@@ -151,6 +152,7 @@ public class WxHandler : IHttpHandler {
             FromUserName = postObj.GetElementsByTagName("FromUserName").Item(0).InnerText;
             ToUserName = postObj.GetElementsByTagName("ToUserName").Item(0).InnerText;
             MsgType = postObj.GetElementsByTagName("MsgType").Item(0).InnerText;
+            GetContent = postObj.GetElementsByTagName("Content").Item(0).InnerText;
             MsgType = MsgType.ToLower();      
         }
         catch(Exception ex)
@@ -161,7 +163,36 @@ public class WxHandler : IHttpHandler {
         switch (MsgType)
         {
             case "text"://文本消息
-                Content = "Hello，主人～小编刚被领导训，罚站两分钟，暂时不能接驾，如有急需，请拨0351-8777777";
+                if (GetContent == "分销注册")
+                {
+                    Content = "分销注册，请点击以下链接！\n\n<a href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid + "&redirect_uri=http%3a%2f%2fhjhk.edmp.cc%2ffx%2fc_reg_fx.html&response_type=code&scope=snsapi_userinfo&state=00000" + appid + "#wechat_redirect'>立即注册</a>";
+                }
+                else
+                {
+                    if (GetContent.StartsWith("FXC-"))
+                    {
+                        try
+                        {
+                            int fxId = Convert.ToInt32(GetContent.Replace("FXC-", ""));
+                            var ofx = new
+                            {
+                                balance = 2
+                            };
+                            if (new Main().UpdateDb(ofx, "t_user", "id=" + fxId))
+                            {
+                                Content = "分销审核完成";
+                            }
+                        }
+                        catch
+                        {
+                            
+                        }
+                    }
+                    else
+                    {
+                        Content = "Hello，主人～小编刚被领导训，罚站两分钟，暂时不能接驾，如有急需，请拨0351-8777777";        
+                    }
+                }
                 break;
             case "event"://事件
                 string Event = postObj.GetElementsByTagName("Event").Item(0).InnerText;

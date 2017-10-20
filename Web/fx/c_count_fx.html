@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!-- head 中 -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    <style>
+        #count_source .weui-cell__hd{
+            color:#0094ff;
+        }
+        #count_source .weui-cell__bd{
+            padding-left:15px;
+        }
+    </style>
+</head>
+<body>
+<!-- 容器 -->
+    <div style="width:100%;padding:15px 0 0 0;text-align:center;font-size:1rem;color:#666;">
+        山西出行分销后台<span id="nickName" style="margin-left:10px;color:#888;font-size:0.8rem;"></span>
+    </div>
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cells__title">统计时间</div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label for="" class="weui-label">选择起始日期</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" id="sDate" type="date" value="">
+            </div>
+        </div>
+        <div class="weui-cell weui-cells_form">
+            <div class="weui-cell__hd">
+                <label class="weui-label">选择截至日期</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" id="eDate" type="date" placeholder="">
+            </div>
+        </div>
+        <div class="weui-form-preview__ft" id="btn_CountYG">
+            <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">开始统计</a>
+        </div>
+    </div>
+
+    <div class="weui-cells" id="infoList">
+        <div class="weui-cells__title">统计结果</div>
+        <div class="weui-cell weui-cell_vcode">
+            <div class="weui-cell__hd">
+                <label class="weui-label">关注用户</label>
+            </div>
+            <div class="weui-cell__bd">
+                0
+            </div>
+            <div class="weui-cell__ft">
+                <button class="weui-vcode-btn">查看关注明细</button>
+            </div>
+        </div>
+        <div class="weui-cell weui-cell_vcode">
+            <div class="weui-cell__hd">
+                <label class="weui-label">机票订单</label>
+            </div>
+            <div class="weui-cell__bd">
+                0
+            </div>
+            <div class="weui-cell__ft">
+                <button class="weui-vcode-btn">查看订单明细</button>
+            </div>
+        </div>
+        <div class="weui-cell weui-cell_vcode">
+            <div class="weui-cell__hd">
+                <label class="weui-label">机票张数</label>
+            </div>
+            <div class="weui-cell__bd">
+                0
+            </div>
+            <div class="weui-cell__ft">
+                <button class="weui-vcode-btn"></button>
+            </div>
+        </div>
+        <div class="weui-cell weui-cell_vcode">
+            <div class="weui-cell__hd">
+                <label class="weui-label">保险张数</label>
+            </div>
+            <div class="weui-cell__bd">
+                0
+            </div>
+            <div class="weui-cell__ft">
+                <button class="weui-vcode-btn"></button>
+            </div>
+        </div>
+        <div class="weui-cell weui-cell_vcode">
+            <div class="weui-cell__hd">
+                <label class="weui-label">退票张数</label>
+            </div>
+            <div class="weui-cell__bd">
+                0
+            </div>
+            <div class="weui-cell__ft">
+                <button class="weui-vcode-btn"></button>
+            </div>
+        </div>
+        <div class="weui-form-preview__ft" id="btn_Qrcode">
+            <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">查看我的专属分销二维码</a>
+        </div>
+    </div>
+
+    <div id="count_source" class="weui-popup__container">
+        <div class="weui-popup__overlay"></div>
+        <div class="weui-popup__modal">
+                <div class="weui-cells">
+                    
+                </div>
+                <div class="weui-form-preview__ft" id="btn_countType">
+                    <a class="weui-form-preview__btn weui-form-preview__btn_primary close-popup" href="javascript:">关闭</a>
+                </div>
+        </div>
+    </div>
+    <div style="display:none;">
+        <a href="javascript:;" id="btn_showPop" class="open-popup" data-target="#count_source">About</a>
+    </div>
+
+    <div id="template" style="display:none;">
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><img width="30" style="border:1px solid #eee;" src="{photoUrl}"></div>
+            <div class="weui-cell__bd">
+                <p>{nickName}</p>
+            </div>
+            <div class="weui-cell__ft">{addOn}</div>
+        </div>
+    </div>
+
+    <div id="template_order" style="display:none;">
+        <div class="weui-cell">
+            <div class="weui-cell__hd">[{ticket_count}张]</div>
+            <div class="weui-cell__bd">
+                <p>{Fliht_interval}</p>
+            </div>
+            <div class="weui-cell__ft">{Record_time}</div>
+        </div>
+    </div>
+
+    <div id="ShowQrcode" class="weui-popup__container popup-bottom">
+        <div class="weui-popup__overlay"></div>
+        <div class="weui-popup__modal" style="text-align:center;background-color:#fff;border-top:1px solid #eee;">
+            <img src="" style="width:60%; margin-top:10px;" />
+            <div style="font-size:0.8rem;color:#888;">长按可下载到本地</div>
+        </div>
+    </div>
+    
+
+    <!-- body 最后 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/json2.js"></script>
+    <script src="/js/c_count_fx.js"></script>
+    <script src="/js/Main.js"></script>
+    <script>
+        _C.Init(_Count);
+    </script>
+</body>
+</html>

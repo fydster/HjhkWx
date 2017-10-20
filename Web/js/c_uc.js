@@ -26,6 +26,12 @@
         $("#menu_01").find(".weui-cells .weui-cell").eq(4).click(function () {
             _C.RedirectUrl("c_uc.html", 0, "snsapi_userinfo");
         });
+
+        if ($.cookie("_IsFx") != null && $.cookie("seascape_def_USER_ID") != null) {
+            if ($.cookie("_IsFx") == $.cookie("seascape_def_USER_ID")) {
+                $("#menu_01").find(".weui-cells .weui-cell").eq(5).show();
+            }
+        }
     },
     initUInfo: function () {
         if (_U != null) {

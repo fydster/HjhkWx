@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!-- head 中 -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+</head>
+<body>
+<!-- 容器 -->
+    <div style="width:100%;padding:15px 0 0 0;text-align:center;font-size:1rem;color:#3cc51f;">
+        山西出行分销注册
+    </div>
+    <div class="weui-cells" id="infoList">
+        <div class="weui-cells__title">填写注册信息</div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <label class="weui-label">分销名称</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" id="contact" type="text" placeholder="请输入分销名称">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <label class="weui-label">手机号码</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" id="mobile" type="tel" placeholder="请输入手机号">
+            </div>
+        </div>
+        <div class="weui-form-preview__ft" id="btn_Qrcode">
+            <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">提交申请</a>
+        </div>
+    </div>
+    
+
+    <!-- body 最后 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/json2.js"></script>
+    <script src="/js/c_reg_fx.js"></script>
+    <script src="/js/Main.js"></script>
+    <script>
+        _C.Init(_Reg);
+    </script>
+</body>
+</html>

@@ -55,6 +55,7 @@ namespace Data
                             unionid = r["unionid"].ToString(),
                             id = Convert.ToInt32(r["id"]),
                             isSubscribe = Convert.ToInt16(r["isSubscribe"]),
+                            balance = Convert.ToDouble(r["balance"]),
                             source = r["source"].ToString()
                         };
                     }
@@ -180,6 +181,40 @@ namespace Data
                                 exOpenID = r["exOpenID"].ToString(),
                                 srcUid = Convert.ToInt32(r["srcUid"]),
                                 unionid = r["unionid"].ToString(),
+                                id = Convert.ToInt32(r["id"]),
+                                isSubscribe = Convert.ToInt16(r["isSubscribe"]),
+                                source = r["source"].ToString()
+                            };
+                            lu.Add(u);
+                        }
+                    }
+                }
+            }
+            catch { }
+            return lu;
+        }
+
+        public List<user> GetUserWithFx(int srcUid,string sDate,string eDate)
+        {
+            string sql = "select * from t_user where date(addOn) >='" + sDate + "' and date(addOn) <='" + eDate + "' and srcUid = " + srcUid + " order by addOn desc";
+            List<user> lu = new List<user>();
+            try
+            {
+                using (DataTable dt = helper.GetDataTable(sql))
+                {
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        foreach (DataRow r in dt.Rows)
+                        {
+                            user u = new user()
+                            {
+                                addOn = Convert.ToDateTime(r["addOn"]),
+                                area = r["area"].ToString(),
+                                contact = r["contact"].ToString(),
+                                photoUrl = r["photoUrl"].ToString(),
+                                nickName = r["nickName"].ToString(),
+                                mobile = r["mobile"].ToString(),
+                                openId = r["openid"].ToString(),
                                 id = Convert.ToInt32(r["id"]),
                                 isSubscribe = Convert.ToInt16(r["isSubscribe"]),
                                 source = r["source"].ToString()

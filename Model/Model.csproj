@@ -66,6 +66,7 @@
     <Compile Include="content\tClass.cs" />
     <Compile Include="Count\CountAll.cs" />
     <Compile Include="Count\CountFB.cs" />
+    <Compile Include="Count\CountFx.cs" />
     <Compile Include="Count\CountMobile.cs" />
     <Compile Include="Count\CountOrder.cs" />
     <Compile Include="Count\CountSource.cs" />
