@@ -69,11 +69,6 @@
     },
     initLayot: function () {
 
-        $(".swiper-container").swiper({
-            loop: true,
-            autoplay: 3000
-        });
-
         var h = window.screen.height;
 
         var midMenu = $(".midMenu").find("li");
@@ -87,19 +82,44 @@
             window.location = "c_index_home.html?selectType=0";
         });
         midMenu.eq(3).click(function () {
-            window.location = "app/hotel/index.aspx";
+            window.location = "travel/c_travel_index.html";
         });
         midMenu.eq(4).click(function () {
             window.location = "c_set_list.html";
         });
         midMenu.eq(6).click(function () {
-            window.location = "travel/c_travel_city.html?name=%u5C71%u897F&id=36";
+            //window.location = "travel/c_travel_city.html?name=%u5C71%u897F&id=36";
+            window.location = "app/hotel/index.aspx";
         });
         midMenu.eq(5).click(function () {
             window.location = "c_travel_home.html";
         });
         midMenu.eq(7).click(function () {
             window.location = "c_nav.html";
+        });
+
+        setTimeout(function () {
+            midMenu.eq(3).removeClass().addClass("animated shake");
+        }, 1000);
+
+        try {
+            $("#bottomMenu").find(".weui-flex__item").eq(1).click(function () {
+                window.location = "c_index_home.html?selectType=1";
+            });
+            $("#bottomMenu").find(".weui-flex__item").eq(2).click(function () {
+                window.location = "c_order_all.html";
+            });
+            $("#bottomMenu").find(".weui-flex__item").eq(3).click(function () {
+                window.location = "c_uc.html";
+            });
+        }
+        catch(e){
+
+        }
+
+        $(".swiper-container").swiper({
+            loop: true,
+            autoplay: 6000
         });
     }
 }

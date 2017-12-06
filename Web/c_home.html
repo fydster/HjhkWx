@@ -10,71 +10,102 @@
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.5.2/animate.css"/>
     <style>
         body {
             background: url('images/blue.jpg') no-repeat;
-            font-family:Microsoft YaHei,Tahoma,Arial,Roboto,Droid Sans,Helvetica,Helvetica Neue,Droid Sans Fallback,Heiti SC,Hiragino Sans GB,Simsun,sans-self;
+            font-family: Microsoft YaHei,Tahoma,Arial,Roboto,Droid Sans,Helvetica,Helvetica Neue,Droid Sans Fallback,Heiti SC,Hiragino Sans GB,Simsun,sans-self;
         }
-        .midMenu{
-            list-style:none;
-            margin:0;
-            display:inline-block;
-            padding:0 12px;
+
+        #bottomMenu .weui-flex__item {
+            line-height: 1rem;
         }
-        .midMenu li{
-            width:50%;
-            float:left;
-            text-align:center;
-            margin:4px 0;
+
+        .midMenu {
+            list-style: none;
+            margin: 15px 0 0 0;
+            display: inline-block;
+            padding: 0 12px;
         }
-        .midMenu li img{
-            width:80%;
-        }
+
+            .midMenu li {
+                width: 50%;
+                float: left;
+                text-align: center;
+                margin: 6px 0;
+            }
+
+                .midMenu li img {
+                    width: 75%;
+                }
     </style>
 </head>
 <body>
     <div class="swiper-container" data-space-between='10' data-pagination='.swiper-pagination' data-autoplay="1000">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="ad/ad1.jpg" style="width:100%;" alt=""></div>
-            <div class="swiper-slide"><img src="ad/ad2.jpg" style="width:100%;" alt=""></div>
+            <div class="swiper-slide"><a href="travel/c_travel_index.html"><img src="ad/ad5.jpg" style="width:100%;" alt=""></a></div>
+            <div class="swiper-slide"><a href="c_index_home.html"><img src="ad/ad2.jpg" style="width:100%;" alt=""></a></div>
         </div>
     </div>
     <div style="text-align:center;margin:0;">
-        <img src="images/LogoM.png" style="width:45%;"/>
+        <img src="images/LogoM.png" style="width:45%;display:none;" />
     </div>
     <ul class="midMenu">
         <li>
-            <img src="images/Menu01.png" />
+            <img class="animated zoomIn" src="images/Menu01.png" />
         </li>
         <li>
-            <img src="images/Menu02.png" />
+            <img class="animated zoomIn" src="images/Menu02.png" />
         </li>
         <li>
-            <img src="images/Menu03.png" />
+            <img class="animated zoomIn" src="images/Menu03.png" />
         </li>
         <li>
-            <img src="images/Menu04.png" />
+            <img class="animated zoomIn" src="images/Menu06New.png" />
         </li>
         <li>
-            <img src="images/Menu05.png" />
+            <img class="animated zoomIn" src="images/Menu05.png" />
         </li>
         <li>
-            <img src="images/Menu07.png" />
+            <img class="animated zoomIn" src="images/Menu07.png" />
         </li>
         <li style="clear:both;">
-            <img src="images/Menu06.png"/>
+            <img class="animated zoomIn" src="images/Menu04.png" />
         </li>
         <li>
-            <img src="images/Menu08.png"/>
+            <img class="animated zoomIn" src="images/Menu08.png" />
         </li>
     </ul>
+
+    <div id="bottomMenu" style="position:fixed;bottom:0;left:0;width:100%;background-color:#eeeeef;border-top:1px solid #bbb;opacity:0.8;">
+        <div class="weui-flex" style="padding-top:0.2rem;">
+            <div class="weui-flex__item" style="text-align:center;">
+                <img src="images/Menu_home_a.png" alt="" style="width:1.5rem;">
+                <p style="color:#ba3987;font-family:'SimHei';font-size:0.7rem;">首页</p>
+            </div>
+            <div class="weui-flex__item" style="text-align:center;">
+                <img src="images/Menu_home_q.png" alt="" style="width:1.5rem;">
+                <p style="color:#555;font-family:'SimHei';font-size:0.7rem;">预定</p>
+            </div>
+            <div class="weui-flex__item" style="text-align:center;">
+                <img src="images/Menu_list.png" alt="" style="width:1.5rem;">
+                <p style="color:#555;font-family:'SimHei';font-size:0.7rem;">行程</p>
+            </div>
+            <div class="weui-flex__item" style="text-align:center;">
+                <img src="images/Menu_user.png" alt="" style="width:1.5rem;">
+                <p style="color:#555;font-family:'SimHei';font-size:0.7rem;">我的</p>
+            </div>
+        </div>
+    </div>
+
     <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
     <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/swiper.min.js"></script>
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="js/count.js"></script>
     <script src="js/jquery.cookie.js"></script>
     <script src="js/json2.js"></script>
-    <script src="js/c_home.js?v=20170925"></script>
+    <script src="js/c_home.js?v=20171130"></script>
     <script src="js/Main.js"></script>
     <script>
         _C.Init(_Home);

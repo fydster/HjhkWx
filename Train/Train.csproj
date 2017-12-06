@@ -58,12 +58,14 @@
     <Compile Include="CallBack\passengers_refund.cs" />
     <Compile Include="Data\_applyIssueOrder.cs" />
     <Compile Include="Data\_applyRefundOrder.cs" />
+    <Compile Include="Data\_BookGrabTickets.cs" />
     <Compile Include="Data\_BookTickets.cs" />
     <Compile Include="Data\_CancelOrder.cs" />
     <Compile Include="Data\_TrainCity.cs" />
     <Compile Include="Data\_TrainOrder.cs" />
     <Compile Include="Model\bookTickets.cs" />
     <Compile Include="Model\identity_passengers.cs" />
+    <Compile Include="Model\QpBook.cs" />
     <Compile Include="Model\trainCity.cs" />
     <Compile Include="Model\trainStationList.cs" />
     <Compile Include="Order\trainFare.cs" />

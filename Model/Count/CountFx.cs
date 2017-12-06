@@ -13,5 +13,6 @@ namespace Model.Count
         public int insuranceCount { get; set; }
         public int airPrice { get; set; }
         public int refundCount { get; set; }
+        public int userCancel { get; set; }
     }
 }

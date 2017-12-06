@@ -11,7 +11,7 @@
         });
 
         $(".am-g").find(".am-u-sm-2").eq(1).click(function () {
-            window.location = "c_travel.html";
+            window.location = "c_travel_index.html";
         });
         _C.initWx();
 

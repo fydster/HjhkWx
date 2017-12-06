@@ -147,6 +147,23 @@ namespace Data
             return Dic;
         }
 
+        public Dictionary<int, int> getClassDicID()
+        {
+            Dictionary<int, int> Dic = new Dictionary<int, int>();
+            string sql = "select * from t_class";
+            using (DataTable dt = helper.GetDataTable(sql))
+            {
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    foreach (DataRow r in dt.Rows)
+                    {
+                        Dic.Add(Convert.ToInt16(r["Id"]), Convert.ToInt16(r["pId"]));
+                    }
+                }
+            }
+            return Dic;
+        }
+
         public string GetCidNames(string cids)
         {
             Dictionary<int, string> Dic = getClassDic();

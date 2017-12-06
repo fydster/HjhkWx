@@ -61,6 +61,17 @@
         </div>
         <div class="weui-cell weui-cell_vcode">
             <div class="weui-cell__hd">
+                <label class="weui-label">取消用户</label>
+            </div>
+            <div class="weui-cell__bd">
+                0
+            </div>
+            <div class="weui-cell__ft">
+                <button class="weui-vcode-btn"></button>
+            </div>
+        </div>
+        <div class="weui-cell weui-cell_vcode">
+            <div class="weui-cell__hd">
                 <label class="weui-label">机票订单</label>
             </div>
             <div class="weui-cell__bd">
@@ -127,7 +138,7 @@
         <div class="weui-cell">
             <div class="weui-cell__hd"><img width="30" style="border:1px solid #eee;" src="{photoUrl}"></div>
             <div class="weui-cell__bd">
-                <p>{nickName}</p>
+                <p>{nickName}</p>{isSubscribe}
             </div>
             <div class="weui-cell__ft">{addOn}</div>
         </div>
@@ -157,7 +168,7 @@
     <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
     <script src="/js/jquery.cookie.js"></script>
     <script src="/js/json2.js"></script>
-    <script src="/js/c_count_fx.js"></script>
+    <script src="/js/c_count_fx.js?v=20171023"></script>
     <script src="/js/Main.js"></script>
     <script>
         _C.Init(_Count);

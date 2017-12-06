@@ -88,6 +88,8 @@
     <Compile Include="syslog.cs" />
     <Compile Include="syssetting.cs" />
     <Compile Include="templateMsg.cs" />
+    <Compile Include="travel\travelProduct.cs" />
+    <Compile Include="travel\travelProductInfo.cs" />
     <Compile Include="uInfo.cs" />
     <Compile Include="user.cs" />
     <Compile Include="View\ClassInfo.cs" />

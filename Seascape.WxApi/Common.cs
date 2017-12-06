@@ -169,15 +169,17 @@ namespace Seascape.WxApi
         /// 获取二维码
         /// </summary>
         /// <returns></returns>
-        public string GetQR_Code(string access_token_, string FilePath, int SceneID)
+        public string GetQR_Code(string access_token_, string FilePath, int SceneID,out string Json)
         {
             string OrCode = "";
+            string jsons = "";
             string GetUrl = " https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=" + access_token_;
             try
             {
                 string ticket = "";
                 string body = "{\"action_name\": \"QR_LIMIT_SCENE\",\"action_info\": {\"scene\": {\"scene_id\": " + SceneID + "}}}";
                 string JsonStr = webRequest(GetUrl, body);
+                jsons = JsonStr;
                 JsonData jd = JsonMapper.ToObject(JsonStr);
                 if (jd["ticket"].ToString() != "")
                 {
@@ -192,7 +194,10 @@ namespace Seascape.WxApi
             }
             catch (Exception ex)
             {
+                jsons = jsons + ex.Message;
+                
             }
+            Json = jsons;
             return OrCode;
         }
 

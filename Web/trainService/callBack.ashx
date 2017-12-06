@@ -381,6 +381,19 @@ public class TrainHandler : IHttpHandler {
             trainOrderinfo o = new _TrainOrder().GetTrainOrderInfoForAll(orderNo);
             if (o != null)
             {
+                int state = 1;
+                foreach (trainFare item in o.fare)
+                {
+                    if (item.passengerId == passengerId)
+                    {
+                        state = item.state;
+                    }
+                }
+
+                if (state == 1)
+                {
+                    return;
+                }
                 //Double syPrice = o.totalPrice - o.refundPrice;
                 //if (syPrice > tpPrice)
                 {

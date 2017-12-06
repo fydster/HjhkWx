@@ -5,7 +5,11 @@
     Init: function () {
         _SetList.initLayot();
         _SetList.getOrder();
+        _SetList.getUser();
         _C.initWx();
+        $("#subscribe").click(function () {
+            window.location = "http://mp.weixin.qq.com/s/ZJ-QXQkMTVQRUWEyzOdGPw";
+        });
         wx.ready(function () {
             //alert("1");
             wx.onMenuShareTimeline({
@@ -74,6 +78,28 @@
         $("#btn_back").click(function () {
             window.location = "c_index_home.html";
         });
+    },
+    getUser: function () {
+        $.ajax(
+                {
+                    url: _C.ServerUrl,
+                    context: document.body,
+                    dataType: "json",
+                    cache: false,
+                    data: { fn: 7, openId: $.cookie("_OpenId"), t: new Date() },
+                    success: function (o) {
+                        if (o.Return == 0) {
+                            if (o.Info != null) {
+                                if (o.Info.isSubscribe == 0) {
+                                    setTimeout(function () {
+                                        $("#subscribe").fadeIn();
+                                    }, 1000);
+                                }
+                            }
+                        }
+                    }
+                }
+        );
     },
     getOrder: function () {
         var template = $("#template_ul").html();

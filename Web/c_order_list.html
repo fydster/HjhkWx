@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    <link href="style/c_order_list.css" rel="stylesheet" />
+    <script src="js/count.js"></script>
+</head>
+<body>
+
+    <div class="weui-tab">
+        <div class="weui-navbar">
+            <a class="weui-navbar__item weui-bar__item--on" href="#tab1">
+                飞机票
+            </a>
+            <a class="weui-navbar__item" href="#tab2">
+                火车票
+            </a>
+        </div>
+        <div class="weui-tab__bd">
+            <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+                <ul id="ul_order"></ul>
+            </div>
+            <div id="tab2" class="weui-tab__bd-item">
+                <ul id="ul_order_train"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="bottomMenu" style="position:fixed;bottom:0;left:0;width:100%;background-color:#eeeeef;border-top:1px solid #bbb;">
+        <div class="weui-flex" style="padding-top:0.2rem;">
+            <div class="weui-flex__item" style="text-align:center;">
+                <img src="images/Menu_home.png" alt="" style="width:1.5rem;">
+                <p style="color:#555;font-family:'SimHei';font-size:0.7rem;">首页</p>
+            </div>
+            <div class="weui-flex__item" style="text-align:center;">
+                <img src="images/Menu_home_q.png" alt="" style="width:1.5rem;">
+                <p style="color:#555;font-family:'SimHei';font-size:0.7rem;">预定</p>
+            </div>
+            <div class="weui-flex__item" style="text-align:center;">
+                <img src="images/Menu_list_a.png" alt="" style="width:1.5rem;">
+                <p style="color:#ba3987;font-family:'SimHei';font-size:0.7rem;">行程</p>
+            </div>
+            <div class="weui-flex__item" style="text-align:center;">
+                <img src="images/Menu_user.png" alt="" style="width:1.5rem;">
+                <p style="color:#555;font-family:'SimHei';font-size:0.7rem;">我的</p>
+            </div>
+        </div>
+    </div>
+
+    <!--隐藏区域-->
+    <ul style="display:none;" id="template_list">
+        <li>
+            <div class="s_flex" style="margin-top:0.5rem;">
+                <div class="s_flex_4" style="font-size:14px;color:#888;text-align:left;">111111{RecordDate}</div>
+                <div class="s_flex_8" style="color:#888;border-bottom:1px dashed #ddd;text-align:left;height:1.4rem;">
+                    <span style="font-size:1rem;font-weight:600;">{FlihtFrom} <em style="font-style:normal;font-size:0.6rem;font-weight:normal;">{sPort}{sT}</em></span>
+                    <i class="am-icon-long-arrow-right"></i>
+                    <span style="font-size:1rem;font-weight:600;">{FlihtTo} <em style="font-style:normal;font-size:0.6rem;font-weight:normal;">{tPort}{tT}</em></span>
+                </div>
+            </div>
+            <div class="s_flex">
+                <div class="s_flex_4" style="font-size:0.6rem;text-align:left;">
+                    <a class="weui-btn weui-btn_primary">{state}</a>
+                </div>
+                <div class="s_flex_8" style="font-size:0.8rem;color:#888;border-bottom:1px dashed #ddd;padding-top:0.2rem 0;text-align:left;">
+                    {Fare}
+                </div>
+            </div>
+            <div class="s_flex">
+                <div class="s_flex_4" style="font-size:1rem;text-align:left;">
+
+                </div>
+                <div class="s_flex_8" style="font-size:0.8rem;color:#888;border-bottom:1px dashed #ddd;padding-top:0.2rem 0;text-align:left;">
+                    总计：{Price}元
+                </div>
+            </div>
+            <div class="s_flex" style="margin-top:0.5rem;border-bottom:1px dashed #ddd;padding-bottom:0.2rem;">
+                <div class="s_flex_4" style="font-size:1rem;color:#888;">
+
+                </div>
+                <div class="s_flex_8" style="font-size:1rem;text-align:left;">
+                    <a data-no="{no}" class="weui-btn weui-btn_warn">订单详情</a>
+                    <a data-no="{no}" data-time="{addOn}" style="margin-left:0.5rem;" class="weui-btn weui-btn_primary {payhide}">支付订单</a>
+                    <a data-no="{no}" style="margin-left:0.5rem;" class="weui-btn weui-btn_default {hide}">申请退改签</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <ul style="display:none;" id="template_list_train">
+        <li style="padding-top:5px;padding-bottom:5px;font-size:1.5rem;" data-json="{json}">
+            <div class="s_flex" style="margin-top:0.5rem;">
+                <div class="s_flex_4" style="font-size:1.6rem;color:#888;text-align:left;">{RecordDate}</div>
+                <div class="s_flex_8" style="font-size:1.4rem;color:#888;border-bottom:1px dashed #ddd;text-align:left;height:2.8rem;">
+                    <span style="font-size:1.6rem;font-weight:600;">{FlihtFrom}</span>
+                    <i class="am-icon-long-arrow-right"></i>
+                    <span style="font-size:1.6rem;font-weight:600;">{FlihtTo}</span>
+                </div>
+            </div>
+            <div class="s_flex">
+                <div class="s_flex_4" style="font-size:1.3rem;text-align:left;">
+                    <a class="am-badge am-badge-success am-radius">{state}</a>
+                </div>
+                <div class="s_flex_8" style="font-size:1.4rem;color:#888;border-bottom:1px dashed #ddd;padding-top:0.5rem;padding-bottom:0.5rem;text-align:left;">
+                    {Fare}
+                </div>
+            </div>
+            <div class="s_flex">
+                <div class="s_flex_4" style="font-size:1.4rem;text-align:left;">
+
+                </div>
+                <div class="s_flex_8" style="font-size:1.4rem;color:#888;border-bottom:1px dashed #ddd;padding-top:0.5rem;padding-bottom:0.5rem;text-align:left;">
+                    总计：{Price}元<span style="font-size:1.6rem;color:#008ed6;font-weight:600;"></span>
+                </div>
+            </div>
+            <div class="s_flex" style="margin-top:1rem;border-bottom:1px dashed #ddd;padding-bottom:0.5rem;">
+                <div class="s_flex_4" style="font-size:1.4rem;color:#888;">
+
+                </div>
+                <div class="s_flex_8" style="font-size:1.4rem;text-align:left;">
+                    <button data-no="{no}" type="button" class="am-btn am-btn-xs am-btn-warning am-radius">订单详情</button>
+                    <button data-no="{no}" type="button" style="margin-left:1rem;" class="am-btn am-btn-xs am-btn-success am-radius {payhide}">支付订单</button>
+                    <button data-no="{no}" data-fare="{fare}" type="button" style="margin-left:1rem;" class="am-btn am-btn-xs am-btn-secondary am-radius {hide}">申请退改签</button>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <!--隐藏区域End-->
+    <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/c_order_list.js"></script>
+    <script src="js/Main.js?v=20170925"></script>
+    <script>
+        _C.Init(_List);
+    </script>
+
+</body>
+</html>

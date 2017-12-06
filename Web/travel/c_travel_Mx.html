@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>山西出行</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    <link href="/style/c_travel_Mx.css" rel="stylesheet" />
+</head>
+<body>
+    <img src="" id="topImg" style="width:100%;"/>
+    <div style="padding:0 4px;background-color:#fff;">
+        <div class="pTitle"></div>
+        <div class="txtLeft txtPrice" style="border-bottom:1px dashed #eee;margin-bottom:5px;">
+            
+        </div>        
+    </div>
+
+    <div class="weui-tab">
+        <div class="weui-navbar">
+            <a class="weui-navbar__item weui-bar__item--on" href="#tab1">
+                产品特色
+            </a>
+            <a class="weui-navbar__item" href="#tab2">
+                行程详情
+            </a>
+            <a class="weui-navbar__item" href="#tab3">
+                费用说明
+            </a>
+            <a class="weui-navbar__item" href="#tab4">
+                预定须知
+            </a>
+        </div>
+        <div class="weui-tab__bd">
+            <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+            </div>
+            <div id="tab2" class="weui-tab__bd-item">
+            </div>
+            <div id="tab3" class="weui-tab__bd-item">
+            </div>
+            <div id="tab4" class="weui-tab__bd-item">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="infoPanel">
+
+    </div>
+
+    <div style="height:50px;width:100%;">
+        &nbsp;
+    </div>
+
+    <div id="QrCode" class="weui-popup__container popup-bottom">
+        <div class="weui-popup__overlay"></div>
+        <div class="weui-popup__modal" style="text-align:center;background-color:#fff;">
+            <div style="padding-right:5px;text-align:right;width:100%;">
+                <i class="weui-icon-cancel"></i>
+            </div>
+            <img src="img/qrcode.jpg" style="width:50%;"/>
+            <div style="height:30px;font-size:0.6rem;">
+                长按识别添加客服微信
+            </div>
+        </div>
+    </div>
+
+    <div class="bottomMenu weui-flex">
+        <div class="weui-flex__item txtCenter" style="background-color:#ec613c">
+            <a href="tel:15536600022"><img src="img/phonew.png" style="width:52%;margin-top:0.5rem;"/></a>
+        </div>
+        <div id="wxService" class="weui-flex__item txtCenter" style="background-color:#5cca6c">
+            <img src="img/wxw.png" style="width:52%;margin-top:0.5rem;" />
+        </div>
+    </div>
+    <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="/js/count.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/json2.js"></script>
+    <script src="/js/c_travel_Mx.js?v=20171123"></script>
+    <script src="/js/Main.js"></script>
+    <script>
+        _C.Init(_Travel);
+    </script>
+
+</body>
+</html>

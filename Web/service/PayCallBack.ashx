@@ -170,35 +170,6 @@ public class Handler : IHttpHandler
     }
 
     /// <summary>
-    /// 获取全局Access_Token
-    /// </summary>
-    /// <param name="c"></param>
-    /// <returns></returns>
-    public string Get_Access_Token(HttpContext c)
-    {
-        string AccessRsa = "";
-        string Access_Token = new _WxAccessToken().GetAccessToken();
-        //WriteLog("--1--" + Access_Token + "--");
-        if (Access_Token.Length > 0)
-        {
-            AccessRsa = Access_Token;
-        }
-        else
-        {
-            //WriteLog("--5--" + Access_Token + "--");
-            Access_Token = new Common(appid, secret).Get_Access_Token();
-            WxAccessToken wx = new WxAccessToken
-            {
-                access_token = Access_Token,
-                addOn = DateTime.Now
-            };
-            new Main().AddToDb(wx, "wx_access_token");
-            AccessRsa = Access_Token;
-        }
-        return AccessRsa;
-    }
-    
-    /// <summary>
     /// 输入流转字符串
     /// </summary>
     /// <param name="c"></param>

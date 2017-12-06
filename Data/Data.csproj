@@ -93,6 +93,7 @@
     <Compile Include="Tool\DataConnectionManager.cs" />
     <Compile Include="Tool\DbCenter.cs" />
     <Compile Include="Tool\Main.cs" />
+    <Compile Include="travel\_TravelProduct.cs" />
     <Compile Include="_CityCode.cs" />
     <Compile Include="_Client.cs" />
     <Compile Include="_Custom.cs" />

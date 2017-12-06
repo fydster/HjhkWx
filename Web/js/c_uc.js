@@ -5,9 +5,12 @@
     },
     initEvent: function () {
         $("#bottomMenu").find(".weui-flex__item").eq(0).click(function () {
-            window.location = "c_index_home.html";
+            window.location = "c_home.html";
         });
         $("#bottomMenu").find(".weui-flex__item").eq(1).click(function () {
+            window.location = "c_index_home.html";
+        });
+        $("#bottomMenu").find(".weui-flex__item").eq(2).click(function () {
             window.location = "c_order_all.html";
         });
 

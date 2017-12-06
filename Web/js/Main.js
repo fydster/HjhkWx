@@ -96,6 +96,7 @@ var _C = {
     ServerUrl: "/service/Handler.ashx",
     AirUrl: "/service/AirHandler.ashx",
     TrainServerUrl: "/service/TrainHandler.ashx",
+    LyUrl: "/service/lyHandler.ashx",
     Init: function (callback) {
         if ($.cookie("seascape_def_USER_ID") != null) {
             _U.uid = $.cookie("seascape_def_USER_ID");

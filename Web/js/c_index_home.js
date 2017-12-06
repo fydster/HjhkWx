@@ -70,6 +70,11 @@
                 }
             });
         });
+
+        $("#subscribe").click(function () {
+            window.location = "http://mp.weixin.qq.com/s/ZJ-QXQkMTVQRUWEyzOdGPw";
+        });
+        _Index.getUser();
     },
     InitWxInfo: function () {
         if (_B.source.length == 0) {
@@ -100,6 +105,28 @@
         }
         );
     },
+    getUser: function () {
+        $.ajax(
+                {
+                    url: _C.ServerUrl,
+                    context: document.body,
+                    dataType: "json",
+                    cache: false,
+                    data: { fn: 7, openId: $.cookie("_OpenId"), t: new Date() },
+                    success: function (o) {
+                        if (o.Return == 0) {
+                            if (o.Info != null) {
+                                if (o.Info.isSubscribe == 0) {
+                                    setTimeout(function () {
+                                        $("#subscribe").fadeIn();
+                                    }, 1000);
+                                }
+                            }
+                        }
+                    }
+                }
+        );
+    },
     initLayot: function () {
         var h = window.screen.height;
         h = h - 100;
@@ -117,10 +144,13 @@
             window.location = "c_lowPrice.html";
         });
 
-        $("#bottomMenu").find(".weui-flex__item").eq(1).click(function () {
-            window.location = "c_order_all.html";
+        $("#bottomMenu").find(".weui-flex__item").eq(0).click(function () {
+            window.location = "c_home.html";
         });
         $("#bottomMenu").find(".weui-flex__item").eq(2).click(function () {
+            window.location = "c_order_all.html";
+        });
+        $("#bottomMenu").find(".weui-flex__item").eq(3).click(function () {
             window.location = "c_uc.html";
         });
 
@@ -180,11 +210,13 @@
             }
         });
 
+        /*
         $('.banner').unslider({
             autoplay: true,
             nav: false,
             arrows: false
         });
+        */
 
         $("#sDate").click(function () {
             $("#sDate_panel").calendar({

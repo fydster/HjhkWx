@@ -18,17 +18,20 @@ namespace Data.Count
                 airFareCount = 0,
                 insuranceCount = 0,
                 airPrice = 0,
-                refundCount = 0
+                refundCount = 0,
+                userCancel = 0
             };
 
             //新增用户
             try
             {
                 ca.userCount = Convert.ToInt16(helper.GetOne("select count(id) as t from t_user where srcUid = " + srcUid + " and date(addOn) >='" + sDate.ToString("yyyy-MM-dd") + "' and date(addOn) <='" + eDate.ToString("yyyy-MM-dd") + "'"));
+                ca.userCancel = Convert.ToInt16(helper.GetOne("select count(id) as t from t_user where srcUid = " + srcUid + " and date(addOn) >='" + sDate.ToString("yyyy-MM-dd") + "' and date(addOn) <='" + eDate.ToString("yyyy-MM-dd") + "' and isSubscribe = 0"));
             }
             catch
             {
                 ca.userCount = 0;
+                ca.userCancel = 0;
             }
 
             //机票票数

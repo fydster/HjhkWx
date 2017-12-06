@@ -7,7 +7,7 @@
     initEvent: function () {
         $("#btn_CountYG").click(_Count.getList);
         $(".weui-vcode-btn").eq(0).click(_Count.getUserList);
-        $(".weui-vcode-btn").eq(1).click(_Count.getOrderList);
+        $(".weui-vcode-btn").eq(2).click(_Count.getOrderList);
         //处理返回键
         window.onpopstate = function () {
             if (_Count.isOpenInfo == 1) {
@@ -17,7 +17,7 @@
         }
 
         $("#nickName").text("[" + $.cookie("_Contact") + "]");
-        $("#ShowQrcode").find("img").attr("src", "/pic/qrcode/" + $.cookie("seascape_def_USER_ID") + ".jpg");
+        $("#ShowQrcode").find("img").attr("src", "/pic/fxcode/" + $.cookie("seascape_def_USER_ID") + ".jpg");
 
         $("#btn_Qrcode").click(function () {
             $("#ShowQrcode").popup();
@@ -72,10 +72,11 @@
 				            var obj = $("#infoList").find(".weui-cell__ft");
 				            var obj_ = $("#infoList").find(".weui-cell__bd");
 				            obj_.eq(0).html(o.Info.userCount);
-				            obj_.eq(1).html(o.Info.airOrderCount);
-				            obj_.eq(2).html(o.Info.airFareCount);
-				            obj_.eq(3).html(o.Info.insuranceCount);
-				            obj_.eq(4).html(o.Info.refundCount);
+				            obj_.eq(1).html(o.Info.userCancel);
+				            obj_.eq(2).html(o.Info.airOrderCount);
+				            obj_.eq(3).html(o.Info.airFareCount);
+				            obj_.eq(4).html(o.Info.insuranceCount);
+				            obj_.eq(5).html(o.Info.refundCount);
 				        }
 				        else {
 				            $.alert(o.Msg);
@@ -111,6 +112,7 @@
 				                var oi = o.List[i];
 				                tempHtml = template.replace("{photoUrl}", oi.photoUrl);
 				                tempHtml = tempHtml.replace("{nickName}", oi.nickName);
+				                tempHtml = tempHtml.replace("{isSubscribe}", oi.isSubscribe.toString().replace("0", "<span style=\"border:1px solid #eee;font-size:0.6rem;color:#999;\">已取消</span>").replace("1",""));
 				                tempHtml = tempHtml.replace("{addOn}", new Date(oi.addOn).pattern("yyyy-MM-dd HH:mm"));
 				                obj.append(tempHtml);
 				            }

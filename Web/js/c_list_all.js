@@ -6,9 +6,12 @@
     oType: 0,
     Init: function () {
         $("#bottomMenu").find(".weui-flex__item").eq(0).click(function () {
+            window.location = "c_home.html";
+        });
+        $("#bottomMenu").find(".weui-flex__item").eq(1).click(function () {
             window.location = "c_index_home.html";
         });
-        $("#bottomMenu").find(".weui-flex__item").eq(2).click(function () {
+        $("#bottomMenu").find(".weui-flex__item").eq(3).click(function () {
             window.location = "c_uc.html";
         });
         if (_B.source == "0000") {

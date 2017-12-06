@@ -24,75 +24,7 @@
 <script src="js/jquery.cookie.js"></script>
     
     <script>
-        Date.prototype.pattern = function (fmt) {
-            try {
-                var o = {
-                    "M+": this.getMonth() + 1, //月份           
-                    "d+": this.getDate(), //日           
-                    "h+": this.getHours() % 12 == 0 ? 12 : this.getHours() % 12, //小时           
-                    "H+": this.getHours(), //小时           
-                    "m+": this.getMinutes(), //分           
-                    "s+": this.getSeconds(), //秒           
-                    "q+": Math.floor((this.getMonth() + 3) / 3), //季度           
-                    "S": this.getMilliseconds() //毫秒           
-                };
-                var week = {
-                    "0": "/u65e5",
-                    "1": "/u4e00",
-                    "2": "/u4e8c",
-                    "3": "/u4e09",
-                    "4": "/u56db",
-                    "5": "/u4e94",
-                    "6": "/u516d"
-                };
-                if (/(y+)/.test(fmt)) {
-                    fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-                }
-                if (/(E+)/.test(fmt)) {
-                    fmt = fmt.replace(RegExp.$1, ((RegExp.$1.length > 1) ? (RegExp.$1.length > 2 ? "/u661f/u671f" : "/u5468") : "") + week[this.getDay() + ""]);
-                }
-                for (var k in o) {
-                    if (new RegExp("(" + k + ")").test(fmt)) {
-                        fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-                    }
-                }
-            }
-            catch (e) {
-
-            }
-
-            return fmt;
-        }
-
-
-
-    var nl = 0;
-    var nls = "";
-    var card = "142731199101192432";
-    var nowD = new Date().pattern("yyyyMMdd");
-    if (card.length == 15) {
-        nls = "19" + card.substring(6, 12);
-    }
-    else {
-        nls = card.substring(6, 14);
-    }
-    nl = parseInt(nowD.substring(0, 4)) - parseInt(nls.substring(0, 4));
-    if ((parseInt(nowD.substring(4, 8)) > parseInt(nls.substring(4, 8))) < 0) {
-        nl = nl - 1;
-    }
-
-    var UUserCard = "142731199101192432";
-
-    if (UUserCard.length == 15) {
-        UUserCard = UUserCard.substr(0, 6) + "19" + UUserCard.substr(6, UUserCard.length - 6);
-    }
-    var myDate = new Date();
-    var month = myDate.getMonth() + 1;
-    var day = myDate.getDate();
-    var age = myDate.getFullYear() - UUserCard.substring(6, 10) - 1;
-    if (UUserCard.substring(10, 12) < month || UUserCard.substring(10, 12) == month && UUserCard.substring(12, 14) <= day) {
-        age++;
-    }
+        window.location = "https://h5.youzan.com/v2/showcase/homepage?alias=cau1dx1z&sf=wx_menu";
     </script>
 
 </body>

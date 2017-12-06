@@ -73,6 +73,8 @@ public class Handler : IHttpHandler {
             {
                 appid = dic[source].appid;
                 secret = dic[source].secret;
+                Comm.appid = appid;
+                Comm.secret = secret;
             }
         }
         else
@@ -81,6 +83,8 @@ public class Handler : IHttpHandler {
             c.Cache.Add("Web_Source", dic, null, System.DateTime.UtcNow.AddMinutes(120), TimeSpan.Zero, System.Web.Caching.CacheItemPriority.Normal, null);
             appid = dic[source].appid;
             secret = dic[source].secret;
+            Comm.appid = appid;
+            Comm.secret = secret;
         }
     }
     
@@ -340,7 +344,7 @@ public class Handler : IHttpHandler {
     /// <returns></returns>
     public string getKfList(HttpContext c)
     {
-        string Access_Token = Get_Access_Token(c);
+        string Access_Token = Comm.Get_Access_Token(c);
         string url = "https://api.weixin.qq.com/cgi-bin/customservice/getkflist?access_token=" + Access_Token;
         return BasicTool.webRequest(url);
     }
@@ -458,7 +462,17 @@ public class Handler : IHttpHandler {
     {
         string code = string.IsNullOrEmpty(c.Request["code"]) ? "" : c.Request["code"].ToString();
         string source = string.IsNullOrEmpty(c.Request["source"]) ? "0000" : c.Request["source"].ToString();
-        int uid = string.IsNullOrEmpty(c.Request["uid"]) ? 0 : Convert.ToInt32(c.Request["uid"]);
+        int uid = 0;
+        try
+        {
+            new Main().AddTestLog("test-uid", c.Request["uid"]);
+            uid = string.IsNullOrEmpty(c.Request["uid"]) ? 0 : Convert.ToInt32(c.Request["uid"]);
+            
+        }
+        catch
+        {
+            
+        }
         new Main().AddTestLog("code", code);
         int srcUid = 0;
         //兴业银行
@@ -613,7 +627,7 @@ public class Handler : IHttpHandler {
         int count = 0;
         string nextOpenid = "";
         string openId = string.IsNullOrEmpty(c.Request["next_openid"]) ? "" : c.Request["next_openid"].ToString();
-        string JsonData = new Common(appid, secret).GetSubUser(Get_Access_Token(c), openId);
+        string JsonData = new Common(appid, secret).GetSubUser(Comm.Get_Access_Token(c), openId);
         UserL ul = new UserL();
         if (JsonData.Length > 0)
         {
@@ -696,7 +710,7 @@ public class Handler : IHttpHandler {
             {
                 u = new user();
                 string r = "";
-                Seascape.WxApi.UserInfo ui = Seascape.WxApi.UserInfo.getUserInfoByGlobal(Get_Access_Token(c), openId, out r);
+                Seascape.WxApi.UserInfo ui = Seascape.WxApi.UserInfo.getUserInfoByGlobal(Comm.Get_Access_Token(c), openId, out r);
                 //new Main().AddTestLog("r", r);
                 if (ui != null && !string.IsNullOrEmpty(ui.nickname))
                 {
@@ -740,7 +754,7 @@ public class Handler : IHttpHandler {
             string r = "";
             try
             {
-                Seascape.WxApi.UserInfo ui = Seascape.WxApi.UserInfo.getUserInfoByGlobal(Get_Access_Token(c), openId, out r);
+                Seascape.WxApi.UserInfo ui = Seascape.WxApi.UserInfo.getUserInfoByGlobal(Comm.Get_Access_Token(c), openId, out r);
                 new Main().AddTestLog("r-wx" + openId, r);
                 if (ui != null && !string.IsNullOrEmpty(ui.nickname))
                 {
@@ -1184,18 +1198,19 @@ public class Handler : IHttpHandler {
     /// <returns></returns>
     public string CreateCode(HttpContext c)
     {
-        string access_token = Get_Access_Token(c);
+        string access_token = Comm.Get_Access_Token(c);
         int uid = string.IsNullOrEmpty(c.Request["uid"]) ? 0 : Convert.ToInt32(c.Request["uid"]);
         if (uid > 0)
         {
             string FilePath = c.Server.MapPath("/pic/QrCode/" + uid + ".jpg");
             if (File.Exists(FilePath))
             {
-                return Sys_Result.GetR(0, "");    
+                return Sys_Result.GetR(0, "已存在");    
             }
             int SceneID = uid;
-            string Result = new Common(appid, secret).GetQR_Code(access_token, FilePath, SceneID);
-            return Sys_Result.GetR(0, "");
+            string json = "";
+            string Result = new Common(appid, secret).GetQR_Code(access_token, FilePath, SceneID, out json);
+            return Sys_Result.GetR(0, "生成完成：" + Result + "----" + json);
         }
         return Sys_Result.GetR(1, "");
     }
@@ -1492,7 +1507,8 @@ public class Handler : IHttpHandler {
             string LogoPath = c.Server.MapPath("/pic/logoNew.jpg");
             if (!File.Exists(CodePath))
             {
-                string Result = new Common(appid, secret).GetQR_Code(Get_Access_Token(c), CodePath, uid);
+                string json = "";
+                string Result = new Common(appid, secret).GetQR_Code(Comm.Get_Access_Token(c), CodePath, uid, out json);
             }
 
             string fileName = "";
@@ -1539,7 +1555,7 @@ public class Handler : IHttpHandler {
             if (hType == 0)
             {
                 string localPath = c.Server.MapPath("~") + "/attach/" + dates + "/" + DateTime.Now.ToString("yyMMddHHmmdd") + "_" + uid + ".jpg";
-                string tempSrc = new WxTool().downloadMedia(serverId, localPath, Get_Access_Token(c));
+                string tempSrc = new WxTool().downloadMedia(serverId, localPath, Comm.Get_Access_Token(c));
                 new Main().AddTestLog("tempSrc", tempSrc);
 
 
@@ -2133,6 +2149,7 @@ public class Handler : IHttpHandler {
             CountFx ca = new _CountFx().GetCount(Convert.ToDateTime(sDate), Convert.ToDateTime(eDate),uid);
             if (ca != null)
             {
+                ca.userCount = ca.userCount - ca.userCancel;
                 var o = new { Return = 0, Msg = "", Info = ca };
                 return JsonMapper.ToJson(o);
             }
@@ -2300,11 +2317,38 @@ public class Handler : IHttpHandler {
             if (!File.Exists(FilePath))
             {
                 int SceneID = uid;
-                string Result = new Common(appid, secret).GetQR_Code(Get_Access_Token(c), FilePath, SceneID);    
+                string json = "";
+                string Result = new Common(appid, secret).GetQR_Code(Comm.Get_Access_Token(c), FilePath, SceneID, out json);    
             }
+            CreateHBQrCode(c, FilePath, uid);
             return Sys_Result.GetR(0, "");
         }
         return Sys_Result.GetR(1, "您的分销资质还未审核通过，请联系业务人员进行审核后再打开！");
+    }
+
+
+    public string CreateHBQrCode(HttpContext c, string CodePath,int uid)
+    {
+        int[] size = new int[4] { 172, 172, 85, 85 };
+        string LogoPath = c.Server.MapPath("/images/codeLogo.png");
+        string ResultPath = c.Server.MapPath("/pic/fxCode/" + uid.ToString() + ".jpg");
+
+        if (File.Exists(ResultPath))
+        {
+            return ResultPath;
+        }
+
+        System.Drawing.Image imgBack = System.Drawing.Image.FromFile(CodePath);
+        System.Drawing.Image imgLogo = System.Drawing.Image.FromFile(LogoPath);
+
+        //从指定的System.Drawing.Image创建新的System.Drawing.Graphics      
+        System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(imgBack.Width, imgBack.Height, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+        System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bmp);
+        g.DrawImage(imgBack, 0, 0);
+        g.DrawImage(imgLogo, size[0], size[1], size[2], size[3]);
+
+        bmp.Save(ResultPath, System.Drawing.Imaging.ImageFormat.Jpeg);
+        return ResultPath;
     }
 
     /// <summary>
@@ -2354,12 +2398,12 @@ public class Handler : IHttpHandler {
             }
             //个人运动电子照片
             string localPath = c.Server.MapPath("~") + "/attach/vote/" + bNo + "-" + Mobile + "/01.jpg";
-            string tempSrc = new WxTool().downloadMedia(Img_One, localPath, Get_Access_Token(c));
+            string tempSrc = new WxTool().downloadMedia(Img_One, localPath, Comm.Get_Access_Token(c));
             string Img_one_src = "/attach/vote/" + bNo + "-" + Mobile + "/01.jpg";
 
             //家庭运动电子照片
             localPath = c.Server.MapPath("~") + "/attach/vote/" + bNo + "-" + Mobile + "/02.jpg";
-            tempSrc = new WxTool().downloadMedia(Img_Home, localPath, Get_Access_Token(c));
+            tempSrc = new WxTool().downloadMedia(Img_Home, localPath, Comm.Get_Access_Token(c));
             string Img_home_src = "/attach/vote/" + bNo + "-" + Mobile + "/02.jpg";
             
             VoteUser vote = new VoteUser
@@ -2459,7 +2503,7 @@ public class Handler : IHttpHandler {
         try
         {
             string r = "";
-            Seascape.WxApi.UserInfo ui = Seascape.WxApi.UserInfo.getUserInfoByGlobal(Get_Access_Token(c), openId, out r);
+            Seascape.WxApi.UserInfo ui = Seascape.WxApi.UserInfo.getUserInfoByGlobal(Comm.Get_Access_Token(c), openId, out r);
             new Main().AddTestLog("r-new" + openId, r);
             if (ui != null && !string.IsNullOrEmpty(ui.nickname))
             {
@@ -2609,7 +2653,7 @@ public class Handler : IHttpHandler {
         List<VoteUser> lo = new _ActiveVote().GetVoteUser();
         if (lo != null && lo.Count > 0)
         {
-            string token = Get_Access_Token(c);
+            string token = Comm.Get_Access_Token(c);
             string url = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=" + token;
             string Msg = "尊敬的候选人您好，感谢您参与本次活动，投票必须先关注微信公众平台，否则会投票失败。";
             string content = "";
@@ -2725,7 +2769,7 @@ public class Handler : IHttpHandler {
     {
         string result = "";
         int uid = string.IsNullOrEmpty(c.Request["uid"]) ? 0 : Convert.ToInt32(c.Request["uid"]);
-        string wxurl = "http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token=" + Get_Access_Token(c) + "&type=image";
+        string wxurl = "http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token=" + Comm.Get_Access_Token(c) + "&type=image";
         string filepath = c.Server.MapPath("\\pic\\ad") + "\\" + uid + ".jpg";
         WebClient myWebClient = new WebClient();
         myWebClient.Credentials = CredentialCache.DefaultCredentials;
@@ -2758,7 +2802,7 @@ public class Handler : IHttpHandler {
         string PostUrl = "";
         if (u != null)
         {
-            PostUrl = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=" + Get_Access_Token(c);
+            PostUrl = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=" + Comm.Get_Access_Token(c);
             string Message = "{\"touser\":\"" + u.openId + "\",\"msgtype\":\"image\",\"image\":{\"media_id\":\"" + MEDIA_ID + "\"}}";
             rsa = new Common(appid, secret).webRequest(PostUrl, Message.ToString());
         }
@@ -3102,8 +3146,8 @@ public class Handler : IHttpHandler {
             new Main().AddToDb(tmp, "t_templateMsg");
         }
         catch { }
-        
-        new TMessage().Send_TemplateMsg(t, Get_Access_Token(c));
+
+        new TMessage().Send_TemplateMsg(t, Comm.Get_Access_Token(c));
     }
 
     /// <summary>
@@ -3111,7 +3155,7 @@ public class Handler : IHttpHandler {
     /// </summary>
     /// <param name="c"></param>
     /// <returns></returns>
-    public string Get_Access_Token(HttpContext c)
+    public string Get_Access_Token_(HttpContext c)
     {
         /*
         string Access_Token = "";
@@ -3155,7 +3199,7 @@ public class Handler : IHttpHandler {
     /// </summary>
     /// <param name="c"></param>
     /// <returns></returns>
-    public string Get_Access_Token_New(HttpContext c)
+    public string Get_Access_Token_New_(HttpContext c)
     {
         string Access_Token = "";
         bool isFail = string.IsNullOrEmpty(c.Request["isFail"]) ? true : true;
@@ -3379,7 +3423,7 @@ public class Handler : IHttpHandler {
     /// <returns></returns>
     public string GetMenu(HttpContext c)
     {
-        string ACCESS_TOKEN = Get_Access_Token(c);
+        string ACCESS_TOKEN = Comm.Get_Access_Token(c);
         string GetUrl = " https://api.weixin.qq.com/cgi-bin/get_current_selfmenu_info?access_token=" + ACCESS_TOKEN;
         return new Common(appid, secret).webRequest(GetUrl, "");
     }
@@ -3574,9 +3618,10 @@ public class Handler : IHttpHandler {
                 string FilePath = c.Server.MapPath("/pic/QrCode/" + uid + ".jpg");
                 if (!System.IO.File.Exists(FilePath))
                 {
-                    string access_token = Get_Access_Token(c);
+                    string access_token = Comm.Get_Access_Token(c);
                     int SceneID = uid;
-                    string Result = new Common(appid, secret).GetQR_Code(access_token, FilePath, SceneID);
+                    string json = "";
+                    string Result = new Common(appid, secret).GetQR_Code(access_token, FilePath, SceneID, out json);
                 }
                 string Path = CreateHBForGift(c);
                 return Sys_Result.GetR(0, Path);           
@@ -3662,8 +3707,9 @@ public class Handler : IHttpHandler {
                 {
                     sb.Append("                {");
                     sb.Append("                    \"type\": \"view\", ");
-                    sb.Append("                    \"name\": \"旅游资讯\", ");
-                    sb.Append("                    \"url\": \"http://hjhk.edmp.cc/travel/c_travel_city.html?name=%u5C71%u897F&id=36\"");
+                    sb.Append("                    \"name\": \"旅游预定\", ");
+                    //sb.Append("                    \"url\": \"http://hjhk.edmp.cc/travel/c_travel_city.html?name=%u5C71%u897F&id=36\"");
+                    sb.Append("                    \"url\": \"http://hjhk.edmp.cc/travel/c_travel_index.html\"");
                     sb.Append("                },");
 
                     sb.Append("        {");
@@ -3719,8 +3765,8 @@ public class Handler : IHttpHandler {
                         */
                         sb.Append("                {");
                         sb.Append("                    \"type\": \"view\", ");
-                        sb.Append("                    \"name\": \"旅游资讯\", ");
-                        sb.Append("                    \"url\": \"http://hjhk.edmp.cc/travel/c_travel_city.html?name=%u5C71%u897F&id=36\"");
+                        sb.Append("                    \"name\": \"旅游预定\", ");
+                        sb.Append("                    \"url\": \"http://hjhk.edmp.cc/travel/c_travel_index.html\"");
                         sb.Append("                },");
                         /*
                         
@@ -3799,8 +3845,8 @@ public class Handler : IHttpHandler {
                         
                         sb.Append("                {");
                         sb.Append("                    \"type\": \"view\", ");
-                        sb.Append("                    \"name\": \"旅游资讯\", ");
-                        sb.Append("                    \"url\": \"http://hjhk.edmp.cc/travel/c_travel_city.html?name=%u5C71%u897F&id=36\"");
+                        sb.Append("                    \"name\": \"旅游预定\", ");
+                        sb.Append("                    \"url\": \"http://hjhk.edmp.cc/travel/c_travel_index.html\"");
                         sb.Append("                },");
                          
                     }
@@ -3857,12 +3903,18 @@ public class Handler : IHttpHandler {
                     sb.Append("    ]");
                     sb.Append("}");
                 }
-                
-                appid = source.appid;
-                secret = source.secret;
-                string ACCESS_TOKEN = Get_Access_Token_New(c);
+
+                string ACCESS_TOKEN = "";
+                if (source.sCode == "0000")
+                {
+                    ACCESS_TOKEN = Comm.Get_Access_Token(c);    
+                }
+                else
+                {
+                    ACCESS_TOKEN = Comm.Get_Access_Token_appid(c, source.appid, source.secret);
+                }
                 string GetUrl = " https://api.weixin.qq.com/cgi-bin/menu/create?access_token=" + ACCESS_TOKEN;
-                string JsonStr = new Common(appid, secret).webRequest(GetUrl, sb.ToString());
+                string JsonStr = new Common(source.appid, source.secret).webRequest(GetUrl, sb.ToString());
                 JsonData jd = JsonMapper.ToObject(JsonStr);
                 if (jd["errcode"].ToString() == "0")
                 {
@@ -3878,6 +3930,7 @@ public class Handler : IHttpHandler {
                     
                     }
                 }
+
             }
             if (errmsg.Length == 0)
             {
@@ -3910,7 +3963,7 @@ public class Handler : IHttpHandler {
             string Access_Token = "";
             if (isFail || c.Cache["Para_JsApiTicket"] == null || c.Cache["Para_JsApiTicket"].ToString().Length == 0)
             {
-                Access_Token = Get_Access_Token(c);
+                Access_Token = Comm.Get_Access_Token(c);
                 //获取网页调用临时票据
                 string r = "";
                 jsApi_ticket = new Common(appid, secret).Get_jsapi_ticket(Access_Token, out r);

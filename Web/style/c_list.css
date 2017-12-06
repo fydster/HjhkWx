@@ -107,3 +107,6 @@
             letter-spacing:0.4rem;
             color:#666;
         }
+        #bottomMenu .weui-flex__item{
+            line-height:1.6rem;
+        }

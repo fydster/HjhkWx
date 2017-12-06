@@ -1,0 +1,312 @@
+﻿body{
+    font-size:0.7rem;
+    color:#888;
+    background-color:#eee;
+}
+
+.txtCenter{
+    text-align:center;
+}
+
+.txtLeft{
+    text-align:left;
+}
+
+.txtRight{
+    text-align:right;
+}
+
+.txtPrice{
+    color:#ff6a00;
+}
+
+.txtPrice em{
+    color:#888;
+    font-size:0.5rem;
+    font-style:normal;
+}
+
+.cityList ul{
+    margin:0;
+    padding:0;
+}
+
+.cityList ul li{
+    list-style:none;
+    width:33%;
+    float:left;
+    text-align:center;
+    display:inline-block;
+    position:relative;
+}
+
+.cityList ul li img{
+    margin:5px;
+    border-radius:6px;
+    width:80%;
+}
+
+.cityList ul li div{
+    position:absolute;
+    bottom:15px;
+    background-color:#000;
+    opacity:0.75;
+    color:#fff;
+    border-radius:4px;
+    padding:0 8px;
+    left:33%;
+}
+
+.topAd{
+    width:100%;
+    position:relative;
+}
+
+.topAd img{
+    width:100%;
+}
+
+.topAd .adSign{
+    position:absolute;
+    top:20px;
+    left:20px;
+    padding:0 4px;
+    border-radius:3px;
+    background-color:#ff6a00;
+    color:#fff;
+}
+
+.topAd .adSign em{
+    font-size:0.4rem;
+    font-style:normal;
+}
+
+.topAd .adSignR{
+    position:absolute;
+    bottom:7px;
+    left:0;
+    width:100%;
+    border-radius:1px;
+    background-color:#000;
+    color:#fff;
+    opacity:0.65;
+}
+
+.topAd .adHot{
+    position:absolute;
+    top:0;
+    right:0;
+}
+
+.topAd .adHot img{
+    width:75%;
+}
+
+.menuBtn{
+    width:100%;
+    height:1.4rem;
+    background-color:#fff;
+    border-bottom:1px solid #ddd;
+    clear:both;
+}
+
+.menuBtn .menuTitle{
+    margin-top:0.2rem;
+    display:block;
+    float:left;
+    width:58%;
+    padding-left:10px;
+    letter-spacing:0.1rem;
+    color:#555;
+}
+
+.menuBtn .menuTitleMore{
+    margin-top:0.2rem;
+    display:block;
+    float:left;
+    width:35%;
+    text-align:right;
+    color:#999;
+}
+
+.menuBtn .colorBlock01{
+    display:block;
+    float:left;
+    width:2%;
+    background-color:#5cca6c;
+    height:100%;
+}
+
+.menuBtn .colorBlock02{
+    display:block;
+    float:left;
+    width:2%;
+    background-color:#3498db;
+    height:100%;
+}
+
+.menuBtn .colorBlock03{
+    display:block;
+    float:left;
+    width:2%;
+    background-color:#ec613c;
+    height:100%;
+}
+
+.menuBtn .colorBlock04{
+    display:block;
+    float:left;
+    width:2%;
+    background-color:#ff9814;
+    height:100%;
+}
+
+.menuBtn .colorBlock05{
+    display:block;
+    float:left;
+    width:2%;
+    background-color:#307de4;
+    height:100%;
+}
+
+.blockList{
+    background-color:#fff;
+    margin-bottom:3px;
+    padding:10px 0;
+}
+
+.blockList ul{
+    margin:0;
+    padding:0;
+    width:100%;
+    display:flex;
+    flex-flow:row wrap;
+    background-color:#fff;
+}
+
+.blockList ul li{
+    list-style:none;
+    flex:0 0 50%;
+    text-align:center;
+    border-bottom:1px dashed #eee;
+    margin-bottom:10px;
+}
+
+.blockList ul li .listPanel{
+    margin:2px 2px 2px 4px;
+}
+
+.blockList ul li img{
+    width:90%;
+    border:1px solid #ddd;
+}
+
+.blockList ul li .pTitle{
+    color:#333;
+    text-align:left;
+    padding-left:7px;
+}
+
+.blockList ul li .weui-flex{
+    margin:0 7px;
+}
+
+.serviceBtn{
+    position:fixed;
+    left:5px;
+    bottom:10px;
+    
+}
+
+.serviceBtn img{
+    width:40%;
+}
+
+.toTopBtn{
+    position:fixed;
+    right:-40px;
+    bottom:20px;
+    display:none;
+}
+
+.toTopBtn img{
+    width:50%;
+}
+
+.bottomMenu{
+    position:fixed;
+    height:40px;
+    background-color:#fff;
+    border-top:1px solid #ddd;
+    width:100%;
+    bottom:0;
+    left:0;
+    z-index:999;
+}
+
+.pTitle{
+    font-size:0.7rem;
+    color:#555;
+}
+
+.MainBtn{
+    width:100%;
+    background-color:#fff;
+    display:inline-block;
+    margin-top:-5px;
+}
+
+.MainBtn ul{
+    margin:0;
+    padding:0;
+}
+
+.MainBtn ul li{
+    list-style:none;
+    width:20%;
+    float:left;
+    text-align:center;
+    display:inline-block;
+    margin:8px 0;
+}
+
+.MainBtn ul li img{
+    width:60%;
+}
+
+.MainBtn ul li span{
+    display:block;
+    margin-top:2px;
+    font-size:0.6rem;
+}
+
+.MainBtn a{
+    color:#888;
+}
+
+/*出行服务菜单*/
+.blockListMenu{
+    background-color:#fff;
+    margin-bottom:3px;
+    padding:10px 0;
+}
+
+.blockListMenu ul{
+    margin:0 auto;
+    padding:0;
+    width:95%;
+    display:flex;
+    flex-flow:row wrap;
+    background-color:#fff;
+}
+
+.blockListMenu ul li{
+    list-style:none;
+    flex:0 0 25%;
+    text-align:center;
+}
+
+.blockListMenu img{
+    width:80%;
+    border-radius:0.2rem;
+}

@@ -3,6 +3,7 @@
 using System;
 using System.Web;
 using Model;
+using Model.travel;
 using Model.active;
 using Data;
 using Data.active;
@@ -13,10 +14,6 @@ using com.seascape.tools;
 using Seascape.WxApi;
 
 public class Handler : IHttpHandler {
-    public static string appid = com.seascape.tools.BasicTool.GetConfigPara("appid-0000");
-    public static string secret = com.seascape.tools.BasicTool.GetConfigPara("secret-0000");
-    public static string keyValue = com.seascape.tools.BasicTool.GetConfigPara("keyValue");
-
     //分页大小
     public static int perPage = 15;
     public static adminUser admin = null;
@@ -161,6 +158,21 @@ public class Handler : IHttpHandler {
                 case 49:
                     Result = GetUserInfoForTel(c);//获取用户详情，通过手机号码
                     break;
+                case 50:
+                    Result = TravelProductS(c);//添加旅游产品
+                    break;
+                case 51:
+                    Result = DelTProduct(c);//删除旅游产品
+                    break;
+                case 52:
+                    Result = HotTProduct(c);//置顶旅游产品
+                    break;
+                case 53:
+                    Result = GetTravelProduct(c);//获取旅游产品详情
+                    break;
+                case 54:
+                    Result = GetProductList(c);//获取旅游产品列表
+                    break;
                 case 90:
                     Result = UpdatePass(c);//修改密码
                     break;
@@ -256,28 +268,6 @@ public class Handler : IHttpHandler {
         return Sys_Result.GetR(1, "");
     }
 
-
-    /// <summary>
-    /// 获取全局Access_Token
-    /// </summary>
-    /// <param name="c"></param>
-    /// <returns></returns>
-    public string Get_Access_Token(HttpContext c)
-    {
-        string Access_Token = "";
-        bool isFail = string.IsNullOrEmpty(c.Request["isFail"]) ? true : true;
-        if (isFail || string.IsNullOrEmpty(c.Cache["Global_Access_Token"].ToString()))
-        {
-            Access_Token = new Common(appid, secret).Get_Access_Token();
-            c.Cache.Add("Global_Access_Token", Access_Token, null, System.DateTime.UtcNow.AddMinutes(100), TimeSpan.Zero, System.Web.Caching.CacheItemPriority.Normal, null);
-        }
-        else
-        {
-            Access_Token = c.Cache["Global_Access_Token"].ToString();
-        }
-        return Access_Token;
-    }
-
     /// <summary>
     /// 获取菜单权限
     /// </summary>
@@ -358,7 +348,7 @@ public class Handler : IHttpHandler {
     /// <returns></returns>
     public string GetUserInfo(HttpContext c)
     {
-        int uid = string.IsNullOrEmpty(c.Request["uid"]) ? -1 : Convert.ToInt16(c.Request["uid"]);
+        int uid = string.IsNullOrEmpty(c.Request["uid"]) ? -1 : Convert.ToInt32(c.Request["uid"]);
         if (uid > 0)
         {
             user u = new _User().GetUser("", "", uid);
@@ -876,6 +866,242 @@ public class Handler : IHttpHandler {
     }
 
     
+    //-----------旅游产品---------------------
+    /// <summary>
+    /// 添加修改产品
+    /// </summary>
+    /// <param name="c"></param>
+    /// <returns></returns>
+    public string TravelProductS(HttpContext c)
+    {
+        int id = string.IsNullOrEmpty(c.Request["id"]) ? 0 : Convert.ToInt16(c.Request["id"]);
+        int cId = string.IsNullOrEmpty(c.Request["cId"]) ? 0 : Convert.ToInt16(c.Request["cId"]);
+        int isTj = string.IsNullOrEmpty(c.Request["isTj"]) ? 0 : Convert.ToInt16(c.Request["isTj"]);
+        int isHref = string.IsNullOrEmpty(c.Request["isHref"]) ? 0 : Convert.ToInt16(c.Request["isHref"]);
+        string title = string.IsNullOrEmpty(c.Request["title"]) ? "" : c.Request["title"].ToString();
+        string desp = string.IsNullOrEmpty(c.Request["desp"]) ? "" : c.Request["desp"].ToString();
+        string contents = string.IsNullOrEmpty(c.Request["contents"]) ? "" : c.Request["contents"].ToString();
+        string content_xc = string.IsNullOrEmpty(c.Request["content_xc"]) ? "" : c.Request["content_xc"].ToString();
+        string content_fy = string.IsNullOrEmpty(c.Request["content_fy"]) ? "" : c.Request["content_fy"].ToString();
+        string content_xz = string.IsNullOrEmpty(c.Request["content_xz"]) ? "" : c.Request["content_xz"].ToString();
+        string imgUrl = string.IsNullOrEmpty(c.Request["imgUrl"]) ? "" : c.Request["imgUrl"].ToString();
+
+        int price = string.IsNullOrEmpty(c.Request["price"]) ? 0 : Convert.ToInt32(c.Request["price"]);
+        title = c.Server.UrlDecode(title);
+        desp = c.Server.UrlDecode(desp);
+        
+        string fileName = DateTime.Now.ToString("yyMMddHHmmss") + cId.ToString().PadLeft(2, '0') + ".jpg";
+        string hrefUrl = "/source/adCode/" + fileName;
+        
+        if (id == 0)
+        {
+            if (new _TravelProduct().CheckProduct(title, cId) == 0)
+            {
+                
+                travelProduct p = new travelProduct
+                {
+                    cId = cId,
+                    title = title,
+                    desp = desp,
+                    imgUrl = imgUrl,
+                    contents = contents,
+                    content_xc = content_xc,
+                    content_xz = content_xz,
+                    content_fy = content_fy,
+                    isTj = isTj,
+                    isHref = isHref,
+                    hrefUrl = hrefUrl,
+                    addOn = DateTime.Now,
+                    adminId = admin.id,
+                    price = price
+                };
+                int newId = new Main().AddToDbForId(p, "t_travel_product");
+                if (newId > 0)
+                {
+                    string url = BaseUrl + "travel/c_travel_Mx.html?id=" + newId;
+                    if (isHref == 1)
+                    {
+                        url = BaseUrl + "travel/c_travel_Mx_s.html?id=" + newId;
+                    }
+                    new QrCode().toCodeImg(url, c, fileName);
+                    AddAdminLog("", "添加产品," + title);
+                    return Sys_Result.GetR(0, "添加完成");
+                }
+            }
+            else
+            {
+                return Sys_Result.GetR(1, "该分类下已存在此标题的产品，不能重复添加");
+            }
+        }
+        else
+        {
+            travelProductInfo ti = new _TravelProduct().GetInfo(id);
+            if (ti.hrefUrl.Length == 0)
+            {
+                string url = BaseUrl + "travel/c_travel_Mx.html?id=" + id;
+                if (isHref == 1)
+                {
+                    url = BaseUrl + "travel/c_travel_Mx_s.html?id=" + id;
+                }
+                new QrCode().toCodeImg(url, c, fileName);   
+            }
+            else
+            {
+                hrefUrl = ti.hrefUrl;    
+            }
+            
+            if (new _TravelProduct().CheckProduct(title, cId) == 0 || new _TravelProduct().CheckProduct(title, cId) == id)
+            {
+                var o = new
+                {
+                    cId = cId,
+                    title = title,
+                    desp = desp,
+                    imgUrl = imgUrl,
+                    contents = contents,
+                    content_xc = content_xc,
+                    content_xz = content_xz,
+                    content_fy = content_fy,
+                    isTj = isTj,
+                    isHref = isHref,
+                    hrefUrl = hrefUrl,
+                    addOn = DateTime.Now,
+                    adminId = admin.id,
+                    price = price
+                };
+                if (new Main().UpdateDb(o, "t_travel_product", "id=" + id))
+                {
+                    AddAdminLog("", "修改产品" + title);
+                    return Sys_Result.GetR(0, "修改完成");
+                }
+            }
+            else
+            {
+                return Sys_Result.GetR(1, "该分类下已存在此标题的产品，不能重复");
+            }
+        }
+        return Sys_Result.GetR(1, "添加失败");
+    }
+
+
+    /// <summary>
+    /// 获取产品详情
+    /// </summary>
+    /// <param name="c"></param>
+    /// <returns></returns>
+    public string GetTravelProduct(HttpContext c)
+    {
+        int id = string.IsNullOrEmpty(c.Request["id"]) ? 0 : Convert.ToInt16(c.Request["id"]);
+        if (id > 0)
+        {
+            travelProductInfo content = new _TravelProduct().GetInfo(id);
+            if (content != null)
+            {
+                var o = new { Return = 0, Msg = "", Info = content };
+                return JsonMapper.ToJson(o);
+            }
+        }
+        return Sys_Result.GetR(1, "");
+    }
+
+    /// <summary>
+    /// 删除产品
+    /// </summary>
+    /// <param name="c"></param>
+    /// <returns></returns>
+    public string DelTProduct(HttpContext c)
+    {
+        int id = string.IsNullOrEmpty(c.Request["id"]) ? 0 : Convert.ToInt16(c.Request["id"]);
+        int enable = string.IsNullOrEmpty(c.Request["enable"]) ? 1 : Convert.ToInt16(c.Request["enable"]);
+        string title = string.IsNullOrEmpty(c.Request["title"]) ? "" : c.Request["title"].ToString();
+        title = c.Server.UrlDecode(title);
+        if (id > 0)
+        {
+            var o = new
+            {
+                Enable = enable
+            };
+            if (new Main().UpdateDb(o, "t_travel_product", "id=" + id))
+            {
+                return Sys_Result.GetR(0, "操作完成");
+            }
+        }
+        return Sys_Result.GetR(1, "");
+    }
+
+    /// <summary>
+    /// 置顶操作
+    /// </summary>
+    /// <param name="c"></param>
+    /// <returns></returns>
+    public string HotTProduct(HttpContext c)
+    {
+        int id = string.IsNullOrEmpty(c.Request["id"]) ? 0 : Convert.ToInt16(c.Request["id"]);
+        int isHot = string.IsNullOrEmpty(c.Request["isHot"]) ? 0 : Convert.ToInt16(c.Request["isHot"]);
+        if (id > 0)
+        {
+            var o = new
+            {
+                isHot = isHot
+            };
+            if (new Main().UpdateDb(o, "t_travel_product", "id=" + id))
+            {
+                return Sys_Result.GetR(0, "完成");
+            }
+        }
+        return Sys_Result.GetR(1, "");
+    }
+
+    /// <summary>
+    /// 获取产品列表
+    /// </summary>
+    /// <param name="c"></param>
+    /// <returns></returns>
+    public string GetProductList(HttpContext c)
+    {
+        int page = string.IsNullOrEmpty(c.Request["page"]) ? 1 : Convert.ToInt16(c.Request["page"]);
+        int cId = string.IsNullOrEmpty(c.Request["cId"]) ? 0 : Convert.ToInt16(c.Request["cId"]);
+        int sId = string.IsNullOrEmpty(c.Request["sId"]) ? 0 : Convert.ToInt16(c.Request["sId"]);
+        string DateS = string.IsNullOrEmpty(c.Request["DateS"]) ? "" : c.Request["DateS"];
+        string DateE = string.IsNullOrEmpty(c.Request["DateE"]) ? "" : c.Request["DateE"];
+        string Key = string.IsNullOrEmpty(c.Request["Key"]) ? "" : c.Request["Key"].ToString();
+
+        string keyword = "";
+        if (Key.Length > 0)
+        {
+            keyword += " and (title like '%" + c.Server.UrlDecode(Key) + "%' or contents like '%" + c.Server.UrlDecode(Key) + "%')";
+        }
+        if (DateS.Length > 0)
+        {
+            keyword += " and date(addOn) >= '" + DateS + "'";
+        }
+        if (DateE.Length > 0)
+        {
+            keyword += " and date(addOn) <= '" + DateE + "'";
+        }
+        if (cId > 0)
+        {
+            keyword += " and cId in(select id from t_class where id= " + cId + " or pId = " + cId + ")";
+        }
+        if (sId > 0)
+        {
+            keyword += " and cId = " + sId;
+        }
+        string sql = "select * from t_travel_product where enable=0 " + keyword + " order by addOn desc limit " + Convert.ToInt16((page - 1) * perPage) + "," + perPage;
+        string sql_c = "select count(*) as t from t_travel_product where enable=0 " + keyword + "";
+        {
+            int OCount = 1;
+            List<travelProduct> lo = new _TravelProduct().GetProductList(sql, sql_c, out OCount);
+            if (lo != null && lo.Count > 0)
+            {
+                var o = new { Return = 0, Msg = OCount, List = lo };
+                return JsonMapper.ToJson(o);
+            }
+        }
+        return Sys_Result.GetR(1, "");
+    }    
+    //-----------旅游产品---------------------
+    
 
     /// <summary>
     /// 修改用户分组
@@ -907,7 +1133,7 @@ public class Handler : IHttpHandler {
     /// <returns></returns>
     public string userBind(HttpContext c)
     {
-        int uid = string.IsNullOrEmpty(c.Request["uid"]) ? 0 : Convert.ToInt16(c.Request["uid"]);
+        int uid = string.IsNullOrEmpty(c.Request["uid"]) ? 0 : Convert.ToInt32(c.Request["uid"]);
         int isBind = string.IsNullOrEmpty(c.Request["isBind"]) ? 0 : Convert.ToInt16(c.Request["isBind"]);
         if (uid > 0)
         {
@@ -1061,7 +1287,7 @@ public class Handler : IHttpHandler {
         {
             TMsg_Vote tmo = null;
             string MsgContent = "";
-            string token = Get_Access_Token(c);
+            string token = Comm.Get_Access_Token(c);
             /*
             foreach (VoteUser item in lo)
             {
@@ -1155,7 +1381,7 @@ public class Handler : IHttpHandler {
             toUser = uid
         };
         new Main().AddToDb(tmp, "t_templatemsg");
-        new TMessage().Send_TemplateMsg(t, Get_Access_Token(c));
+        new TMessage().Send_TemplateMsg(t, Comm.Get_Access_Token(c));
     }
 
     /// <summary>

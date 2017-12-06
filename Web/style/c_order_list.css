@@ -1,0 +1,39 @@
+﻿body{background-color:#ddd;}
+#bottomMenu .weui-flex__item{
+     line-height:1rem;
+}
+
+.hidden{
+    display:none;
+}
+
+.s_flex{
+    width:100%;
+}
+
+.s_flex .s_flex_4{
+    width:33%;
+    float:left;
+}
+
+.s_flex .s_flex_8{
+    width:67%;
+    float:left;
+}
+
+.weui-tab__bd-item ul{
+    margin:0;
+    padding:0;
+}
+
+.weui-tab__bd-item ul li{
+    list-style:none;
+    background-color:#fff;
+    padding:5px 0;
+    font-size:0.8rem;
+    text-align:center;
+    color:#888;
+    margin-bottom:2px;
+    display:inline-block;
+    width:100%;
+}

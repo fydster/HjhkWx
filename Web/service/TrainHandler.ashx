@@ -85,6 +85,9 @@ public class TrainHandler : IHttpHandler {
                 case 204:
                     Result = applyIssueOrder(c);//申请出票
                     break;
+                case 205:
+                    Result = bookTicketsForQp(c);//抢票
+                    break;
             }
         }
         catch (Exception e)
@@ -656,6 +659,222 @@ public class TrainHandler : IHttpHandler {
 
                 book.passengers = lp;
                 bookTickets = new _BookTickets().bookTickets(LitJson.JsonMapper.ToJson(book));
+
+                int msgCode = 0;
+
+                try
+                {
+                    JObject jo = (JObject)JsonConvert.DeserializeObject(bookTickets);
+                    msgCode = Convert.ToInt16(jo["msgCode"].ToString());
+                    string outOrderNo = jo["orderNo"].ToString();
+                    string msgInfo = jo["msgInfo"].ToString();
+                    string orderNo_Get = jo["outOrderNo"].ToString();
+
+                    var o_ = new
+                    {
+                        state = 1,
+                        outOrderNo = outOrderNo
+                    };
+                    new Train.Main().UpdateDb(o_, "t_train_order", "orderNo = '" + orderNo_Get + "'");
+                }
+                catch
+                {
+
+                }
+
+                //订单日志
+                string content = "订单提交失败";
+                if (msgCode == 100)
+                {
+                    content = "订单提交成功";
+                }
+                trainLog tLog = new trainLog
+                {
+                    addOn = DateTime.Now,
+                    content = content,
+                    uId = uid,
+                    lType = 0,
+                    orderNo = tOrder.orderNo
+                };
+                new Train.Main().AddToDb(tLog, "t_train_log");
+            }
+        }
+        catch
+        {
+
+        }
+        return bookTickets;
+    }
+
+    /// <summary>
+    /// 抢票FORPC
+    /// </summary>
+    /// <param name="c"></param>
+    /// <returns></returns>
+    public string bookTicketsForQp(HttpContext c)
+    {
+        string orderNo = string.IsNullOrEmpty(c.Request["orderNo"]) ? "" : c.Request["orderNo"].ToString();
+        string passengersInfo = string.IsNullOrEmpty(c.Request["passengers"]) ? "" : c.Request["passengers"].ToString();
+        int fareNum = string.IsNullOrEmpty(c.Request["fareNum"]) ? 0 : Convert.ToInt32(c.Request["fareNum"].ToString());
+        Double perTicketPrice = string.IsNullOrEmpty(c.Request["perTicketPrice"]) ? 0 : Convert.ToDouble(c.Request["perTicketPrice"].ToString());
+        //_T.trainNo + "@" + _T.sCity + "@" + _T.sCode + "@" + _T.tCity + "@" + _T.tCode + "@" + _T.sDate + "@" + _T.seat + "@" + _T.seatName + "@" + _T.sTime + "@" + _T.tTime
+        string TripInfo = string.IsNullOrEmpty(c.Request["TripInfo"]) ? "" : c.Request["TripInfo"].ToString();
+        string[] tripArr = TripInfo.Split('@');
+        string trainNo = tripArr[0];
+        string fromCity = tripArr[1];
+        string toCity = tripArr[3];
+        string fromStation = tripArr[2];
+        string toStation = tripArr[4];
+        string sDate = tripArr[5];
+        string sTime = tripArr[8];
+        string tTime = tripArr[9];
+        string seat = tripArr[6];
+        string seatName = tripArr[7];
+        string queryKey = tripArr[10];
+
+        string contact = string.IsNullOrEmpty(c.Request["contact"]) ? "" : c.Request["contact"].ToString();
+        string mobile = string.IsNullOrEmpty(c.Request["mobile"]) ? "" : c.Request["mobile"].ToString();
+        string accountNo = string.IsNullOrEmpty(c.Request["accountNo"]) ? "" : c.Request["accountNo"].ToString();
+        string accountPwd = string.IsNullOrEmpty(c.Request["accountPwd"]) ? "" : c.Request["accountPwd"].ToString();
+
+        string mainTrainNo = string.IsNullOrEmpty(c.Request["mainTrainNo"]) ? "" : c.Request["mainTrainNo"].ToString();
+        string seatClassCode = string.IsNullOrEmpty(c.Request["seatClassCode"]) ? "" : c.Request["seatClassCode"].ToString();
+        string mainSeatClass = string.IsNullOrEmpty(c.Request["mainSeatClass"]) ? "" : c.Request["mainSeatClass"].ToString();
+        string departDate = string.IsNullOrEmpty(c.Request["departDate"]) ? "" : c.Request["departDate"].ToString();
+        string closeTime = string.IsNullOrEmpty(c.Request["closeTime"]) ? "" : c.Request["closeTime"].ToString();
+
+        accountNo = new _Train().Encrypt(accountNo);
+        accountPwd = new _Train().Encrypt(accountPwd);
+        
+        int uid = string.IsNullOrEmpty(c.Request["uid"]) ? 0 : Convert.ToInt32(c.Request["uid"].ToString());
+        Double ticketPrice = string.IsNullOrEmpty(c.Request["ticketPrice"]) ? 0 : Convert.ToDouble(c.Request["ticketPrice"].ToString());
+        Double insurePrice = string.IsNullOrEmpty(c.Request["insurePrice"]) ? 0 : Convert.ToDouble(c.Request["insurePrice"].ToString());
+        string bookTickets = "";
+        try
+        {
+            //添加订单
+            trainOrder tOrder = new trainOrder
+            {
+                addOn = DateTime.Now,
+                contact = contact,
+                insurePrice = insurePrice,
+                mobile = mobile,
+                ticketPrice = ticketPrice,
+                totalPrice = ticketPrice + insurePrice,
+                fareNum = fareNum,
+                uId = uid,
+                orderNo = orderNo,
+                isPay = 1
+            };
+
+            //创建订单对象
+            QpBook book = new QpBook
+            {
+                queryKey = queryKey,
+                outOrderNo = tOrder.orderNo,
+                trainNo = trainNo,////车次号 ，如果有多车次请用“|”隔开
+                mainTrainNo = mainTrainNo,
+                fromStation = fromStation,
+                toStation = toStation,
+                isProduction = "1",
+                ticketModel = "0",
+                accountNo = accountNo,
+                accountPwd = accountPwd,
+                acceptNoSeat = "0",
+                seatClassCode = seatClassCode,//"secondseat|firstseat", //座席代号，若有多坐席，请用“|”隔开 
+                mainSeatClass = mainSeatClass,
+                departDate = departDate,
+                closeTime = closeTime
+            };
+
+            //联系人信息
+            contactInfo contactInfo = new contactInfo
+            {
+                cellphone = mobile,
+                person = contact,
+                email = ""
+            };
+
+            book.contactInfo = contactInfo;
+
+
+            if (new Train.Main().AddToDb(tOrder, "t_train_order"))
+            {
+                //添加行程
+                trainTrip tTrip = new trainTrip
+                {
+                    fromCity = fromCity,
+                    fromStation = fromStation,
+                    toCity = toCity,
+                    toStation = toStation,
+                    trainNo = trainNo,
+                    queryKey = queryKey,
+                    orderNo = tOrder.orderNo,
+                    seatClass = seat,
+                    seatName = seatName,
+                    ticketPrice = perTicketPrice,
+                    tDate = Convert.ToDateTime(sDate),
+                    sTime = sTime,
+                    tTime = tTime
+                };
+                string FlihtInfo = trainNo + "@" + fromStation + "@" + toStation + "@" + fromCity + "@" + toCity + "@" + tTrip.tDate + "@" + sTime + "@" + tTime + "@" + seatName;
+
+                new Train.Main().AddToDb(tTrip, "t_train_trip");
+                //添加乘客
+
+                List<passengers> lp = new List<passengers>();
+
+                string[] pArr = passengersInfo.Split('@');
+                string FareInfo = "";
+                foreach (string item in pArr)
+                {
+                    if (item.Length > 0 && item.IndexOf("|") > -1)
+                    {
+                        string[] pF = item.Split('|');
+                        trainFare tFare = new trainFare
+                        {
+                            addOn = DateTime.Now,
+                            birthday = DateTime.Now.Date,
+                            idCard = pF[1],
+                            idType = Convert.ToInt16(pF[2]),
+                            orderNo = tOrder.orderNo,
+                            passengerName = pF[0].Replace("chd", ""),
+                            passengerType = Convert.ToInt16(pF[3])
+                        };
+                        if (tFare.idCard.Length == 18)
+                        {
+                            tFare.birthday = Train.Main.GetBirth(tFare.idCard);
+                        }
+                        new Train.Main().AddToDb(tFare, "t_train_fare");
+
+                        //乘客信息
+                        passengers passenger = new passengers
+                        {
+                            passengerType = pF[3],
+                            passengerName = pF[0].Replace("chd", ""),
+                            idType = pF[2],
+                            idCard = pF[1],
+                            birthday = "",
+                            insureCount = 0,
+                            insurePrice = 0,
+                            insurNo = "",
+                            sex = "0",
+                            seatClass = seat,
+                            ticketPrice = perTicketPrice.ToString()
+                        };
+                        if (passenger.idCard.Length == 18)
+                        {
+                            passenger.sex = Train.Main.GetSex(passenger.idCard).ToString();
+                            passenger.birthday = Train.Main.GetBirth(passenger.idCard).ToString("yyyy-MM-dd");
+                        }
+                        lp.Add(passenger);
+                        //passengerName|cardNo|cardType|passengerType|price
+                        FareInfo += passenger.passengerName + "|" + passenger.idCard + "|" + passenger.idType + "|" + passenger.passengerType + "|0@";
+                    }
+                }
+
+                book.passengers = lp;
+                bookTickets = new _BookGrabTickets().bookTickets(LitJson.JsonMapper.ToJson(book));
 
                 int msgCode = 0;
 

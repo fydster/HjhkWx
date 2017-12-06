@@ -228,7 +228,7 @@ public class WxHandler : IHttpHandler {
                         if (u == null)
                         {
                             string r = "";
-                            Seascape.WxApi.UserInfo ui = Seascape.WxApi.UserInfo.getUserInfoByGlobal(Get_Access_Token_(c), FromUserName, out r);
+                            Seascape.WxApi.UserInfo ui = Seascape.WxApi.UserInfo.getUserInfoByGlobal(Comm.Get_Access_Token(c), FromUserName, out r);
                             new Main().AddTestLog("r", r);
                             if (ui != null && !string.IsNullOrEmpty(ui.nickname))
                             {
@@ -366,7 +366,7 @@ public class WxHandler : IHttpHandler {
                             if (u.isSubscribe == 0)
                             {
                                 string r = "";
-                                Seascape.WxApi.UserInfo ui = Seascape.WxApi.UserInfo.getUserInfoByGlobal(Get_Access_Token_(c), FromUserName, out r);
+                                Seascape.WxApi.UserInfo ui = Seascape.WxApi.UserInfo.getUserInfoByGlobal(Comm.Get_Access_Token(c), FromUserName, out r);
                                 new Main().AddTestLog("r-10", r);
                                 if (ui != null && !string.IsNullOrEmpty(ui.nickname))
                                 {
@@ -524,7 +524,7 @@ public class WxHandler : IHttpHandler {
         }
         if (MsgType == "event" && MenuKey > 0)
         {
-            string url = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=" + Get_Access_Token_(c);
+            string url = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=" + Comm.Get_Access_Token(c);
             string content = "{\"touser\":\"" + FromUserName + "\",\"msgtype\":\"text\",\"text\":{\"content\":\"" + Content + "\"}}";
             WriteLog(new WxTool().webRequest(url, content));
             
@@ -556,7 +556,7 @@ public class WxHandler : IHttpHandler {
         if (isGz == 1)
         {
             string Common_Info = "山西出行是国有企业-山西省文旅投资控股集团有限公司下属集团控股子公司－海景航空商旅倾力打造的本土互联网综合商旅平台，集国内国际机票、公务票、酒店、动车火车票、景区门票预订，机票低价提醒、国内外旅游服务、旅游攻略发布、航班动态追踪等实用功能于一体的商旅平台。\n\n山西出行让您的旅程更便捷、更自由。让世界各地的游客出行山西时，感受到周到而贴心的服务。24小时专属服务，本地服务更靠谱。";
-            string url_Common = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=" + Get_Access_Token_(c);
+            string url_Common = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=" + Comm.Get_Access_Token(c);
             string content_Common = "{\"touser\":\"" + FromUserName + "\",\"msgtype\":\"text\",\"text\":{\"content\":\"" + Common_Info + "\"}}";
             WriteLog(new WxTool().webRequest(url_Common, content_Common));            
         }
@@ -571,7 +571,7 @@ public class WxHandler : IHttpHandler {
             //下发代金券提醒
             if (VoucherContent.Length > 0)
             {
-                string url = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=" + Get_Access_Token_(c);
+                string url = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=" + Comm.Get_Access_Token(c);
                 string content = "{\"touser\":\"" + FromUserName + "\",\"msgtype\":\"text\",\"text\":{\"content\":\"" + VoucherContent + "\"}}";
                 WriteLog(new WxTool().webRequest(url, content));
             }
@@ -628,13 +628,13 @@ public class WxHandler : IHttpHandler {
                 hd = hd + "\n\n贫困助学 <a href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9d23334360aa6af4&redirect_uri=http%3a%2f%2fhjhk.edmp.cc%2factive%2fstudent%2fc_find.html&response_type=code&scope=snsapi_userinfo&state=00000wx9d23334360aa6af4#wechat_redirect'>点击这里</a>";
                 hd = hd + "\n\n移动流量 <a href='http://wap.sx.10086.cn/m/hellouniv.html'>点击这里</a>";
                 hd = hd + "\n\n其他礼包 <a href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9d23334360aa6af4&redirect_uri=http%3a%2f%2fhjhk.edmp.cc%2factive%2fstudent%2fc_gift_other.html&response_type=code&scope=snsapi_userinfo&state=00000wx9d23334360aa6af4#wechat_redirect'>点击这里</a>";
-                hdurl = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=" + Get_Access_Token_(c);
+                hdurl = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=" + Comm.Get_Access_Token(c);
                 hdcontent = "{\"touser\":\"" + FromUserName + "\",\"msgtype\":\"text\",\"text\":{\"content\":\"" + hd + "\"}}";
                 //WriteLog(new WxTool().webRequest(hdurl, hdcontent));
 
                 //SendImage(QjUid,c,FromUserName);
                 //jWPDnLKdX671tqzxYkcrJSuvsDUu8n5RAwysiIwczS7GbAB_vs9JbnuxPK7x9n_L
-                string url = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=" + Get_Access_Token_(c);
+                string url = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=" + Comm.Get_Access_Token(c);
                 string content = "{\"touser\":\"" + FromUserName + "\",\"msgtype\":\"image\",\"image\":{\"media_id\":\"jWPDnLKdX671tqzxYkcrJSuvsDUu8n5RAwysiIwczS7GbAB_vs9JbnuxPK7x9n_L\"}}";
                 //WriteLog(new WxTool().webRequest(url, content));
             }
@@ -668,7 +668,7 @@ public class WxHandler : IHttpHandler {
     public void SendImage(int uid, HttpContext c, string openId)
     {
         string FilePath = c.Server.MapPath("/active/student/adNew.jpg");
-        string url = string.Format("http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token={0}&type={1}", Get_Access_Token_(c), "image");
+        string url = string.Format("http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token={0}&type={1}", Comm.Get_Access_Token(c), "image");
         string json = HttpUploadFile(url, FilePath);
         WriteLog(json);
         JsonData j = JsonMapper.ToObject(json);
@@ -676,7 +676,7 @@ public class WxHandler : IHttpHandler {
         {
             string media_id = j["media_id"].ToString();
             WriteLog(media_id);
-            url = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=" + Get_Access_Token_(c);
+            url = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=" + Comm.Get_Access_Token(c);
             string content = "{\"touser\":\"" + openId + "\",\"msgtype\":\"image\",\"image\":{\"media_id\":\"" + media_id + "\"}}";
             WriteLog(new WxTool().webRequest(url, content));
         }
@@ -787,54 +787,9 @@ public class WxHandler : IHttpHandler {
             new Main().AddToDb(tmp, "t_templateMsg");
         }
         catch { }
-        new TMessage().Send_TemplateMsg(t, Get_Access_Token_(c));
+        new TMessage().Send_TemplateMsg(t, Comm.Get_Access_Token(c));
     }
         
-    /// <summary>
-    /// 获取全局Access_Token
-    /// </summary>
-    /// <param name="c"></param>
-    /// <returns></returns>
-    public string Get_Access_Token99(HttpContext c)
-    {
-        string Access_Token = "";
-        bool isFail = string.IsNullOrEmpty(c.Request["isFail"]) ? true : true;
-        if (isFail || string.IsNullOrEmpty(c.Cache["Global_Access_Token"].ToString()))
-        {
-            Access_Token = new Common(appid, secret).Get_Access_Token();
-            c.Cache.Add("Global_Access_Token", Access_Token, null, System.DateTime.UtcNow.AddMinutes(100), TimeSpan.Zero, System.Web.Caching.CacheItemPriority.Normal, null);
-        }
-        else
-        {
-            Access_Token = c.Cache["Global_Access_Token"].ToString();
-        }
-        return Access_Token;
-    }
-
-
-    public string Get_Access_Token_(HttpContext c)
-    {
-        string AccessRsa = "";
-        string Access_Token = new _WxAccessToken().GetAccessToken();
-        //WriteLog("--1--" + Access_Token + "--");
-        if (Access_Token.Length > 0)
-        {
-            AccessRsa = Access_Token;
-        }
-        else
-        {
-            //WriteLog("--5--" + Access_Token + "--");
-            Access_Token = new Common(appid, secret).Get_Access_Token();
-            WxAccessToken wx = new WxAccessToken
-            {
-                access_token = Access_Token,
-                addOn = DateTime.Now
-            };
-            new Main().AddToDb(wx, "wx_access_token");
-            AccessRsa = Access_Token;
-        }
-        return AccessRsa;
-    }
 
     public void OperOpenID(string source, HttpContext c)
     {

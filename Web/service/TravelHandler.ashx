@@ -360,7 +360,7 @@ public class TravelHandler : IHttpHandler {
     /// <returns></returns>
     public string GetOrderList(HttpContext c)
     {
-        int uid = string.IsNullOrEmpty(c.Request["uid"]) ? 0 : Convert.ToInt16(c.Request["uid"].ToString());
+        int uid = string.IsNullOrEmpty(c.Request["uid"]) ? 0 : Convert.ToInt32(c.Request["uid"].ToString());
         user u = new _User().GetUser("", "", uid);
         if (u != null)
         {
@@ -379,7 +379,7 @@ public class TravelHandler : IHttpHandler {
     /// <returns></returns>
     public string GetOrderInfo(HttpContext c)
     {
-        int uid = string.IsNullOrEmpty(c.Request["uid"]) ? 0 : Convert.ToInt16(c.Request["uid"].ToString());
+        int uid = string.IsNullOrEmpty(c.Request["uid"]) ? 0 : Convert.ToInt32(c.Request["uid"].ToString());
         string OrderNo = c.Request["OrderNo"] == null ? "" : c.Request["OrderNo"].ToString();
         user u = new _User().GetUser("", "", uid);
         if (u != null && OrderNo.Length > 0)
@@ -533,7 +533,7 @@ public class TravelHandler : IHttpHandler {
     public string GetPayInfo(HttpContext c)
     {
         string OrderNo = c.Request["OrderNo"] == null ? "" : c.Request["OrderNo"].ToString();
-        int uid = string.IsNullOrEmpty(c.Request["uid"]) ? 0 : Convert.ToInt16(c.Request["uid"]);
+        int uid = string.IsNullOrEmpty(c.Request["uid"]) ? 0 : Convert.ToInt32(c.Request["uid"]);
         string openId = c.Request["openId"] == null ? "" : c.Request["openId"].ToString();
         WxPay.WxPayConfig wc = OperPay(OrderNo, "", uid, openId);
         if (wc != null)

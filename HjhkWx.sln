@@ -7,7 +7,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web(18)", "http://localhost
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		ProjectReferences = "{536ec377-c736-4593-9ccb-158944d531e3}|Data.dll;{6B1589E5-ECD9-4A7E-A865-C92D05B47927}|Model.dll;{8d9dd8cf-6adb-4ee8-b372-2016159b5690}|Seascape.WxApi.dll;{389eef2b-d76e-4af5-8244-0f305e771e2e}|Train.dll;{754528d6-28c7-45c6-958a-6caf49b571e7}|Travel.dll;"
+		ProjectReferences = "{536ec377-c736-4593-9ccb-158944d531e3}|Data.dll;{6B1589E5-ECD9-4A7E-A865-C92D05B47927}|Model.dll;{8d9dd8cf-6adb-4ee8-b372-2016159b5690}|Seascape.WxApi.dll;{389eef2b-d76e-4af5-8244-0f305e771e2e}|Train.dll;{754528d6-28c7-45c6-958a-6caf49b571e7}|Travel.dll;{28480069-cd71-42af-92cf-5788ab36d7b7}|ExtApp.QQ.AI.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_11665"
 		Debug.AspNetCompiler.PhysicalPath = "Web\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_11665\"
@@ -58,6 +58,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Train", "Train\Train.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Travel", "Travel\Travel.csproj", "{754528D6-28C7-45C6-958A-6CAF49B571E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtApp.QQ.AI", "ExtApp\ExtApp.QQ.AI.csproj", "{28480069-CD71-42AF-92CF-5788AB36D7B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,6 +98,10 @@ Global
 		{754528D6-28C7-45C6-958A-6CAF49B571E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{754528D6-28C7-45C6-958A-6CAF49B571E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{754528D6-28C7-45C6-958A-6CAF49B571E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28480069-CD71-42AF-92CF-5788AB36D7B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28480069-CD71-42AF-92CF-5788AB36D7B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28480069-CD71-42AF-92CF-5788AB36D7B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28480069-CD71-42AF-92CF-5788AB36D7B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
